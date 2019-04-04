@@ -1,1 +1,1 @@
-# Game-Selling-Manager
+# Game Selling Manager App
