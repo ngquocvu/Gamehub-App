@@ -61,82 +61,82 @@ public class BUS_ChangeCategory {
         private JPanel jpnItem;
         private JLabel jlbItem;
 
-    public LabelEvent(String kind, JPanel jpnItem, JLabel jlbItem) {
-        this.kind = kind;
-        this.jpnItem = jpnItem;
-        this.jlbItem = jlbItem;
-    }
-        
-        
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-         switch(kind)
-         {
-             case "Home":
-                 node = new GUI_Home();
-                 break;
-             case "Product":
-                 node = new GUI_Product();
-                 break;
-             case "Staff":
-                 node = new GUI_Staff();
-                 break;
-             case "Customer":
-                 node = new GUI_Customer();
-                 break;
-             case "Receipt":
-                 node = new GUI_Receipt();
-                 break;  
-             default:
-                 break;
-         }
-    root.removeAll();
-    root.setLayout(new BorderLayout());
-    root.add(node);
-    root.validate();
-    root.repaint();
-    setChangeBackground(kind);
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        kindSelected=kind;
-        jlbItem.setBackground(new Color(105,87,142));
-        jpnItem.setBackground(new Color(105,87,142));
-    }
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        jlbItem.setBackground(new Color(105,87,142));
-        jpnItem.setBackground(new Color(96,100,191));
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-         if(!kindSelected.equalsIgnoreCase(kind))
-         {
-             jpnItem.setBackground(new Color(105,87,142));
-             jlbItem.setBackground(new Color(105,87,142));
-         }
-    }
-    }
-    private void setChangeBackground(String kind)
-    {
-        for(DTO_Category item : listItem)
-        if(item.getKind().equalsIgnoreCase(kind))
-        {
-            item.getJpanel().setBackground(new Color(96,100,191));
-            item.getJlabel().setBackground(new Color(96,100,191));
+        public LabelEvent(String kind, JPanel jpnItem, JLabel jlbItem) {
+            this.kind = kind;
+            this.jpnItem = jpnItem;
+            this.jlbItem = jlbItem;
         }
-         else
-        {
-            item.getJpanel().setBackground(new Color(105,87,142));
-            item.getJlabel().setBackground(new Color(105,87,142));
+
+
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            switch(kind)
+            {
+                case "Home":
+                    node = new GUI_Home();
+                    break;
+                case "Product":
+                    node = new GUI_Product();
+                    break;
+                case "Staff":
+                    node = new GUI_Staff();
+                    break;
+                case "Customer":
+                    node = new GUI_Customer();
+                    break;
+                case "Receipt":
+                    node = new GUI_Receipt();
+                    break;  
+                default:
+                    break;
+            }
+            root.removeAll();
+            root.setLayout(new BorderLayout());
+            root.add(node);
+            root.validate();
+            root.repaint();
+            setChangeBackground(kind);
         }
-    }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            kindSelected=kind;
+            jlbItem.setBackground(new Color(105,87,142));
+            jpnItem.setBackground(new Color(105,87,142));
+        }
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            jlbItem.setBackground(new Color(105,87,142));
+            jpnItem.setBackground(new Color(96,100,191));
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+             if(!kindSelected.equalsIgnoreCase(kind))
+             {
+                 jpnItem.setBackground(new Color(105,87,142));
+                 jlbItem.setBackground(new Color(105,87,142));
+             }
+        }
+        }
+        private void setChangeBackground(String kind)
+        {
+            for(DTO_Category item : listItem)
+                if(item.getKind().equalsIgnoreCase(kind))
+                {
+                    item.getJpanel().setBackground(new Color(96,100,191));
+                    item.getJlabel().setBackground(new Color(96,100,191));
+                }
+                 else
+                {
+                    item.getJpanel().setBackground(new Color(105,87,142));
+                    item.getJlabel().setBackground(new Color(105,87,142));
+                }
+        }
 }
