@@ -88,7 +88,10 @@ public class BUS_ChangeCategory {
                 case "Receipt":
                     node = new GUI_Receipt();
                     break;  
-                default:
+                case "Statistics":
+                    node = new GUI_Statistics();
+                    break;  
+                default:    
                     break;
             }
             root.removeAll();
