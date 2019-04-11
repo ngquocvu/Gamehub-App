@@ -52,6 +52,8 @@ public class GUI_Receipt extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1080, 1509));
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
