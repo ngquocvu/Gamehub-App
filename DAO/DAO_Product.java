@@ -49,13 +49,22 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
     
     public DTO_Product get(String id) {
         for (DTO_Product product : products) {
-            if (product.getId() == id) {
+            if (product.getId().equals(id)) {
                 return product;
             }
         }
-        
         return null;
     }
+
+    @Override
+    public void update(DTO_Product object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(DTO_Product object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    public void 
+
 }

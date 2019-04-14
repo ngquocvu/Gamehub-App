@@ -33,6 +33,10 @@ public class DTO_Product {
         this.price = price;
     }
 
+    public DTO_Product() {
+       
+    }
+
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
