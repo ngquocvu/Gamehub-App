@@ -41,6 +41,7 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             
             products.add(product);
         }
+        conn.close();
     }
     
     public ArrayList<DTO_Product> getAll() {
@@ -62,8 +63,12 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
     }
 
     @Override
-    public void delete(DTO_Product object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(String id) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "DELETE FROM products WHERE id = " + id ;
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        conn.close();
     }
     
 

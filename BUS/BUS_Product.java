@@ -12,9 +12,13 @@ import java.util.ArrayList;
 public class BUS_Product {
 
 
-    public static ArrayList<DTO_Product> AllProduct() throws SQLException, ClassNotFoundException{ 
+    public static ArrayList<DTO_Product> allProduct() throws SQLException, ClassNotFoundException{ 
         DAO_Product products = new DAO_Product();
         return products.getAll(); 
+    } 
+     public static void deleteProduct(String id) throws SQLException, ClassNotFoundException { 
+         DAO_Product products = new DAO_Product();
+         products.delete(id);
     } 
 
 }
