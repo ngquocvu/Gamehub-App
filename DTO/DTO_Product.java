@@ -20,6 +20,7 @@ public class DTO_Product {
     private int quantity;
     private double price;
 
+    public DTO_Product(){}
     public DTO_Product(String id, String name, String description, String publisher, 
             String genre, String platform, String releaseDate, int quantity, double price) {
         this.id = id;
@@ -32,11 +33,6 @@ public class DTO_Product {
         this.quantity = quantity;
         this.price = price;
     }
-
-    public DTO_Product() {
-       
-    }
-
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }

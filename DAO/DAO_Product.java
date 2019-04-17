@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -59,7 +61,25 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
 
     @Override
     public void update(DTO_Product object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            Connection conn = MySQLConnUtils.getMySQLConnection();
+            String sql = "UPDATE products SET ";
+            sql+= "name = " + "'" + object.getName() + "'";
+            sql+= "," + "description = " + "'none'";
+            sql+= "," + "price = " + object.getPrice();
+            sql+= "," + "publisher = " + "'" + object.getPublisher() + "'";
+            sql+= "," + "genre = " + "'" + object.getGenre() + "'";
+            sql+= "," + "platform = " + "'" + object.getPlatform() + "'";
+            sql+= "," + "quantity = " + object.getQuantity();
+            sql+= "," + "releaseDate = " +  "'" + object.getReleaseDate() + "'" + "WHERE id= " + "'" + object.getId()+ "'";
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAO_Product.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO_Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -67,9 +87,27 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "DELETE FROM products WHERE id = " + id ;
         Statement stmt = conn.createStatement();
-        ResultSet result = stmt.executeQuery(sql);
+        stmt.executeUpdate(sql);
         conn.close();
     }
     
+    public void add(DTO_Product object) throws SQLException, ClassNotFoundException
+    {  
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "INSERT INTO products(id,name,description,price,publisher,genre,platform,quantity,releaseDate) VALUES";
+               sql+= "(" + "'" + object.getId() + "'";
+               sql+= "," + "'" + object.getName() + "'";
+               sql+= "," + "'none'";
+               sql+= "," + object.getPrice();
+               sql+= "," + "'" + object.getPublisher() + "'";
+               sql+= "," + "'" + object.getGenre() + "'";
+               sql+= "," + "'" + object.getPlatform() + "'";
+               sql+= "," + object.getQuantity();
+               sql+= "," +  "'" + object.getReleaseDate() + "'" + " )";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        conn.close();
+        
+    }
 
 }

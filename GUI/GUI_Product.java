@@ -26,7 +26,6 @@ public class GUI_Product extends javax.swing.JPanel {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
-private ArrayList<DTO_Product> productsList;
     public GUI_Product() throws SQLException, ClassNotFoundException {
        model = loadProduct();
        initComponents();
@@ -46,12 +45,11 @@ private ArrayList<DTO_Product> productsList;
        Header.add("Genre");
        Header.add("Release Date");
        DefaultTableModel model = new DefaultTableModel(Header,0);
-        
-        ArrayList<DTO_Product> array = BUS_Product.allProduct();
-        for(int i=0;i<array.size();i++)
+       BUS_Product ProductBus = new BUS_Product();
+        for(int i=0;i<BUS_Product.array.size();i++)
         {
             DTO_Product tempProduct = new DTO_Product(); 
-            tempProduct = array.get(i);
+            tempProduct = BUS_Product.array.get(i);
             Vector Object = new Vector();
             Object.add(tempProduct.getId());
             Object.add(tempProduct.getName());
@@ -66,7 +64,15 @@ private ArrayList<DTO_Product> productsList;
         return model;
     }
   
-
+    public DTO_Product findItem(String id)
+    {
+        for(DTO_Product product : BUS_Product.array)
+         {
+            if(product.getId().equalsIgnoreCase(id))
+                return product;
+         }
+         return null;
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -237,6 +243,11 @@ private ArrayList<DTO_Product> productsList;
         btnAdd.setMinimumSize(new java.awt.Dimension(79, 25));
         btnAdd.setPreferredSize(new java.awt.Dimension(79, 25));
         btnAdd.setVerifyInputWhenFocusTarget(false);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnEdit.setBackground(new java.awt.Color(99, 19, 132));
         btnEdit.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -246,6 +257,11 @@ private ArrayList<DTO_Product> productsList;
         btnEdit.setMinimumSize(new java.awt.Dimension(79, 25));
         btnEdit.setPreferredSize(new java.awt.Dimension(79, 25));
         btnEdit.setVerifyInputWhenFocusTarget(false);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnReset.setBackground(new java.awt.Color(99, 19, 132));
         btnReset.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -255,6 +271,11 @@ private ArrayList<DTO_Product> productsList;
         btnReset.setMinimumSize(new java.awt.Dimension(79, 25));
         btnReset.setPreferredSize(new java.awt.Dimension(79, 25));
         btnReset.setVerifyInputWhenFocusTarget(false);
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         btnRemove.setBackground(new java.awt.Color(99, 19, 132));
         btnRemove.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -758,24 +779,29 @@ private ArrayList<DTO_Product> productsList;
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            int  i = tblProduct.getSelectedRow();
+          int  i = tblProduct.getSelectedRow();
             String id = txtID.getText();
                   if (i>=0)
                   {
-                try {
-                    BUS_Product.deleteProduct(id);
-                } catch (SQLException ex) {
-                    Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                      model.removeRow(i);
-                      tblProduct.setModel(model);     
-                  }        
-    }
+                    int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if(dialogResult == JOptionPane.YES_OPTION){
+                    try {
+                        BUS_Product ProductBus = new BUS_Product();
+                        ProductBus.delete(id);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                          model.removeRow(i);
+                          tblProduct.setModel(model);     
+                      }   
+                  }
+                  else 
+                  {
+                      JOptionPane.showMessageDialog(null,"Please select a row to delete !");
+                  }
         
     }//GEN-LAST:event_btnRemoveActionPerformed
 
@@ -859,6 +885,90 @@ private ArrayList<DTO_Product> productsList;
     private void cbGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGenreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbGenreActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    try {
+        DTO_Product product = new DTO_Product();
+        BUS_Product productBUS = new BUS_Product();
+        product.setId(txtID.getText());
+        product.setName(txtName.getText());
+        product.setPrice(Double.parseDouble(txtPrice.getText()));
+        product.setQuantity(Integer.parseInt(txtQuantity.getText()));
+        product.setPublisher(txtPublisher.getText());
+        product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
+        product.setGenre(String.valueOf(cbGenre.getSelectedItem()));
+        product.setReleaseDate(txtReDate.getText());      
+        Vector header = new Vector();
+        Vector row=new Vector();
+        if(findItem(product.getId())==null)
+        {
+            row.add(product.getId());
+            row.add(product.getName());
+            row.add(String.valueOf(product.getPrice()));
+            row.add(String.valueOf(product.getQuantity()));
+            row.add(product.getPublisher());
+            row.add(product.getPlatform());
+            row.add(product.getGenre());
+            row.add(product.getReleaseDate());
+            model.addRow(row);
+            tblProduct.setModel(model);
+            productBUS.add(product);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"This ID is already used !");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        txtID.setText("");
+            txtName.setText("");
+            txtPrice.setText("");
+            txtQuantity.setText("");
+            txtPublisher.setText("");
+            cbPlatform.setSelectedIndex(1);
+            cbGenre.setSelectedIndex(1);
+            txtReDate.setText("");
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        int  i=tblProduct.getSelectedRow();
+        if (i>=0)
+        {
+            try {
+                model.setValueAt(txtName.getText(), i, 1);
+                model.setValueAt(txtPrice.getText(), i, 2);
+                model.setValueAt(txtQuantity.getText(), i, 2);
+                model.setValueAt(txtPublisher.getText(), i, 2);
+                model.setValueAt(cbPlatform.getSelectedItem(), i, 2);
+                model.setValueAt(cbGenre.getSelectedItem(), i, 2);
+                model.setValueAt(txtReDate.getText(), i, 2);
+                tblProduct.setModel(model);
+                
+                DTO_Product product = new DTO_Product();
+                BUS_Product productBUS = new BUS_Product();
+                product.setId(txtID.getText());
+                product.setName(txtName.getText());
+                product.setPrice(Double.parseDouble(txtPrice.getText()));
+                product.setQuantity(Integer.parseInt(txtQuantity.getText()));
+                product.setPublisher(txtPublisher.getText());
+                product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
+                product.setGenre(String.valueOf(cbGenre.getSelectedItem()));      
+                product.setReleaseDate(txtReDate.getText());
+                productBUS.update(product);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
