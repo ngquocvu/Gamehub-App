@@ -71,7 +71,7 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             sql+= "," + "genre = " + "'" + object.getGenre() + "'";
             sql+= "," + "platform = " + "'" + object.getPlatform() + "'";
             sql+= "," + "quantity = " + object.getQuantity();
-            sql+= "," + "releaseDate = " +  "'" + object.getReleaseDate() + "'" + "WHERE id= " + "'" + object.getId()+ "'";
+            sql+= "," + "releaseDate = " +  "'" + object.getReleaseDate() + "'" + " WHERE id= " + "'" + object.getId()+ "'";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sql);
             conn.close();
@@ -109,5 +109,60 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
         conn.close();
         
     }
+      public ArrayList<DTO_Product> search(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM products WHERE name LIKE " + "'" + content + "%'" ;
+        ArrayList<DTO_Product> array = new  ArrayList<DTO_Product>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String name = result.getString(2);
+            String description = result.getString(3);
+            double price = result.getDouble(4);
+            String publisher = result.getString(5);
+            String genre = result.getString(6);
+            String platform = result.getString(7);
+            String releaseDate = result.getString(8);
+            int quantity = result.getInt(9);
+            DTO_Product product = new DTO_Product(id, name, description, publisher, 
+            genre, platform, releaseDate, quantity, price);    
+            array.add(product);
+            
+        }
+        
+         conn.close();
+         return array;
+    }
 
+    public ArrayList<DTO_Product> sortBy(String content,Boolean isSelected) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = new String();
+        if (isSelected)
+        sql = "SELECT * FROM products ORDER BY " + content + " DESC";
+        else
+        sql = "SELECT * FROM products ORDER BY " + content + " ASC";  
+        
+        ArrayList<DTO_Product> array = new  ArrayList<DTO_Product>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String name = result.getString(2);
+            String description = result.getString(3);
+            double price = result.getDouble(4);
+            String publisher = result.getString(5);
+            String genre = result.getString(6);
+            String platform = result.getString(7);
+            String releaseDate = result.getString(8);
+            int quantity = result.getInt(9);
+            DTO_Product product = new DTO_Product(id, name, description, publisher, 
+            genre, platform, releaseDate, quantity, price);    
+            array.add(product);
+            
+        }
+        
+         conn.close();
+         return array;
+    }
 }

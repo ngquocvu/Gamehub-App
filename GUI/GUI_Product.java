@@ -27,13 +27,13 @@ private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
     public GUI_Product() throws SQLException, ClassNotFoundException {
-       model = loadProduct();
+       loadProduct();
        initComponents();
       
        
         
     }
-    public DefaultTableModel loadProduct() throws SQLException, ClassNotFoundException
+    public void loadProduct() throws SQLException, ClassNotFoundException
     {
        Header = new Vector();
        Header.add("ID");
@@ -61,7 +61,7 @@ private DefaultTableModel  model;
             Object.add(tempProduct.getReleaseDate());
             model.addRow(Object);
         }
-        return model;
+        this.model = model;
     }
   
     public DTO_Product findItem(String id)
@@ -85,8 +85,7 @@ private DefaultTableModel  model;
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField8 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
+        txtSearch = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lbID = new javax.swing.JLabel();
@@ -135,7 +134,10 @@ private DefaultTableModel  model;
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProduct = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnSearch1 = new javax.swing.JButton();
+        cbsort = new javax.swing.JComboBox();
+        tgSort = new javax.swing.JToggleButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -155,6 +157,7 @@ private DefaultTableModel  model;
         setToolTipText("");
         setInheritsPopupMenu(true);
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(1494, 1092));
 
         jPanel2.setBackground(new java.awt.Color(126, 64, 139));
 
@@ -183,19 +186,11 @@ private DefaultTableModel  model;
 
         jPanel3.setPreferredSize(new java.awt.Dimension(1130, 901));
 
-        jTextField8.setMaximumSize(null);
-        jTextField8.setMinimumSize(null);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.setMaximumSize(null);
+        txtSearch.setMinimumSize(null);
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "A->Z", "Z->A" }));
-        jComboBox2.setMaximumSize(null);
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
             }
         });
 
@@ -342,54 +337,53 @@ private DefaultTableModel  model;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(14, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap(14, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbID))
-                                        .addGap(18, 18, 18))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(lbQuantity)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                    .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(23, 23, 23))
+                                    .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbID))
+                                .addGap(18, 18, 18))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(lbGenre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                                .addComponent(cbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbPublisher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbReDate)
-                            .addComponent(lbPlatform))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtReDate)
-                                .addComponent(txtPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lbQuantity)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbGenre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addComponent(cbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbPublisher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbReDate)
+                    .addComponent(lbPlatform))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtReDate)
+                        .addComponent(txtPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -423,9 +417,8 @@ private DefaultTableModel  model;
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbGenre)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
@@ -630,9 +623,9 @@ private DefaultTableModel  model;
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jRadioButton4)
-                                .addGap(22, 22, 22)
+                                .addGap(18, 18, 18)
                                 .addComponent(jRadioButton7)
-                                .addGap(14, 14, 14)
+                                .addGap(18, 18, 18)
                                 .addComponent(jRadioButton6)
                                 .addGap(22, 22, 22)
                                 .addComponent(jRadioButton5)
@@ -646,23 +639,23 @@ private DefaultTableModel  model;
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton4)
                     .addComponent(jRadioButton2)
+                    .addComponent(jRadioButton4)
                     .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton5)
                     .addComponent(jRadioButton6)
+                    .addComponent(jRadioButton5)
                     .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(153, 153, 153))
+                .addGap(24, 24, 24))
         );
 
         tblProduct.setRowHeight(32);
@@ -681,20 +674,21 @@ private DefaultTableModel  model;
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("Customer Infomation");
@@ -710,13 +704,41 @@ private DefaultTableModel  model;
             .addGap(0, 376, Short.MAX_VALUE)
         );
 
-        jButton6.setBackground(new java.awt.Color(99, 19, 132));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Search");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        btnSearch1.setBackground(new java.awt.Color(99, 19, 132));
+        btnSearch1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnSearch1.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
+        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch1ActionPerformed(evt);
+            }
+        });
+
+        cbsort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "Name", "Price", "Quantity", "Publisher", "Platform", "Genre", "Release Year" }));
+        cbsort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbsortActionPerformed(evt);
+            }
+        });
+
+        tgSort.setBackground(new java.awt.Color(99, 19, 132));
+        tgSort.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tgSort.setForeground(new java.awt.Color(255, 255, 255));
+        tgSort.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_expand_more_white_18dp.png"))); // NOI18N
+        tgSort.setText("Desc");
+        tgSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tgSortActionPerformed(evt);
             }
         });
 
@@ -730,13 +752,17 @@ private DefaultTableModel  model;
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tgSort)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbsort, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(10, 10, 10)))
                 .addContainerGap())
         );
@@ -745,11 +771,13 @@ private DefaultTableModel  model;
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbsort, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSearch)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tgSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -770,7 +798,7 @@ private DefaultTableModel  model;
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -779,47 +807,85 @@ private DefaultTableModel  model;
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-          int  i = tblProduct.getSelectedRow();
+
             String id = txtID.getText();
-                  if (i>=0)
-                  {
-                    int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if(dialogResult == JOptionPane.YES_OPTION){
-                    try {
-                        BUS_Product ProductBus = new BUS_Product();
-                        ProductBus.delete(id);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                          model.removeRow(i);
-                          tblProduct.setModel(model);     
+            if(findItem(id)== null)
+            {
+                JOptionPane.showMessageDialog(null,"Can not delete ! Product's ID not found !");
+                return;
+            }
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                    if(dialogResult == JOptionPane.YES_OPTION)
+                    {
+                        try {
+                            BUS_Product ProductBus = new BUS_Product();
+                            ProductBus.delete(id);
+                            loadProduct();
+                            tblProduct.setModel(this.model);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+                        }  
                       }   
-                  }
                   else 
                   {
                       JOptionPane.showMessageDialog(null,"Please select a row to delete !");
                   }
-        
+           
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    try {
+        BUS_Product ProductBus = new BUS_Product();
+        ArrayList<DTO_Product> array = ProductBus.search(txtSearch.getText());
+        Header = new Vector();
+        Header.add("ID");
+        Header.add("Name");
+        Header.add("Price");
+        Header.add("Quantity");
+        Header.add("Publisher");
+        Header.add("Platform");
+        Header.add("Genre");
+        Header.add("Release Date");
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        for(int i=0;i<array.size();i++)
+        {
+            DTO_Product tempProduct = new DTO_Product(); 
+            tempProduct = array.get(i);
+            Vector Object = new Vector();
+            Object.add(tempProduct.getId());
+            Object.add(tempProduct.getName());
+            Object.add(tempProduct.getPrice());
+            Object.add(tempProduct.getQuantity());
+            Object.add(tempProduct.getPublisher());
+            Object.add(tempProduct.getPlatform());
+            Object.add(tempProduct.getGenre());
+            Object.add(tempProduct.getReleaseDate());
+            model.addRow(Object);
+        }
+        this.model = model;
+        tblProduct.setModel(model);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -899,25 +965,24 @@ private DefaultTableModel  model;
         product.setGenre(String.valueOf(cbGenre.getSelectedItem()));
         product.setReleaseDate(txtReDate.getText());      
         Vector header = new Vector();
-        Vector row=new Vector();
-        if(findItem(product.getId())==null)
+        Vector row=new Vector();  
+        if(findItem(product.getId())==null && product.getId().matches("[0-9]+") && product.getId().length() >= 1)
         {
-            row.add(product.getId());
-            row.add(product.getName());
-            row.add(String.valueOf(product.getPrice()));
-            row.add(String.valueOf(product.getQuantity()));
-            row.add(product.getPublisher());
-            row.add(product.getPlatform());
-            row.add(product.getGenre());
-            row.add(product.getReleaseDate());
             model.addRow(row);
             tblProduct.setModel(model);
             productBUS.add(product);
         }
-        else
+        else if (findItem(product.getId())!=null)
         {
             JOptionPane.showMessageDialog(null,"This ID is already used !");
         }
+         else if (!product.getId().matches("[0-9]+"))
+        {
+            JOptionPane.showMessageDialog(null,"ID must contain digit numbers from 0 to 9 !");
+        }
+        
+            loadProduct();
+            tblProduct.setModel(this.model);
     } catch (SQLException ex) {
         Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
     } catch (ClassNotFoundException ex) {
@@ -937,19 +1002,7 @@ private DefaultTableModel  model;
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        int  i=tblProduct.getSelectedRow();
-        if (i>=0)
-        {
-            try {
-                model.setValueAt(txtName.getText(), i, 1);
-                model.setValueAt(txtPrice.getText(), i, 2);
-                model.setValueAt(txtQuantity.getText(), i, 2);
-                model.setValueAt(txtPublisher.getText(), i, 2);
-                model.setValueAt(cbPlatform.getSelectedItem(), i, 2);
-                model.setValueAt(cbGenre.getSelectedItem(), i, 2);
-                model.setValueAt(txtReDate.getText(), i, 2);
-                tblProduct.setModel(model);
-                
+           try {   
                 DTO_Product product = new DTO_Product();
                 BUS_Product productBUS = new BUS_Product();
                 product.setId(txtID.getText());
@@ -961,14 +1014,83 @@ private DefaultTableModel  model;
                 product.setGenre(String.valueOf(cbGenre.getSelectedItem()));      
                 product.setReleaseDate(txtReDate.getText());
                 productBUS.update(product);
+                loadProduct();
+                tblProduct.setModel(this.model);
             } catch (SQLException ex) {
                 Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }
+            }                     
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+        try {
+            loadProduct();
+            tblProduct.setModel(this.model);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSearch1ActionPerformed
+
+    private void cbsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbsortActionPerformed
+      try { 
+        BUS_Product productBUS = new BUS_Product();
+        String content = "";
+        if(cbsort.getSelectedIndex()==0)
+        return;
+        switch(cbsort.getSelectedIndex())
+       {
+           case 1: content = "id +0";  break;
+           case 2: content = "name"; break;
+           case 3: content = "price"; break;
+           case 4: content = "quantity"; break;
+           case 5: content = "publisher"; break; 
+           case 6: content = "platform"; break;
+           case 7: content = "genre"; break;
+           case 8: content = "releaseDate"; break;    
+       }
+       ArrayList<DTO_Product> array = productBUS.sortBy(content,tgSort.isSelected());
+       
+        Header = new Vector();
+        Header.add("ID");
+        Header.add("Name");
+        Header.add("Price");
+        Header.add("Quantity");
+        Header.add("Publisher");
+        Header.add("Platform");
+        Header.add("Genre");
+        Header.add("Release Date");
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        for(int i=0;i<array.size();i++)
+        {
+            DTO_Product tempProduct = new DTO_Product(); 
+            tempProduct = array.get(i);
+            Vector Object = new Vector();
+            Object.add(tempProduct.getId());
+            Object.add(tempProduct.getName());
+            Object.add(tempProduct.getPrice());
+            Object.add(tempProduct.getQuantity());
+            Object.add(tempProduct.getPublisher());
+            Object.add(tempProduct.getPlatform());
+            Object.add(tempProduct.getGenre());
+            Object.add(tempProduct.getReleaseDate());
+            model.addRow(Object);
+        }
+        this.model = model;
+        tblProduct.setModel(model);
+      }
+      catch (SQLException ex) {
+            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cbsortActionPerformed
+
+    private void tgSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgSortActionPerformed
+        cbsortActionPerformed(evt);
+    }//GEN-LAST:event_tgSortActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -976,10 +1098,12 @@ private DefaultTableModel  model;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSearch1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbGenre;
     private javax.swing.JComboBox cbPlatform;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox cbsort;
     private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -990,7 +1114,6 @@ private DefaultTableModel  model;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
@@ -1015,7 +1138,6 @@ private DefaultTableModel  model;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lbGenre;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbName;
@@ -1025,11 +1147,13 @@ private DefaultTableModel  model;
     private javax.swing.JLabel lbQuantity;
     private javax.swing.JLabel lbReDate;
     private javax.swing.JTable tblProduct;
+    private javax.swing.JToggleButton tgSort;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtPublisher;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtReDate;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

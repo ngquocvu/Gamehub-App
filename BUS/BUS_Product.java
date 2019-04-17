@@ -43,5 +43,20 @@ public class BUS_Product {
              DAO_Product productDAO = new DAO_Product();
              productDAO.update(product);
      }
+     
+     public ArrayList<DTO_Product> search(String content) throws ClassNotFoundException, SQLException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         ArrayList<DTO_Product> array = productDAO.search(content);
+         return array;     
+     }
+     
+     public ArrayList<DTO_Product> sortBy(String content,Boolean isSelected) throws ClassNotFoundException, SQLException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         ArrayList<DTO_Product> array = productDAO.sortBy(content, isSelected);
+         return array;     
+     }
+     
 }
 
