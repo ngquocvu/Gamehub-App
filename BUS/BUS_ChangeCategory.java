@@ -12,7 +12,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -77,7 +80,13 @@ public class BUS_ChangeCategory {
                     node = new GUI_Home();
                     break;
                 case "Product":
-                    node = new GUI_Product();
+            try {
+                node = new GUI_Product();
+            } catch (SQLException ex) {
+                Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+            }
                     break;
                 case "Staff":
                     node = new GUI_Staff();
