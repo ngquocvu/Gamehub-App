@@ -762,8 +762,8 @@ private DefaultTableModel  model;
             txtID.setText(tblStaff.getModel().getValueAt(i, 0).toString());
             txtFirstname.setText(tblStaff.getModel().getValueAt(i, 1).toString());
             txtLastname.setText(tblStaff.getModel().getValueAt(i, 2).toString());
-            txtEmail.setText(tblStaff.getModel().getValueAt(i, 3).toString());
-            txtPassword.setText(tblStaff.getModel().getValueAt(i, 4).toString());
+            txtEmail.setText(tblStaff.getModel().getValueAt(i, 4).toString());
+            txtPassword.setText(tblStaff.getModel().getValueAt(i, 3).toString());
             txtPhonenumber.setText(tblStaff.getModel().getValueAt(i, 6).toString());
             txtAddress.setText(tblStaff.getModel().getValueAt(i, 5).toString());
             txtRole.setText(tblStaff.getModel().getValueAt(i, 7).toString());
@@ -783,7 +783,7 @@ private DefaultTableModel  model;
         staff.setFirstname(txtFirstname.getText());
         staff.setLastname(txtLastname.getText()); 
         staff.setEmail(txtEmail.getText());
-        staff.setEmail(txtPassword.getText());
+        staff.setPassword(txtPassword.getText());
         staff.setAddress(txtAddress.getText());
         staff.setPhonenumber(txtPhonenumber.getText());
         staff.setRole(Integer.parseInt(txtRole.getText()));
@@ -820,9 +820,9 @@ private DefaultTableModel  model;
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
             txtID.setText("");
             txtFirstname.setText("");
-            txtLastname.setText("");
-            txtPassword.setText("");
+            txtLastname.setText(""); 
             txtEmail.setText("");
+            txtPassword.setText("");
             txtPhonenumber.setText("");
             txtAddress.setText("");
             txtRole.setText("");
@@ -830,7 +830,39 @@ private DefaultTableModel  model;
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-    
+        int  i=tblStaff.getSelectedRow();
+        if (i>=0)
+        {
+            try {
+                model.setValueAt(txtFirstname.getText(), i, 1);
+                model.setValueAt(txtLastname.getText(), i, 2);
+                model.setValueAt(txtEmail.getText(), i, 2);
+                model.setValueAt(txtPassword.getText(), i, 2);
+                model.setValueAt(txtAddress.getText(), i, 2);
+                model.setValueAt(txtPhonenumber.getText(), i, 2);
+                model.setValueAt(txtRole.getText(), i, 2);
+                model.setValueAt(txtSex.getText(), i, 2);
+                tblStaff.setModel(model);
+                
+                DTO_Staff staff= new DTO_Staff();
+                BUS_Staff staffBUS = new BUS_Staff();
+                staff.setId(txtID.getText());
+                staff.setFirstname(txtFirstname.getText());
+                staff.setLastname(txtLastname.getText());
+                staff.setEmail(txtEmail.getText());
+                staff.setPassword(txtPassword.getText());
+                staff.setAddress(txtAddress.getText());
+                staff.setPhonenumber(txtPhonenumber.getText());
+                staff.setRole(Integer.parseInt(txtRole.getText()));
+                staff.setSex(Integer.parseInt(txtSex.getText()));
+                staffBUS.update(staff);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
