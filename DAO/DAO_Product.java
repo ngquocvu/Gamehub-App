@@ -34,12 +34,12 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             String description = result.getString(3);
             double price = result.getDouble(4);
             String publisher = result.getString(5);
-            String genre = result.getString(6);
+            String genreID = result.getString(6);
             String platform = result.getString(7);
             String releaseDate = result.getString(8);
             int quantity = result.getInt(9);
             DTO_Product product = new DTO_Product(id, name, description, publisher, 
-                    genre, platform, releaseDate, quantity, price);
+                    genreID, platform, releaseDate, quantity, price);
             
             products.add(product);
         }
@@ -68,7 +68,7 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             sql+= "," + "description = " + "'none'";
             sql+= "," + "price = " + object.getPrice();
             sql+= "," + "publisher = " + "'" + object.getPublisher() + "'";
-            sql+= "," + "genre = " + "'" + object.getGenre() + "'";
+            sql+= "," + "genreID = " + "'" + object.getGenreID() + "'";
             sql+= "," + "platform = " + "'" + object.getPlatform() + "'";
             sql+= "," + "quantity = " + object.getQuantity();
             sql+= "," + "releaseDate = " +  "'" + object.getReleaseDate() + "'" + " WHERE id= " + "'" + object.getId()+ "'";
@@ -94,13 +94,13 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
     public void add(DTO_Product object) throws SQLException, ClassNotFoundException
     {  
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "INSERT INTO products(id,name,description,price,publisher,genre,platform,quantity,releaseDate) VALUES";
+        String sql = "INSERT INTO products(id,name,description,price,publisher,genreID,platform,quantity,releaseDate) VALUES";
                sql+= "(" + "'" + object.getId() + "'";
                sql+= "," + "'" + object.getName() + "'";
                sql+= "," + "'none'";
                sql+= "," + object.getPrice();
                sql+= "," + "'" + object.getPublisher() + "'";
-               sql+= "," + "'" + object.getGenre() + "'";
+               sql+= "," + "'" + object.getGenreID() + "'";
                sql+= "," + "'" + object.getPlatform() + "'";
                sql+= "," + object.getQuantity();
                sql+= "," +  "'" + object.getReleaseDate() + "'" + " )";
@@ -121,12 +121,12 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             String description = result.getString(3);
             double price = result.getDouble(4);
             String publisher = result.getString(5);
-            String genre = result.getString(6);
+            String genreID = result.getString(6);
             String platform = result.getString(7);
             String releaseDate = result.getString(8);
             int quantity = result.getInt(9);
             DTO_Product product = new DTO_Product(id, name, description, publisher, 
-            genre, platform, releaseDate, quantity, price);    
+            genreID, platform, releaseDate, quantity, price);    
             array.add(product);
             
         }
@@ -152,17 +152,42 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             String description = result.getString(3);
             double price = result.getDouble(4);
             String publisher = result.getString(5);
-            String genre = result.getString(6);
+            String genreID = result.getString(6);
             String platform = result.getString(7);
             String releaseDate = result.getString(8);
             int quantity = result.getInt(9);
             DTO_Product product = new DTO_Product(id, name, description, publisher, 
-            genre, platform, releaseDate, quantity, price);    
+            genreID, platform, releaseDate, quantity, price);    
             array.add(product);
             
         }
         
          conn.close();
          return array;
+    }
+    
+    public String getGenreName(String id) throws SQLException, ClassNotFoundException
+    {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT genreName FROM genre WHERE genreID = " + id;
+        Statement stmt = conn.createStatement();
+        String str = "";
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next())
+            str = result.getString(1);
+        conn.close();
+        return str;
+    }
+    public String getGenreID(String name) throws ClassNotFoundException, SQLException
+    {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT genreID FROM genre WHERE genreName = '" + name +"'";
+        Statement stmt = conn.createStatement();
+        String str = "";
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next())
+            str = result.getString(1);
+        conn.close();
+        return str;
     }
 }

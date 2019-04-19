@@ -724,9 +724,9 @@ private DefaultTableModel  model;
             try {
                 model.setValueAt(txtFirstname.getText(), i, 1);
                 model.setValueAt(txtLastname.getText(), i, 2);
-                model.setValueAt(txtEmail.getText(), i, 2);
-                model.setValueAt(txtPassword.getText(), i, 2);
-                model.setValueAt(txtPhone.getText(), i, 2);
+                model.setValueAt(txtEmail.getText(), i, 3);
+                model.setValueAt(txtPassword.getText(), i, 4);
+                model.setValueAt(txtPhone.getText(), i, 5);
                 tblCustomer.setModel(model);
                 
                 DTO_Customer user = new DTO_Customer();

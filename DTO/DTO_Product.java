@@ -14,7 +14,7 @@ public class DTO_Product {
     private String name;
     private String description;
     private String publisher;
-    private String genre;
+    private String genreID;
     private String platform;
     private String releaseDate;
     private int quantity;
@@ -27,7 +27,7 @@ public class DTO_Product {
         this.name = name;
         this.description = description;
         this.publisher = publisher;
-        this.genre = genre;
+        this.genreID = genre;
         this.platform = platform;
         this.releaseDate = releaseDate;
         this.quantity = quantity;
@@ -57,8 +57,8 @@ public class DTO_Product {
         return publisher;
     }
 
-    public String getGenre() {
-        return genre;
+    public String getGenreID() {
+        return genreID;
     }
 
     public String getPlatform() {
@@ -89,8 +89,8 @@ public class DTO_Product {
         this.publisher = publisher;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGenreID(String genre) {
+        this.genreID = genre;
     }
 
     public void setPlatform(String platform) {

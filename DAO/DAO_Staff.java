@@ -109,5 +109,13 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
         stmt.executeUpdate(sql);
         conn.close();
     }
+
+    public ArrayList<DTO_Staff> search(String content) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ArrayList<DTO_Staff> sortBy(String content, boolean selected) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }

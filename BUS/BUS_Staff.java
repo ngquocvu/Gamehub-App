@@ -47,4 +47,18 @@ public class BUS_Staff {
              DAO_Staff staffDAO = new DAO_Staff();
              staffDAO.update(staff);
      }
+     
+     public ArrayList<DTO_Staff> search (String content) throws SQLException, ClassNotFoundException {
+        DAO_Staff staffDAO = new DAO_Staff();
+        ArrayList<DTO_Staff> array = staffDAO.search(content);
+        return array;      
+     }
+     
+     public ArrayList<DTO_Staff> sortBy (String content , boolean isSelected) throws SQLException, ClassNotFoundException {
+        DAO_Staff staffDAO = new DAO_Staff();
+        ArrayList<DTO_Staff> array = staffDAO.sortBy(content,isSelected);
+        return array;
+         
+     }
+         
 }

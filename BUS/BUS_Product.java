@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -57,6 +57,15 @@ public class BUS_Product {
          ArrayList<DTO_Product> array = productDAO.sortBy(content, isSelected);
          return array;     
      }
-     
+     public String getGenreName(String id) throws SQLException, ClassNotFoundException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         return productDAO.getGenreName(id);
+     }
+     public String getGenreID(String name) throws SQLException, ClassNotFoundException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         return productDAO.getGenreID(name);
+     }
 }
 

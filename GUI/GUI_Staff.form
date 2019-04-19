@@ -305,18 +305,20 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbAddress" min="-2" pref="84" max="-2" attributes="0"/>
                                               <Component id="lbRole" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="lbSex" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="39" max="32767" attributes="0"/>
+                                          <EmptySpace pref="89" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtRole" min="-2" pref="225" max="-2" attributes="0"/>
                                               <Component id="txtSex" min="-2" pref="199" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lbPhonenumber" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lbPhonenumber" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbAddress" min="-2" pref="84" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="txtAddress" pref="225" max="32767" attributes="0"/>

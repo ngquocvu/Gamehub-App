@@ -50,6 +50,7 @@ private DefaultTableModel  model;
         {
             DTO_Product tempProduct = new DTO_Product(); 
             tempProduct = BUS_Product.array.get(i);
+            String genreName = ProductBus.getGenreName(tempProduct.getGenreID());
             Vector Object = new Vector();
             Object.add(tempProduct.getId());
             Object.add(tempProduct.getName());
@@ -57,7 +58,7 @@ private DefaultTableModel  model;
             Object.add(tempProduct.getQuantity());
             Object.add(tempProduct.getPublisher());
             Object.add(tempProduct.getPlatform());
-            Object.add(tempProduct.getGenre());
+            Object.add(genreName);
             Object.add(tempProduct.getReleaseDate());
             model.addRow(Object);
         }
@@ -105,10 +106,10 @@ private DefaultTableModel  model;
         btnReset = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         lbGenre = new javax.swing.JLabel();
-        cbGenre = new javax.swing.JComboBox();
         cbPlatform = new javax.swing.JComboBox();
         txtReDate = new javax.swing.JTextField();
         lbReDate = new javax.swing.JLabel();
+        txtGenre = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jTextField10 = new javax.swing.JTextField();
@@ -314,13 +315,6 @@ private DefaultTableModel  model;
         lbGenre.setText("Genre");
         lbGenre.setFocusTraversalPolicyProvider(true);
 
-        cbGenre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Adventure", "Sports" }));
-        cbGenre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbGenreActionPerformed(evt);
-            }
-        });
-
         cbPlatform.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Steam", "PC", "Xbox" }));
 
         txtReDate.addActionListener(new java.awt.event.ActionListener() {
@@ -332,6 +326,12 @@ private DefaultTableModel  model;
         lbReDate.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbReDate.setText("Release Date");
 
+        txtGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGenreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -339,28 +339,26 @@ private DefaultTableModel  model;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(14, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(14, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbID))
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lbQuantity)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23))
+                            .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbID))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbQuantity)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lbGenre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(cbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                        .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbPublisher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -410,13 +408,12 @@ private DefaultTableModel  model;
                             .addComponent(lbPublisher)
                             .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbPlatform)
                         .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbGenre)))
+                    .addComponent(lbGenre)
+                    .addComponent(txtGenre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -873,7 +870,7 @@ private DefaultTableModel  model;
             Object.add(tempProduct.getQuantity());
             Object.add(tempProduct.getPublisher());
             Object.add(tempProduct.getPlatform());
-            Object.add(tempProduct.getGenre());
+            Object.add(tempProduct.getGenreID());
             Object.add(tempProduct.getReleaseDate());
             model.addRow(Object);
         }
@@ -932,25 +929,29 @@ private DefaultTableModel  model;
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void tblProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductMouseClicked
-       int i = tblProduct.getSelectedRow();
-            txtID.setText(tblProduct.getModel().getValueAt(i, 0).toString());
-            txtName.setText(tblProduct.getModel().getValueAt(i, 1).toString());
-            txtPrice.setText(tblProduct.getModel().getValueAt(i, 2).toString());
-            txtQuantity.setText(tblProduct.getModel().getValueAt(i, 3).toString());
-            txtPublisher.setText(tblProduct.getModel().getValueAt(i, 4).toString());
-            cbPlatform.setSelectedItem(tblProduct.getModel().getValueAt(i, 5).toString());
-            cbGenre.setSelectedItem(tblProduct.getModel().getValueAt(i, 6).toString());
-            txtReDate.setText(tblProduct.getModel().getValueAt(i, 7).toString());
+    try {
+        int i = tblProduct.getSelectedRow();
+        BUS_Product productBUS = new BUS_Product();
+        String genreID = productBUS.getGenreID(tblProduct.getModel().getValueAt(i, 6).toString());
+        txtID.setText(tblProduct.getModel().getValueAt(i, 0).toString());
+        txtName.setText(tblProduct.getModel().getValueAt(i, 1).toString());
+        txtPrice.setText(tblProduct.getModel().getValueAt(i, 2).toString());
+        txtQuantity.setText(tblProduct.getModel().getValueAt(i, 3).toString());
+        txtPublisher.setText(tblProduct.getModel().getValueAt(i, 4).toString());
+        cbPlatform.setSelectedItem(tblProduct.getModel().getValueAt(i, 5).toString());
+        txtGenre.setText(genreID);
+        txtReDate.setText(tblProduct.getModel().getValueAt(i, 7).toString());
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
             
     }//GEN-LAST:event_tblProductMouseClicked
 
     private void txtReDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtReDateActionPerformed
-
-    private void cbGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbGenreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbGenreActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     try {
@@ -962,7 +963,7 @@ private DefaultTableModel  model;
         product.setQuantity(Integer.parseInt(txtQuantity.getText()));
         product.setPublisher(txtPublisher.getText());
         product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
-        product.setGenre(String.valueOf(cbGenre.getSelectedItem()));
+        product.setGenreID(String.valueOf(txtGenre.getText()));
         product.setReleaseDate(txtReDate.getText());      
         Vector header = new Vector();
         Vector row=new Vector();  
@@ -997,7 +998,7 @@ private DefaultTableModel  model;
             txtQuantity.setText("");
             txtPublisher.setText("");
             cbPlatform.setSelectedIndex(1);
-            cbGenre.setSelectedIndex(1);
+            txtGenre.setText("");
             txtReDate.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
@@ -1011,7 +1012,7 @@ private DefaultTableModel  model;
                 product.setQuantity(Integer.parseInt(txtQuantity.getText()));
                 product.setPublisher(txtPublisher.getText());
                 product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
-                product.setGenre(String.valueOf(cbGenre.getSelectedItem()));      
+                product.setGenreID(String.valueOf(txtGenre.getText()));      
                 product.setReleaseDate(txtReDate.getText());
                 productBUS.update(product);
                 loadProduct();
@@ -1048,7 +1049,7 @@ private DefaultTableModel  model;
            case 4: content = "quantity"; break;
            case 5: content = "publisher"; break; 
            case 6: content = "platform"; break;
-           case 7: content = "genre"; break;
+           case 7: content = "genreID"; break;
            case 8: content = "releaseDate"; break;    
        }
        ArrayList<DTO_Product> array = productBUS.sortBy(content,tgSort.isSelected());
@@ -1074,7 +1075,7 @@ private DefaultTableModel  model;
             Object.add(tempProduct.getQuantity());
             Object.add(tempProduct.getPublisher());
             Object.add(tempProduct.getPlatform());
-            Object.add(tempProduct.getGenre());
+            Object.add(productBUS.getGenreName(tempProduct.getGenreID()));
             Object.add(tempProduct.getReleaseDate());
             model.addRow(Object);
         }
@@ -1092,6 +1093,10 @@ private DefaultTableModel  model;
         cbsortActionPerformed(evt);
     }//GEN-LAST:event_tgSortActionPerformed
 
+    private void txtGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGenreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -1101,7 +1106,6 @@ private DefaultTableModel  model;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSearch1;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox cbGenre;
     private javax.swing.JComboBox cbPlatform;
     private javax.swing.JComboBox cbsort;
     private javax.swing.JButton jButton7;
@@ -1148,6 +1152,7 @@ private DefaultTableModel  model;
     private javax.swing.JLabel lbReDate;
     private javax.swing.JTable tblProduct;
     private javax.swing.JToggleButton tgSort;
+    private javax.swing.JTextField txtGenre;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;

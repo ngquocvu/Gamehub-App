@@ -375,15 +375,16 @@ private DefaultTableModel  model;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lbRole)
                                     .addComponent(lbSex))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtSex, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbPhonenumber)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbPhonenumber)
+                                    .addComponent(lbAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(14, 14, 14)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
@@ -764,8 +765,8 @@ private DefaultTableModel  model;
             txtLastname.setText(tblStaff.getModel().getValueAt(i, 2).toString());
             txtEmail.setText(tblStaff.getModel().getValueAt(i, 3).toString());
             txtPassword.setText(tblStaff.getModel().getValueAt(i, 4).toString());
-            txtPhonenumber.setText(tblStaff.getModel().getValueAt(i, 6).toString());
             txtAddress.setText(tblStaff.getModel().getValueAt(i, 5).toString());
+            txtPhonenumber.setText(tblStaff.getModel().getValueAt(i, 6).toString());
             txtRole.setText(tblStaff.getModel().getValueAt(i, 7).toString());
             txtSex.setText(tblStaff.getModel().getValueAt(i, 8).toString());
             
@@ -798,8 +799,8 @@ private DefaultTableModel  model;
             row.add(staff.getLastname());
             row.add(staff.getEmail());
             row.add(staff.getPassword());
-            row.add(staff.getPhonenumber());
             row.add(staff.getAddress());
+            row.add(staff.getPhonenumber());
             row.add(String.valueOf(staff.getRole()));
             row.add(String.valueOf(staff.getSex()));
             model.addRow(row);
@@ -823,8 +824,8 @@ private DefaultTableModel  model;
             txtLastname.setText(""); 
             txtEmail.setText("");
             txtPassword.setText("");
-            txtPhonenumber.setText("");
             txtAddress.setText("");
+            txtPhonenumber.setText("");
             txtRole.setText("");
             txtSex.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
@@ -835,13 +836,13 @@ private DefaultTableModel  model;
         {
             try {
                 model.setValueAt(txtFirstname.getText(), i, 1);
-                model.setValueAt(txtLastname.getText(), i, 2);
-                model.setValueAt(txtEmail.getText(), i, 2);
-                model.setValueAt(txtPassword.getText(), i, 2);
-                model.setValueAt(txtAddress.getText(), i, 2);
-                model.setValueAt(txtPhonenumber.getText(), i, 2);
-                model.setValueAt(txtRole.getText(), i, 2);
-                model.setValueAt(txtSex.getText(), i, 2);
+                model.setValueAt(txtLastname.getText(), i, 3);
+                model.setValueAt(txtEmail.getText(), i, 4);
+                model.setValueAt(txtPassword.getText(), i, 5);
+                model.setValueAt(txtAddress.getText(), i, 6);
+                model.setValueAt(txtPhonenumber.getText(), i, 7);
+                model.setValueAt(txtRole.getText(), i, 8);
+                model.setValueAt(txtSex.getText(), i, 9);
                 tblStaff.setModel(model);
                 
                 DTO_Staff staff= new DTO_Staff();
