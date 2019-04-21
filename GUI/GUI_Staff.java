@@ -185,7 +185,7 @@ private DefaultTableModel  model;
         });
 
         cbSort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbSort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "A->Z", "Z->A" }));
+        cbSort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "First Name", "Last Name", "Email", "Password", "Address", "Phone Number", "Role", "Sex" }));
         cbSort.setMaximumSize(null);
         cbSort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -762,6 +762,7 @@ private DefaultTableModel  model;
             tempStaff = array.get(i);
             Vector Object = new Vector();
             Object.add(tempStaff.getId());
+            Object.add(tempStaff.getFirstname());
             Object.add(tempStaff.getLastname());
             Object.add(tempStaff.getEmail());
             Object.add(tempStaff.getPassword());
@@ -955,13 +956,13 @@ private DefaultTableModel  model;
         {
             try {
                 model.setValueAt(txtFirstname.getText(), i, 1);
-                model.setValueAt(txtLastname.getText(), i, 3);
-                model.setValueAt(txtEmail.getText(), i, 4);
-                model.setValueAt(txtPassword.getText(), i, 5);
-                model.setValueAt(txtAddress.getText(), i, 6);
-                model.setValueAt(txtPhonenumber.getText(), i, 7);
-                model.setValueAt(txtRole.getText(), i, 8);
-                model.setValueAt(txtSex.getText(), i, 9);
+                model.setValueAt(txtLastname.getText(), i, 2);
+                model.setValueAt(txtEmail.getText(), i, 3);
+                model.setValueAt(txtPassword.getText(), i, 4);
+                model.setValueAt(txtAddress.getText(), i, 5);
+                model.setValueAt(txtPhonenumber.getText(), i, 6);
+                model.setValueAt(txtRole.getText(), i, 7);
+                model.setValueAt(txtSex.getText(), i, 8);
                 tblStaff.setModel(model);
                 
                 DTO_Staff staff= new DTO_Staff();
