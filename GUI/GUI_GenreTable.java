@@ -11,17 +11,18 @@ import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author AnhhTuann
  */
-public class GUI_Genre extends javax.swing.JFrame {
+public class GUI_GenreTable extends javax.swing.JFrame {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
-    public GUI_Genre() throws SQLException, ClassNotFoundException {
+    public GUI_GenreTable() throws SQLException, ClassNotFoundException {
         loadGenre();
         initComponents();
        
@@ -52,25 +53,47 @@ private DefaultTableModel  model;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGenre = new javax.swing.JTable();
+        btnsellect = new javax.swing.JButton();
 
         tblGenre.setRowHeight(32);
         tblGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tblGenre.setModel(model);
         jScrollPane1.setViewportView(tblGenre);
 
+        btnsellect.setText("Sellect");
+        btnsellect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsellectActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(btnsellect, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnsellect, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnsellectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsellectActionPerformed
+        int i = tblGenre.getSelectedRow();
+    GUI_Product.txtGenre.setText(tblGenre.getModel().getValueAt(i, 0).toString());
+    this.dispose();
+    }//GEN-LAST:event_btnsellectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,13 +112,13 @@ private DefaultTableModel  model;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_Genre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_GenreTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_Genre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_GenreTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_Genre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_GenreTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_Genre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_GenreTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -103,17 +126,18 @@ private DefaultTableModel  model;
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new GUI_Genre().setVisible(true);
+                    new GUI_GenreTable().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(GUI_Genre.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GUI_GenreTable.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUI_Genre.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GUI_GenreTable.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnsellect;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblGenre;
     // End of variables declaration//GEN-END:variables
