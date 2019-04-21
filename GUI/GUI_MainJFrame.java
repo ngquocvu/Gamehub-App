@@ -32,7 +32,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         listItem.add(new DTO_Category("Product",jpnProduct,jlbProduct));
         listItem.add(new DTO_Category("Staff",jpnStaff,jlbStaff));
         listItem.add(new DTO_Category("Customer",jpnCustomer,jlbCustomer));
-        listItem.add(new DTO_Category("Receipt",jpnReceipt,jlbReceipt));
+        listItem.add(new DTO_Category("Receipt",jpnImportReceipt,jlbImportReceipt));
         listItem.add(new DTO_Category("Statistics",jpnStatistics,jlbStatistics));
         listItem.add(new DTO_Category("Genre",jpnGenre,jlbGenre));
          
@@ -63,8 +63,8 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         jlbStaff = new javax.swing.JLabel();
         jpnCustomer = new javax.swing.JPanel();
         jlbCustomer = new javax.swing.JLabel();
-        jpnReceipt = new javax.swing.JPanel();
-        jlbReceipt = new javax.swing.JLabel();
+        jpnImportReceipt = new javax.swing.JPanel();
+        jlbImportReceipt = new javax.swing.JLabel();
         jpnStatistics = new javax.swing.JPanel();
         jlbStatistics = new javax.swing.JLabel();
         jpnGenre = new javax.swing.JPanel();
@@ -210,29 +210,29 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jpnReceipt.setBackground(new java.awt.Color(105, 87, 142));
+        jpnImportReceipt.setBackground(new java.awt.Color(105, 87, 142));
 
-        jlbReceipt.setBackground(new java.awt.Color(192, 193, 223));
-        jlbReceipt.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        jlbReceipt.setForeground(new java.awt.Color(255, 255, 255));
-        jlbReceipt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlbReceipt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_receipt_white_24dp.png"))); // NOI18N
-        jlbReceipt.setText("RECEIPT");
+        jlbImportReceipt.setBackground(new java.awt.Color(192, 193, 223));
+        jlbImportReceipt.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jlbImportReceipt.setForeground(new java.awt.Color(255, 255, 255));
+        jlbImportReceipt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlbImportReceipt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_receipt_white_24dp.png"))); // NOI18N
+        jlbImportReceipt.setText("IMPORT RECEIPT");
 
-        javax.swing.GroupLayout jpnReceiptLayout = new javax.swing.GroupLayout(jpnReceipt);
-        jpnReceipt.setLayout(jpnReceiptLayout);
-        jpnReceiptLayout.setHorizontalGroup(
-            jpnReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnReceiptLayout.createSequentialGroup()
+        javax.swing.GroupLayout jpnImportReceiptLayout = new javax.swing.GroupLayout(jpnImportReceipt);
+        jpnImportReceipt.setLayout(jpnImportReceiptLayout);
+        jpnImportReceiptLayout.setHorizontalGroup(
+            jpnImportReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnImportReceiptLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlbImportReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jpnReceiptLayout.setVerticalGroup(
-            jpnReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnReceiptLayout.createSequentialGroup()
+        jpnImportReceiptLayout.setVerticalGroup(
+            jpnImportReceiptLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnImportReceiptLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbReceipt)
+                .addComponent(jlbImportReceipt)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -303,7 +303,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
                             .addComponent(jpnProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jpnStaff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jpnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jpnReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jpnImportReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jpnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jpnGenre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -321,7 +321,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jpnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jpnReceipt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpnImportReceipt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jpnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -400,17 +400,17 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jlbCustomer;
     private javax.swing.JLabel jlbGenre;
     private javax.swing.JLabel jlbHome;
+    private javax.swing.JLabel jlbImportReceipt;
     private javax.swing.JLabel jlbProduct;
-    private javax.swing.JLabel jlbReceipt;
     private javax.swing.JLabel jlbStaff;
     private javax.swing.JLabel jlbStatistics;
     private javax.swing.JLabel jlbTitle;
     private javax.swing.JPanel jpnCustomer;
     private javax.swing.JPanel jpnGenre;
     private javax.swing.JPanel jpnHome;
+    private javax.swing.JPanel jpnImportReceipt;
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnProduct;
-    private javax.swing.JPanel jpnReceipt;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnStaff;
     private javax.swing.JPanel jpnStatistics;
