@@ -731,7 +731,7 @@ private DefaultTableModel  model;
             }
         });
 
-        cbsort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbsort.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbsort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "Name", "Price", "Quantity", "Publisher", "Platform", "Genre", "Release Year" }));
         cbsort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

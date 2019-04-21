@@ -100,5 +100,59 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
         stmt.executeUpdate(sql);
         conn.close();
     }
+
+    public ArrayList<DTO_Customer> search(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM users WHERE firstname LIKE " + "'" + content + "%'" 
+                    +" OR lastname LIKE " + "'" + content + "%'" 
+                    +" OR email LIKE " + "'" + content + "%'" 
+                    +" OR phonenumber LIKE " + "'" + content + "%'" 
+                    ;      
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);    
+            array.add(user);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Customer> sortBy(String content, boolean isSelected) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = new String();
+        if (isSelected)
+        sql = "SELECT * FROM users ORDER BY " + content + " DESC";
+        else
+        sql = "SELECT * FROM users ORDER BY " + content + " ASC";  
+        
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);   
+            array.add(user);
+            
+        }
+        
+         conn.close();
+         return array;
+    }
     
 }

@@ -184,7 +184,7 @@ private DefaultTableModel  model;
             }
         });
 
-        cbSort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbSort.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbSort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "First Name", "Last Name", "Email", "Password", "Address", "Phone Number", "Role", "Sex" }));
         cbSort.setMaximumSize(null);
         cbSort.addActionListener(new java.awt.event.ActionListener() {
