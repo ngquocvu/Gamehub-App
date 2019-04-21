@@ -137,7 +137,7 @@ private DefaultTableModel  model;
         tblProduct = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
-        btnSearch1 = new javax.swing.JButton();
+        btnRestart = new javax.swing.JButton();
         cbsort = new javax.swing.JComboBox();
         tgSort = new javax.swing.JToggleButton();
 
@@ -721,16 +721,17 @@ private DefaultTableModel  model;
             }
         });
 
-        btnSearch1.setBackground(new java.awt.Color(99, 19, 132));
-        btnSearch1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnSearch1.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
-        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+        btnRestart.setBackground(new java.awt.Color(99, 19, 132));
+        btnRestart.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnRestart.setForeground(new java.awt.Color(255, 255, 255));
+        btnRestart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
+        btnRestart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearch1ActionPerformed(evt);
+                btnRestartActionPerformed(evt);
             }
         });
 
+        cbsort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbsort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "Name", "Price", "Quantity", "Publisher", "Platform", "Genre", "Release Year" }));
         cbsort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -741,7 +742,7 @@ private DefaultTableModel  model;
         tgSort.setBackground(new java.awt.Color(99, 19, 132));
         tgSort.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tgSort.setForeground(new java.awt.Color(255, 255, 255));
-        tgSort.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_expand_more_white_18dp.png"))); // NOI18N
+        tgSort.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_generic_sorting_32px_1.png"))); // NOI18N
         tgSort.setText("Desc");
         tgSort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -760,7 +761,7 @@ private DefaultTableModel  model;
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -778,13 +779,11 @@ private DefaultTableModel  model;
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRestart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbsort, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnSearch)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tgSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tgSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -1034,7 +1033,7 @@ private DefaultTableModel  model;
             }                     
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
         try {
             loadProduct();
             tblProduct.setModel(this.model);
@@ -1043,7 +1042,7 @@ private DefaultTableModel  model;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnSearch1ActionPerformed
+    }//GEN-LAST:event_btnRestartActionPerformed
 
     private void cbsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbsortActionPerformed
       try { 
@@ -1125,8 +1124,8 @@ private DefaultTableModel  model;
     private javax.swing.JButton btnGenre;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnRestart;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSearch1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbPlatform;
     private javax.swing.JComboBox cbsort;

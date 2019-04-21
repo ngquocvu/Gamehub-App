@@ -111,7 +111,13 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
     }
       public ArrayList<DTO_Product> search(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM products WHERE name LIKE " + "'" + content + "%'" ;
+        String sql = "SELECT * FROM products WHERE name LIKE " + "'" + content + "%'"
+                    +" OR price LIKE " + "'" + content + "%'" 
+                    +" OR publisher LIKE " + "'" + content + "%'" 
+                    +" OR genreID LIKE " + "'" + content + "%'" 
+                    +" OR platform LIKE " + "'" + content + "%'" 
+                    +" OR releaseDate LIKE " + "'" + content + "%'" ;
+        
         ArrayList<DTO_Product> array = new  ArrayList<DTO_Product>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);

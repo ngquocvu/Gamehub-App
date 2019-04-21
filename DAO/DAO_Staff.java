@@ -110,12 +110,67 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
         conn.close();
     }
 
-    public ArrayList<DTO_Staff> search(String content) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<DTO_Staff> search(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE firstname LIKE " + "'" + content + "%'" 
+                    +" OR lastname LIKE " + "'" + content + "%'" 
+                    +" OR email LIKE " + "'" + content + "%'" 
+                    +" OR address LIKE " + "'" + content + "%'" 
+                    +" OR phonenumber LIKE " + "'" + content + "%'" 
+                    +" OR role LIKE " + "'" + content + "%'" 
+                    +" OR sex LIKE " + "'" + content + "%'" 
+                    ;      
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            int role = result.getInt(8);
+            int sex = result.getInt(9);
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
     }
 
-    public ArrayList<DTO_Staff> sortBy(String content, boolean selected) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<DTO_Staff> sortBy(String content, boolean isSelected) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = new String();
+        if (isSelected)
+        sql = "SELECT * FROM staffs ORDER BY " + content + " DESC";
+        else
+        sql = "SELECT * FROM staffs ORDER BY " + content + " ASC";  
+        
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            int role = result.getInt(8);
+            int sex = result.getInt(9);
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);   
+            array.add(staff);
+            
+        }
+        
+         conn.close();
+         return array;
     }
    
 }

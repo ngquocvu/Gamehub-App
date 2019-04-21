@@ -89,6 +89,7 @@ private DefaultTableModel  model;
         jComboBox2 = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
+        tblCustomer.setFont(new java.awt.Font("Tahoma", 1, 14));
         tblCustomer = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         lbID = new javax.swing.JLabel();
@@ -312,6 +313,12 @@ private DefaultTableModel  model;
 
         lbPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbPassword.setText("Password");
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -750,6 +757,10 @@ private DefaultTableModel  model;
     private void txtPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPhoneActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

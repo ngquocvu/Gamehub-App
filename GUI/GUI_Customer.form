@@ -257,6 +257,9 @@
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblCustomerMouseClicked"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="tblCustomer.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14));"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -570,6 +573,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPassword">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
