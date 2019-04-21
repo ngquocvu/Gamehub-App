@@ -112,6 +112,15 @@ public class BUS_ChangeCategory {
                 case "Statistics":
                     node = new GUI_Statistics();
                     break;  
+                 case "Genre":
+            try {
+                node = new GUI_Genre();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    break;          
                 default:    
                     break;
             }

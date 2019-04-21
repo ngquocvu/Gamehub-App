@@ -17,5 +17,33 @@ public class BUS_Genre {
         DAO_Genre genreDAO = new DAO_Genre();
         array = genreDAO.getAll();
     }
-   
+    public void add(DTO_Genre genre) throws SQLException, ClassNotFoundException
+     {
+             DAO_Genre genreDAO = new DAO_Genre();
+             genreDAO.add(genre);
+     }
+        
+          public void delete(String id) throws SQLException, ClassNotFoundException { 
+         DAO_Genre genre = new DAO_Genre();
+         genre.delete(id);
+    } 
+           public void update(DTO_Genre genre) throws SQLException, ClassNotFoundException
+     {
+             DAO_Genre genreDAO = new DAO_Genre();
+             genreDAO.update(genre);
+     }
+     
+     public ArrayList<DTO_Genre> search(String content) throws ClassNotFoundException, SQLException
+     {
+         DAO_Genre genreDAO = new DAO_Genre();
+         ArrayList<DTO_Genre> array = genreDAO.search(content);
+         return array;     
+     }
+     
+     public ArrayList<DTO_Genre> sortBy(String content,Boolean isSelected) throws ClassNotFoundException, SQLException
+     {
+         DAO_Genre genreDAO = new DAO_Genre();
+         ArrayList<DTO_Genre> array = genreDAO.sortBy(content, isSelected);
+         return array;     
+     }
 }
