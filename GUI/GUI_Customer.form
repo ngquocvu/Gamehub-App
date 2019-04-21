@@ -257,9 +257,6 @@
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblCustomerMouseClicked"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="tblCustomer.setFont(new java.awt.Font(&quot;Tahoma&quot;, 1, 14));"/>
-                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
