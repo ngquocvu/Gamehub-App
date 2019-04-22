@@ -92,7 +92,7 @@ public class DAO_Statistics {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "SELECT SUM(o.quantity) AS total "
                 + "FROM orders AS o JOIN ordereditems AS oi ON oi.orderID = o.id "
-                + "WHERE DATE(createdAt) = " + date;
+                + "WHERE DATE(o.createdAt) = " + date;
         
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -103,5 +103,28 @@ public class DAO_Statistics {
         conn.close();
         
         return quantity;
+    }
+    
+    public int getTotalImportingCost(String date) throws 
+            SQLException, ClassNotFoundException {
+        int cost = 0;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT oi.quantity AS quantity, p.price AS price "
+                + "FROM orders AS o "
+                + "JOIN ordereditems AS oi ON oi.orderID = o.id "
+                + "JOIN products AS p ON p.id = oi.productID "
+                + "WHERE DATE(o.createdAt) = " + date;
+        
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        
+        while (result.next()) {
+            int quantity = result.getInt("quantity");
+            double price = result.getDouble("price");
+            cost += quantity * price;
+        }
+        conn.close();
+        
+        return cost;
     }
 }
