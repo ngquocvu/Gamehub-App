@@ -279,9 +279,9 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         jpnGenreLayout.setHorizontalGroup(
             jpnGenreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnGenreLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbGenre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(21, 21, 21)
+                .addComponent(jlbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnGenreLayout.setVerticalGroup(
             jpnGenreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,10 +305,10 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         jpnPublisher.setLayout(jpnPublisherLayout);
         jpnPublisherLayout.setHorizontalGroup(
             jpnPublisherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnPublisherLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnPublisherLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jlbPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
         jpnPublisherLayout.setVerticalGroup(
             jpnPublisherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,7 +435,6 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jlbImportReceipt;
     private javax.swing.JLabel jlbProduct;
     private javax.swing.JLabel jlbPublisher;
-    private javax.swing.JLabel jlbReceipt;
     private javax.swing.JLabel jlbStaff;
     private javax.swing.JLabel jlbStatistics;
     private javax.swing.JLabel jlbTitle;
@@ -446,7 +445,6 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnProduct;
     private javax.swing.JPanel jpnPublisher;
-    private javax.swing.JPanel jpnReceipt;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnStaff;
     private javax.swing.JPanel jpnStatistics;
