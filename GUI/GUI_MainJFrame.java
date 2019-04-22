@@ -35,6 +35,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         listItem.add(new DTO_Category("Receipt",jpnReceipt,jlbReceipt));
         listItem.add(new DTO_Category("Statistics",jpnStatistics,jlbStatistics));
         listItem.add(new DTO_Category("Genre",jpnGenre,jlbGenre));
+        listItem.add(new DTO_Category("Publisher",jpnPublisher,jlbPublisher));
          
         controller.setEvent(listItem);
          
@@ -69,6 +70,8 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         jlbStatistics = new javax.swing.JLabel();
         jpnGenre = new javax.swing.JPanel();
         jlbGenre = new javax.swing.JLabel();
+        jpnPublisher = new javax.swing.JPanel();
+        jlbPublisher = new javax.swing.JLabel();
         jpnView = new javax.swing.JPanel();
         jpnView1 = new javax.swing.JPanel();
 
@@ -288,12 +291,38 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jpnPublisher.setBackground(new java.awt.Color(105, 87, 142));
+
+        jlbPublisher.setBackground(new java.awt.Color(192, 193, 223));
+        jlbPublisher.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        jlbPublisher.setForeground(new java.awt.Color(255, 255, 255));
+        jlbPublisher.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlbPublisher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_conference_26px_1.png"))); // NOI18N
+        jlbPublisher.setText("PUBLISHER");
+        jlbPublisher.setPreferredSize(new java.awt.Dimension(138, 48));
+
+        javax.swing.GroupLayout jpnPublisherLayout = new javax.swing.GroupLayout(jpnPublisher);
+        jpnPublisher.setLayout(jpnPublisherLayout);
+        jpnPublisherLayout.setHorizontalGroup(
+            jpnPublisherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnPublisherLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
+        jpnPublisherLayout.setVerticalGroup(
+            jpnPublisherLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnPublisherLayout.createSequentialGroup()
+                .addComponent(jlbPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
         jpnMenu.setLayout(jpnMenuLayout);
         jpnMenuLayout.setHorizontalGroup(
             jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpnTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnMenuLayout.createSequentialGroup()
+            .addGroup(jpnMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpnMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnMenuLayout.createSequentialGroup()
@@ -305,7 +334,8 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
                             .addComponent(jpnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jpnReceipt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jpnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jpnGenre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jpnGenre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jpnMenuLayout.setVerticalGroup(
@@ -326,7 +356,9 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
                 .addComponent(jpnStatistics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jpnGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jpnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         jpnView.setPreferredSize(new java.awt.Dimension(1000, 900));
@@ -337,11 +369,11 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         jpnView1.setLayout(jpnView1Layout);
         jpnView1Layout.setHorizontalGroup(
             jpnView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1509, Short.MAX_VALUE)
+            .addGap(0, 1619, Short.MAX_VALUE)
         );
         jpnView1Layout.setVerticalGroup(
             jpnView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1067, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jpnViewLayout = new javax.swing.GroupLayout(jpnView);
@@ -357,7 +389,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1093, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpnViewLayout.createSequentialGroup()
                     .addContainerGap()
@@ -401,6 +433,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jlbGenre;
     private javax.swing.JLabel jlbHome;
     private javax.swing.JLabel jlbProduct;
+    private javax.swing.JLabel jlbPublisher;
     private javax.swing.JLabel jlbReceipt;
     private javax.swing.JLabel jlbStaff;
     private javax.swing.JLabel jlbStatistics;
@@ -410,6 +443,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jpnHome;
     private javax.swing.JPanel jpnMenu;
     private javax.swing.JPanel jpnProduct;
+    private javax.swing.JPanel jpnPublisher;
     private javax.swing.JPanel jpnReceipt;
     private javax.swing.JPanel jpnRoot;
     private javax.swing.JPanel jpnStaff;

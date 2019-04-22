@@ -67,5 +67,16 @@ public class BUS_Product {
          DAO_Product productDAO = new DAO_Product();
          return productDAO.getGenreID(name);
      }
+     
+     public String getPublisherName(String id) throws SQLException, ClassNotFoundException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         return productDAO.getPublisherName(id);
+     }
+     public String getPublisherID(String name) throws SQLException, ClassNotFoundException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         return productDAO.getPublisherID(name);
+     }
 }
 
