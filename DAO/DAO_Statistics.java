@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package DAO;
+import DTO.DTO_ImportReceipt;
 import DTO.DTO_Product;
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -42,5 +45,29 @@ public class DAO_Statistics {
         conn.close();
         
         return products;
+    }
+    
+    public ArrayList<DTO_ImportReceipt> getImportReceipts(Date date) throws 
+            SQLException, ClassNotFoundException {
+        ArrayList<DTO_ImportReceipt> receipts = new ArrayList<DTO_ImportReceipt>();
+        Timestamp ts = new Timestamp(date.getTime());
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM orders WHERE createdAt = " + ts;
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+
+         while (result.next()) {
+            String id = result.getString(1);
+            String staffID = result.getString(2);
+            String userID = result.getString(3);
+            Timestamp createDate =result.getTimestamp(4);
+            String state = result.getString(6);
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);
+            
+            receipts.add(receipt);
+        }
+        conn.close();
+        
+        return receipts;
     }
 }
