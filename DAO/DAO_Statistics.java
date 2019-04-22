@@ -56,7 +56,7 @@ public class DAO_Statistics {
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
 
-         while (result.next()) {
+        while (result.next()) {
             String id = result.getString(1);
             String staffID = result.getString(2);
             String userID = result.getString(3);
@@ -69,5 +69,23 @@ public class DAO_Statistics {
         conn.close();
         
         return receipts;
+    }
+    
+    public int getImportReceiptQuantity(Date date) throws 
+            SQLException, ClassNotFoundException {
+        int quantity = 0;
+        
+        Timestamp ts = new Timestamp(date.getTime());
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT COUNT(id) FROM orders WHERE createdAt = " + ts;
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        
+        while (result.next()) {
+            quantity = result.getInt(1);
+        }
+        conn.close();
+        
+        return quantity;
     }
 }
