@@ -87,7 +87,7 @@
                                   <Component id="jpnProduct" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jpnStaff" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jpnCustomer" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jpnReceipt" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jpnImportReceipt" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jpnStatistics" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -111,7 +111,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jpnCustomer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jpnReceipt" min="-2" max="-2" attributes="0"/>
+                      <Component id="jpnImportReceipt" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jpnStatistics" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -364,7 +364,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jpnReceipt">
+            <Container class="javax.swing.JPanel" name="jpnImportReceipt">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="8e" green="57" red="69" type="rgb"/>
@@ -376,7 +376,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbReceipt" max="32767" attributes="0"/>
+                          <Component id="jlbImportReceipt" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -385,14 +385,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbReceipt" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlbImportReceipt" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jlbReceipt">
+                <Component class="javax.swing.JLabel" name="jlbImportReceipt">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="df" green="c1" red="c0" type="rgb"/>
@@ -407,7 +407,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/baseline_receipt_white_24dp.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="RECEIPT"/>
+                    <Property name="text" type="java.lang.String" value="IMPORT RECEIPT"/>
                   </Properties>
                 </Component>
               </SubComponents>

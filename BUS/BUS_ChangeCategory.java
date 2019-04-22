@@ -108,7 +108,7 @@ public class BUS_ChangeCategory {
                         }
                         break;
                     case "Receipt":
-                        node = new GUI_Receipt();
+                        node = new GUI_ImportReceipt();
                         break;
                     case "Statistics":
                         node = new GUI_Statistics();
