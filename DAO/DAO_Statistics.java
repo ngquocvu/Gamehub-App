@@ -85,4 +85,23 @@ public class DAO_Statistics {
         
         return quantity;
     }
+    
+    public int getImportItemQuantity(String date) throws 
+            SQLException, ClassNotFoundException {
+        int quantity = 0;
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT SUM(o.quantity) AS total "
+                + "FROM orders AS o JOIN ordereditems AS oi ON oi.orderID = o.id "
+                + "WHERE DATE(createdAt) = " + date;
+        
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        
+        while (result.next()) {
+            quantity = result.getInt("total");
+        }
+        conn.close();
+        
+        return quantity;
+    }
 }
