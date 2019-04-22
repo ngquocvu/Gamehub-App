@@ -36,4 +36,26 @@ public class BUS_Customer {
         DAO_Customer customerDAO = new DAO_Customer();
         customerDAO.update(user);
     }
+    
+    public ArrayList<DTO_Customer> search (String content) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.search(content);
+        return array;      
+     }
+     
+     public ArrayList<DTO_Customer> sortBy (String content , boolean isSelected) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.sortBy(content,isSelected);
+        return array;
+         
+     }
+     
+    public DTO_Customer findItem(String id){
+         for(DTO_Customer customer : array)
+         {
+            if(customer.getId().equalsIgnoreCase(id))
+                return customer;
+         }
+         return null;
+     }
 }

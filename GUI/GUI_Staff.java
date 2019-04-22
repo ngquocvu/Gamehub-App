@@ -184,8 +184,8 @@ private DefaultTableModel  model;
             }
         });
 
-        cbSort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbSort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "A->Z", "Z->A" }));
+        cbSort.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbSort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "First Name", "Last Name", "Email", "Password", "Address", "Phone Number", "Role", "Sex" }));
         cbSort.setMaximumSize(null);
         cbSort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,20 +365,21 @@ private DefaultTableModel  model;
                 .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbID)
                     .addComponent(lbEmail)
                     .addComponent(lbLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPassword))
+                    .addComponent(lbPassword)
+                    .addComponent(lbID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFirstname, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLastname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                                .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFirstname, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbPhonenumber)
@@ -567,11 +568,13 @@ private DefaultTableModel  model;
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -639,6 +642,7 @@ private DefaultTableModel  model;
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(btnRestart)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -754,6 +758,7 @@ private DefaultTableModel  model;
             tempStaff = array.get(i);
             Vector Object = new Vector();
             Object.add(tempStaff.getId());
+            Object.add(tempStaff.getFirstname());
             Object.add(tempStaff.getLastname());
             Object.add(tempStaff.getEmail());
             Object.add(tempStaff.getPassword());
@@ -950,8 +955,7 @@ private DefaultTableModel  model;
                 model.setValueAt(txtPhonenumber.getText(), i, 6);
                 model.setValueAt(cbRole.getSelectedItem(), i, 7);
                 model.setValueAt(cbSex.getSelectedItem(), i, 8);
-                tblStaff.setModel(model);
-                
+                tblStaff.setModel(model);               
                 DTO_Staff staff= new DTO_Staff();
                 BUS_Staff staffBUS = new BUS_Staff();
                 staff.setId(txtID.getText());
@@ -984,7 +988,7 @@ private DefaultTableModel  model;
     private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
         try {
             loadStaff();
-            tblStaff.setModel(this.model);
+            tblStaff.setModel(model);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

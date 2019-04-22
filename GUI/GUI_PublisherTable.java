@@ -92,6 +92,7 @@ private DefaultTableModel  model;
     private void btnsellectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsellectActionPerformed
         int i = tblPublisher.getSelectedRow();
     GUI_Product.txtPublisher.setText(tblPublisher.getModel().getValueAt(i, 0).toString());
+    GUI_ImportReceipt.txtPublisherID.setText(tblPublisher.getModel().getValueAt(i, 0).toString());
     this.dispose();
     }//GEN-LAST:event_btnsellectActionPerformed
 

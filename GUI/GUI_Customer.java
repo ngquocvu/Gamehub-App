@@ -11,6 +11,7 @@ import DTO.DTO_Customer;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -85,8 +86,8 @@ private DefaultTableModel  model;
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField8 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
+        txtSearch = new javax.swing.JTextField();
+        cbSort = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblCustomer = new javax.swing.JTable();
@@ -117,7 +118,9 @@ private DefaultTableModel  model;
         jRadioButton6 = new javax.swing.JRadioButton();
         jRadioButton7 = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        tgSort = new javax.swing.JToggleButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -165,19 +168,20 @@ private DefaultTableModel  model;
 
         jPanel3.setPreferredSize(new java.awt.Dimension(1130, 901));
 
-        jTextField8.setMaximumSize(null);
-        jTextField8.setMinimumSize(null);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.setMaximumSize(null);
+        txtSearch.setMinimumSize(null);
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "A->Z", "Z->A" }));
-        jComboBox2.setMaximumSize(null);
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        cbSort.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbSort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "First Name", "Last Name", "Email", "Password", "Phone Number" }));
+        cbSort.setMaximumSize(null);
+        cbSort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                cbSortActionPerformed(evt);
             }
         });
 
@@ -185,6 +189,7 @@ private DefaultTableModel  model;
         tblCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblCustomer.setInheritsPopupMenu(true);
         tblCustomer.setRowHeight(32);
+        tblCustomer.setFont(new java.awt.Font("Tahoma", 1, 14));
         tblCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblCustomerMouseClicked(evt);
@@ -526,13 +531,34 @@ private DefaultTableModel  model;
             .addGap(0, 376, Short.MAX_VALUE)
         );
 
-        jButton6.setBackground(new java.awt.Color(99, 19, 132));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Search");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        jButton8.setBackground(new java.awt.Color(99, 19, 132));
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        tgSort.setBackground(new java.awt.Color(99, 19, 132));
+        tgSort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tgSort.setForeground(new java.awt.Color(255, 255, 255));
+        tgSort.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_generic_sorting_32px_1.png"))); // NOI18N
+        tgSort.setText("Desc");
+        tgSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tgSortActionPerformed(evt);
             }
         });
 
@@ -546,27 +572,34 @@ private DefaultTableModel  model;
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jButton8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tgSort)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbSort, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(10, 10, 10)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(tgSort))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -620,21 +653,96 @@ private DefaultTableModel  model;
                   }
     }//GEN-LAST:event_btnRemoveActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    private void cbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSortActionPerformed
+        try { 
+        BUS_Customer customerBUS = new BUS_Customer();
+        String content = "";
+        if(cbSort.getSelectedIndex()==0)
+        return;
+        switch(cbSort.getSelectedIndex())
+       {
+           case 1: content = "id +0";  break;
+           case 2: content = "firstname"; break;
+           case 3: content = "lastname"; break;
+           case 4: content = "email"; break;
+           case 5: content = "password"; break; 
+           case 6: content = "phonenumber"; break; 
+       }
+       ArrayList<DTO_Customer> array = customerBUS.sortBy(content,tgSort.isSelected());
+       
+        Header = new Vector();
+        Header.add("ID");
+        Header.add("First Name");
+        Header.add("Last Name");
+        Header.add("Email");
+        Header.add("Password");
+        Header.add("Phone Number");
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        for(int i=0;i<array.size();i++)
+        {
+            DTO_Customer tempCustomer = new DTO_Customer(); 
+            tempCustomer = array.get(i);
+            Vector Object = new Vector();
+            Object.add(tempCustomer.getId());
+            Object.add(tempCustomer.getFirstname());
+            Object.add(tempCustomer.getLastname());
+            Object.add(tempCustomer.getEmail());
+            Object.add(tempCustomer.getPassword());
+            Object.add(tempCustomer.getPhonenumber());
+            model.addRow(Object);
+        }
+        this.model = model;
+        tblCustomer.setModel(model);
+      }
+      catch (SQLException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cbSortActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+       try {
+        BUS_Customer customerBus = new BUS_Customer();
+        ArrayList<DTO_Customer> array = customerBus.search(txtSearch.getText());
+        Header = new Vector();
+        Header.add("ID");
+        Header.add("First Name");
+        Header.add("Last Name");
+        Header.add("Email");
+        Header.add("Password");
+        Header.add("Phone Number");
+
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        for(int i=0;i<array.size();i++)
+        {
+            DTO_Customer tempCustomer = new DTO_Customer(); 
+            tempCustomer = array.get(i);
+            Vector Object = new Vector();
+            Object.add(tempCustomer.getId());
+            Object.add(tempCustomer.getFirstname());
+            Object.add(tempCustomer.getLastname());
+            Object.add(tempCustomer.getEmail());
+            Object.add(tempCustomer.getPassword());
+            Object.add(tempCustomer.getPhonenumber());
+            model.addRow(Object);
+        }
+        this.model = model;
+        tblCustomer.setModel(model);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -761,17 +869,26 @@ private DefaultTableModel  model;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void tgSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgSortActionPerformed
+        cbSortActionPerformed(evt);
+    }//GEN-LAST:event_tgSortActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox cbSort;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -790,7 +907,6 @@ private DefaultTableModel  model;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbFirstname;
     private javax.swing.JLabel lbID;
@@ -798,11 +914,13 @@ private DefaultTableModel  model;
     private javax.swing.JLabel lbPassword;
     private javax.swing.JLabel lbPhone;
     private javax.swing.JTable tblCustomer;
+    private javax.swing.JToggleButton tgSort;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstname;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLastname;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPhone;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
