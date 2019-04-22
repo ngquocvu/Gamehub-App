@@ -48,6 +48,7 @@ private DefaultTableModel  model;
        BUS_Product ProductBus = new BUS_Product();
         for(int i=0;i<BUS_Product.array.size();i++)
         {
+            
             DTO_Product tempProduct = new DTO_Product(); 
             tempProduct = BUS_Product.array.get(i);
             String genreName = ProductBus.getGenreName(tempProduct.getGenreID());
@@ -56,7 +57,8 @@ private DefaultTableModel  model;
             Object.add(tempProduct.getName());
             Object.add(tempProduct.getPrice());
             Object.add(tempProduct.getQuantity());
-            Object.add(tempProduct.getPublisher());
+            String name = ProductBus.getPublisherName(tempProduct.getPublisherID());
+            Object.add(name);
             Object.add(tempProduct.getPlatform());
             Object.add(genreName);
             Object.add(tempProduct.getReleaseDate());
@@ -111,6 +113,7 @@ private DefaultTableModel  model;
         lbReDate = new javax.swing.JLabel();
         txtGenre = new javax.swing.JTextField();
         btnGenre = new javax.swing.JButton();
+        btnPublisher = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         btnAdSearch = new javax.swing.JButton();
         txtAdSearch = new javax.swing.JTextField();
@@ -218,6 +221,12 @@ private DefaultTableModel  model;
         lbPlatform.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbPlatform.setText("Platform");
         lbPlatform.setFocusTraversalPolicyProvider(true);
+
+        txtPublisher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPublisherActionPerformed(evt);
+            }
+        });
 
         btnAdd.setBackground(new java.awt.Color(99, 19, 132));
         btnAdd.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -328,6 +337,13 @@ private DefaultTableModel  model;
             }
         });
 
+        btnPublisher.setText("...");
+        btnPublisher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPublisherActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -364,15 +380,18 @@ private DefaultTableModel  model;
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtReDate)
-                        .addComponent(txtPublisher, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtReDate, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(103, 103, 103)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,7 +421,8 @@ private DefaultTableModel  model;
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbPublisher)
-                            .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -520,6 +540,7 @@ private DefaultTableModel  model;
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButton3)
                         .addGap(0, 35, Short.MAX_VALUE))))
+
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -752,7 +773,7 @@ private DefaultTableModel  model;
             Object.add(tempProduct.getName());
             Object.add(tempProduct.getPrice());
             Object.add(tempProduct.getQuantity());
-            Object.add(tempProduct.getPublisher());
+            Object.add(tempProduct.getPublisherID());
             Object.add(tempProduct.getPlatform());
             Object.add(tempProduct.getGenreID());
             Object.add(tempProduct.getReleaseDate());
@@ -809,7 +830,8 @@ private DefaultTableModel  model;
         txtName.setText(tblProduct.getModel().getValueAt(i, 1).toString());
         txtPrice.setText(tblProduct.getModel().getValueAt(i, 2).toString());
         txtQuantity.setText(tblProduct.getModel().getValueAt(i, 3).toString());
-        txtPublisher.setText(tblProduct.getModel().getValueAt(i, 4).toString());
+        String id = productBUS.getPublisherID(tblProduct.getModel().getValueAt(i, 4).toString());
+        txtPublisher.setText(id);
         cbPlatform.setSelectedItem(tblProduct.getModel().getValueAt(i, 5).toString());
         txtGenre.setText(genreID);
         txtReDate.setText(tblProduct.getModel().getValueAt(i, 7).toString());
@@ -833,7 +855,7 @@ private DefaultTableModel  model;
         product.setName(txtName.getText());
         product.setPrice(Double.parseDouble(txtPrice.getText()));
         product.setQuantity(Integer.parseInt(txtQuantity.getText()));
-        product.setPublisher(txtPublisher.getText());
+        product.setPublisherID(txtPublisher.getText());
         product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
         product.setGenreID(String.valueOf(txtGenre.getText()));
         product.setReleaseDate(txtReDate.getText());      
@@ -882,7 +904,7 @@ private DefaultTableModel  model;
                 product.setName(txtName.getText());
                 product.setPrice(Double.parseDouble(txtPrice.getText()));
                 product.setQuantity(Integer.parseInt(txtQuantity.getText()));
-                product.setPublisher(txtPublisher.getText());
+                product.setPublisherID(txtPublisher.getText());
                 product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
                 product.setGenreID(String.valueOf(txtGenre.getText()));      
                 product.setReleaseDate(txtReDate.getText());
@@ -919,7 +941,7 @@ private DefaultTableModel  model;
            case 2: content = "name"; break;
            case 3: content = "price"; break;
            case 4: content = "quantity"; break;
-           case 5: content = "publisher"; break; 
+           case 5: content = "publisherID"; break; 
            case 6: content = "platform"; break;
            case 7: content = "genreID"; break;
            case 8: content = "releaseDate"; break;    
@@ -945,7 +967,7 @@ private DefaultTableModel  model;
             Object.add(tempProduct.getName());
             Object.add(tempProduct.getPrice());
             Object.add(tempProduct.getQuantity());
-            Object.add(tempProduct.getPublisher());
+            Object.add(tempProduct.getPublisherID());
             Object.add(tempProduct.getPlatform());
             Object.add(productBUS.getGenreName(tempProduct.getGenreID()));
             Object.add(tempProduct.getReleaseDate());
@@ -980,12 +1002,28 @@ private DefaultTableModel  model;
     }
     }//GEN-LAST:event_btnGenreActionPerformed
 
+    private void txtPublisherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPublisherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPublisherActionPerformed
+
+    private void btnPublisherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublisherActionPerformed
+    try {
+        GUI_PublisherTable publisherGUI = new GUI_PublisherTable();
+        publisherGUI.setVisible(true);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_btnPublisherActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdSearch;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnGenre;
+    private javax.swing.JButton btnPublisher;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnRestart;
@@ -1028,7 +1066,7 @@ private DefaultTableModel  model;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
-    private javax.swing.JTextField txtPublisher;
+    public static javax.swing.JTextField txtPublisher;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtReDate;
     private javax.swing.JTextField txtSearch;

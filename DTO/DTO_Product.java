@@ -13,7 +13,7 @@ public class DTO_Product {
     private String id;
     private String name;
     private String description;
-    private String publisher;
+    private String publisherID;
     private String genreID;
     private String platform;
     private String releaseDate;
@@ -21,12 +21,12 @@ public class DTO_Product {
     private double price;
 
     public DTO_Product(){}
-    public DTO_Product(String id, String name, String description, String publisher, 
+    public DTO_Product(String id, String name, String description, String publisherID, 
             String genre, String platform, String releaseDate, int quantity, double price) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.publisher = publisher;
+        this.publisherID = publisherID;
         this.genreID = genre;
         this.platform = platform;
         this.releaseDate = releaseDate;
@@ -53,8 +53,8 @@ public class DTO_Product {
         return description;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public String getPublisherID() {
+        return publisherID;
     }
 
     public String getGenreID() {
@@ -85,8 +85,8 @@ public class DTO_Product {
         this.description = description;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setPublisherID(String publisher) {
+        this.publisherID = publisher;
     }
 
     public void setGenreID(String genre) {

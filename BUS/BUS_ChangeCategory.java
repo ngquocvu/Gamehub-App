@@ -81,20 +81,40 @@ public class BUS_ChangeCategory {
                         node = new GUI_Home();
                         break;
                     case "Product":
-                        node = new GUI_Product();
-                        
+                        try {
+                            node = new GUI_Product();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         break;
                     case "Staff":
-                        node = new GUI_Staff();
+                        try {
+                            node = new GUI_Staff();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         break;
                     case "Customer":
-                        node = new GUI_Customer();
+                        try {
+                            node = new GUI_Customer();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         break;
                     case "Receipt":
                         node = new GUI_ImportReceipt();
                         break;
                     case "Statistics":
                         node = new GUI_Statistics();
+                        break;
+                    case  "Publisher":
+                        node = new GUI_Publisher();
                         break;
                     case "Genre":
                         try {

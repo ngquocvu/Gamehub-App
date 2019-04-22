@@ -33,12 +33,12 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             String name = result.getString(2);
             String description = result.getString(3);
             double price = result.getDouble(4);
-            String publisher = result.getString(5);
+            String publisherID = result.getString(5);
             String genreID = result.getString(6);
             String platform = result.getString(7);
             String releaseDate = result.getString(8);
             int quantity = result.getInt(9);
-            DTO_Product product = new DTO_Product(id, name, description, publisher, 
+            DTO_Product product = new DTO_Product(id, name, description, publisherID, 
                     genreID, platform, releaseDate, quantity, price);
             
             products.add(product);
@@ -67,7 +67,7 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             sql+= "name = " + "'" + object.getName() + "'";
             sql+= "," + "description = " + "'none'";
             sql+= "," + "price = " + object.getPrice();
-            sql+= "," + "publisher = " + "'" + object.getPublisher() + "'";
+            sql+= "," + "publisherID = " + "'" + object.getPublisherID() + "'";
             sql+= "," + "genreID = " + "'" + object.getGenreID() + "'";
             sql+= "," + "platform = " + "'" + object.getPlatform() + "'";
             sql+= "," + "quantity = " + object.getQuantity();
@@ -94,12 +94,12 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
     public void add(DTO_Product object) throws SQLException, ClassNotFoundException
     {  
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "INSERT INTO products(id,name,description,price,publisher,genreID,platform,quantity,releaseDate) VALUES";
+        String sql = "INSERT INTO products(id,name,description,price,publisherID,genreID,platform,quantity,releaseDate) VALUES";
                sql+= "(" + "'" + object.getId() + "'";
                sql+= "," + "'" + object.getName() + "'";
                sql+= "," + "'none'";
                sql+= "," + object.getPrice();
-               sql+= "," + "'" + object.getPublisher() + "'";
+               sql+= "," + "'" + object.getPublisherID() + "'";
                sql+= "," + "'" + object.getGenreID() + "'";
                sql+= "," + "'" + object.getPlatform() + "'";
                sql+= "," + object.getQuantity();
@@ -113,7 +113,7 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "SELECT * FROM products WHERE name LIKE " + "'" + content + "%'"
                     +" OR price LIKE " + "'" + content + "%'" 
-                    +" OR publisher LIKE " + "'" + content + "%'" 
+                    +" OR publisherID LIKE " + "'" + content + "%'" 
                     +" OR genreID LIKE " + "'" + content + "%'" 
                     +" OR platform LIKE " + "'" + content + "%'" 
                     +" OR releaseDate LIKE " + "'" + content + "%'" ;
@@ -126,12 +126,12 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             String name = result.getString(2);
             String description = result.getString(3);
             double price = result.getDouble(4);
-            String publisher = result.getString(5);
+            String publisherID = result.getString(5);
             String genreID = result.getString(6);
             String platform = result.getString(7);
             String releaseDate = result.getString(8);
             int quantity = result.getInt(9);
-            DTO_Product product = new DTO_Product(id, name, description, publisher, 
+            DTO_Product product = new DTO_Product(id, name, description, publisherID, 
             genreID, platform, releaseDate, quantity, price);    
             array.add(product);
             
@@ -157,12 +157,12 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             String name = result.getString(2);
             String description = result.getString(3);
             double price = result.getDouble(4);
-            String publisher = result.getString(5);
+            String publisherID = result.getString(5);
             String genreID = result.getString(6);
             String platform = result.getString(7);
             String releaseDate = result.getString(8);
             int quantity = result.getInt(9);
-            DTO_Product product = new DTO_Product(id, name, description, publisher, 
+            DTO_Product product = new DTO_Product(id, name, description, publisherID, 
             genreID, platform, releaseDate, quantity, price);    
             array.add(product);
             
@@ -188,6 +188,30 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
     {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "SELECT genreID FROM genre WHERE genreName = '" + name +"'";
+        Statement stmt = conn.createStatement();
+        String str = "";
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next())
+            str = result.getString(1);
+        conn.close();
+        return str;
+    }
+
+    public String getPublisherName(String id) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT name FROM publisher WHERE id = " + id;
+        Statement stmt = conn.createStatement();
+        String str = "";
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next())
+            str = result.getString(1);
+        conn.close();
+        return str;
+    }
+
+    public String getPublisherID(String name) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT id FROM publisher WHERE name = '" + name +"'";
         Statement stmt = conn.createStatement();
         String str = "";
         ResultSet result = stmt.executeQuery(sql);
