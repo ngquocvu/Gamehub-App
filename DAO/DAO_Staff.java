@@ -36,8 +36,8 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
             String password = result.getString(5);
             String address = result.getString(6);
             String phonenumber = result.getString(7);
-            int role = result.getInt(8);
-            int sex = result.getInt(9);
+            String role = result.getString(8);
+            String sex = result.getString(9);
             DTO_Staff staff = new DTO_Staff(id,firstname,lastname,email,password,address,phonenumber,role,sex);
             
             staffs.add(staff);
@@ -131,8 +131,9 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
             String password = result.getString(5);
             String address = result.getString(6);
             String phonenumber = result.getString(7);
-            int role = result.getInt(8);
-            int sex = result.getInt(9);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
             DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
             password, address, phonenumber, role, sex);    
             array.add(staff);
@@ -161,8 +162,8 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
             String password = result.getString(5);
             String address = result.getString(6);
             String phonenumber = result.getString(7);
-            int role = result.getInt(8);
-            int sex = result.getInt(9);
+            String role = result.getString(8);
+            String sex = result.getString(9);
             DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
             password, address, phonenumber, role, sex);   
             array.add(staff);
