@@ -74,53 +74,51 @@ public class BUS_ChangeCategory {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            switch(kind)
-            {
-                case "Home":
-                    node = new GUI_Home();
-                    break;
-                case "Product":
-                try {
-                    node = new GUI_Product();
-                } catch (SQLException ex) {
-                    Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                switch(kind)
+                {
+                    case "Home":
+                        node = new GUI_Home();
+                        break;
+                    case "Product":
+                        node = new GUI_Product();
+                        
+                        break;
+                    case "Staff":
+                        node = new GUI_Staff();
+                        break;
+                    case "Customer":
+                        node = new GUI_Customer();
+                        break;
+                    case "Receipt":
+                        node = new GUI_ImportReceipt();
+                        break;
+                    case "Statistics":
+                        node = new GUI_Statistics();
+                        break;
+                    case "Genre":
+                        try {
+                            node = new GUI_Genre();
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        break;
+                    default:
+                        break;
                 }
-                    break;
-                case "Staff":
-                try {        
-                    node = new GUI_Staff();
-                } catch (SQLException ex) {
-                    Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
-                }      
-                    break;
-                case "Customer":
-                try {    
-                    node = new GUI_Customer();
-                } catch (SQLException ex) {
-                    Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
-                }        
-                    break;
-                case "Receipt":
-                    node = new GUI_Receipt();
-                    break;  
-                case "Statistics":
-                    node = new GUI_Statistics();
-                    break;  
-                default:    
-                    break;
+                root.removeAll();
+                root.setLayout(new BorderLayout());
+                root.add(node);
+                root.validate();
+                root.repaint();
+                setChangeBackground(kind);
+            } catch (SQLException ex) {
+                Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(BUS_ChangeCategory.class.getName()).log(Level.SEVERE, null, ex);
             }
-            root.removeAll();
-            root.setLayout(new BorderLayout());
-            root.add(node);
-            root.validate();
-            root.repaint();
-            setChangeBackground(kind);
         }
 
         @Override
