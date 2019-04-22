@@ -17,12 +17,12 @@ public class DTO_Staff {
     private String password;
     private String address;
     private String phonenumber;
-    private int role;
-    private int sex;
+    private String role;
+    private String sex;
     
     public DTO_Staff() {}
     
-    public DTO_Staff(String id , String firstname,String lastname,String email,String password,String address,String phonenumber ,int role ,int sex){
+    public DTO_Staff(String id , String firstname,String lastname,String email,String password,String address,String phonenumber ,String role ,String sex){
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -62,11 +62,11 @@ public class DTO_Staff {
         return phonenumber;
     }
 
-    public int getRole() {
+    public String getRole() {
         return role;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
@@ -98,11 +98,11 @@ public class DTO_Staff {
         this.phonenumber = phonenumber;
     }
 
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
     

@@ -221,7 +221,7 @@
                   <Component id="jScrollPane3" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel7" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -293,7 +293,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="24" max="32767" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbFirstname" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                               <Component id="lbID" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -313,33 +313,22 @@
                                       <Component id="txtLastname" alignment="0" pref="199" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lbPhonenumber" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbAddress" min="-2" pref="84" max="-2" attributes="0"/>
+                                      <Component id="lbRole" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbSex" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbRole" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbSex" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace pref="89" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtRole" min="-2" pref="225" max="-2" attributes="0"/>
-                                              <Component id="txtSex" min="-2" pref="199" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbPhonenumber" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbAddress" min="-2" pref="84" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtAddress" pref="225" max="32767" attributes="0"/>
-                                              <Component id="txtPhonenumber" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="txtAddress" max="32767" attributes="0"/>
+                                      <Component id="txtPhonenumber" max="32767" attributes="0"/>
+                                      <Component id="cbRole" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbSex" alignment="0" pref="225" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -363,7 +352,7 @@
                                       <Component id="txtLastname" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="lbLastname" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbRole" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtRole" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="cbRole" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -378,25 +367,17 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtEmail" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="lbEmail" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="lbSex" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="25" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txtPassword" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="lbPassword" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txtSex" min="-2" pref="31" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtEmail" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="lbEmail" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="lbSex" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="cbSex" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtPassword" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="lbPassword" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jPanel4" min="-2" pref="62" max="-2" attributes="0"/>
                       </Group>
@@ -608,8 +589,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JTextField" name="txtRole">
-                </Component>
                 <Component class="javax.swing.JLabel" name="lbSex">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -617,11 +596,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Sex"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtSex">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSexActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbLastname">
                   <Properties>
@@ -648,6 +622,29 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbRole">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Admin"/>
+                        <StringItem index="1" value="Staff"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbRoleActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbSex">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Male"/>
+                        <StringItem index="1" value="Femaile"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -687,7 +684,7 @@
                                   <Component id="jRadioButton6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jRadioButton5" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="54" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
