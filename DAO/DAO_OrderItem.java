@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import DTO.DTO_ImportReceipt;
+import DTO.DTO_OrderItem;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.Timestamp;
@@ -19,44 +19,46 @@ import java.util.logging.Logger;
  *
  * @author phandungtri
  */
-public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
-    private ArrayList<DTO_ImportReceipt> receipts;
+public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
+    private ArrayList<DTO_OrderItem> items;
     
-    public DAO_ImportReceipt() throws SQLException, ClassNotFoundException {
-        receipts = new ArrayList<DTO_ImportReceipt>();
+    public DAO_OrderItem() throws SQLException, ClassNotFoundException {
+        items = new ArrayList<DTO_OrderItem>();
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM orders";
+        String sql = "SELECT orderID,id,products.name,ordereditems.quantity,price FROM ordereditems \nINNER JOIN products WHERE products.id = ordereditems.productID;";
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
         
         while (result.next()) {
-            String id = result.getString(1);
-            String staffID = result.getString(2);
-            String userID = result.getString(3);
-            Timestamp createDate =result.getTimestamp(4);
-            String state = result.getString(6);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);
+            String orderID = result.getString(1);
+            String productID = result.getString(2);
+            String productName = result.getString(3);
+            int quantity = Integer.parseInt(result.getString(4));
+            Double price = Double.parseDouble(result.getString(5));
+            DTO_OrderItem item = new DTO_OrderItem(orderID,productID,productName,price,quantity);
             
-            receipts.add(receipt);
+            items.add(item);
         }
         conn.close();
     }
     
-    public ArrayList<DTO_ImportReceipt> getAll() {
-        return receipts;
+    public ArrayList<DTO_OrderItem> getAll() {
+        return items;
     }
-    
-    public DTO_ImportReceipt get(String id) {
-        for (DTO_ImportReceipt receipt : receipts) {
-            if (receipt.getId().equals(id)) {
-                return receipt;
-            }
+    public ArrayList<DTO_OrderItem> getByProductID(String id)
+    {
+        ArrayList<DTO_OrderItem> array = new  ArrayList<DTO_OrderItem>();
+        for(DTO_OrderItem item : items)
+        {
+            if(item.getOrderID().equals(id))
+                array.add(item);
         }
-        return null;
+        return array;
     }
+  
 
     @Override
-    public void update(DTO_ImportReceipt object) {
+    public void update(DTO_OrderItem object) {
         try {
             Connection conn = MySQLConnUtils.getMySQLConnection();
             String sql = "UPDATE orders SET ";
@@ -66,13 +68,13 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
             stmt.executeUpdate(sql);
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DAO_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-       public void updateState(DTO_ImportReceipt object) {
+       public void updateState(DTO_OrderItem object) {
         try {
             Connection conn = MySQLConnUtils.getMySQLConnection();
             String sql = "UPDATE orders SET ";
@@ -81,9 +83,9 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
             stmt.executeUpdate(sql);
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DAO_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -96,7 +98,7 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         conn.close();
     }
     
-    public void add(DTO_ImportReceipt object) throws SQLException, ClassNotFoundException
+    public void add(DTO_OrderItem object) throws SQLException, ClassNotFoundException
     {  
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "INSERT INTO orders(id,staffID,userID,createdAt,state) VALUES";
@@ -110,19 +112,19 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         conn.close();
         
     }
-      public ArrayList<DTO_ImportReceipt> search(String content) throws SQLException, ClassNotFoundException {
+      public ArrayList<DTO_OrderItem> search(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "SELECT * FROM orders WHERE id LIKE " + "'" + content + "%'";        
-        ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
+        ArrayList<DTO_OrderItem> receipts = new  ArrayList<DTO_OrderItem>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
        while (result.next()) {
             String id = result.getString(1);
             String staffID = result.getString(2);
             String userID = result.getString(3);
-            Timestamp createDate = result.getTimestamp(4);
+            Timestamp createDate =new java.sql.Timestamp(result.getTime(4).getTime());
             String state = result.getString(6);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);            
+            DTO_OrderItem receipt = new DTO_OrderItem(id, staffID,userID,createDate,state);            
             receipts.add(receipt);             
         }
         
@@ -130,7 +132,7 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
          return receipts;
     }
 
-    public ArrayList<DTO_ImportReceipt> sortBy(String content,Boolean isSelected) throws SQLException, ClassNotFoundException {
+    public ArrayList<DTO_OrderItem> sortBy(String content,Boolean isSelected) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = new String();
         if (isSelected)
@@ -138,20 +140,25 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         else
         sql = "SELECT * FROM orders ORDER BY " + content + " ASC";  
         
-        ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
+        ArrayList<DTO_OrderItem> receipts = new  ArrayList<DTO_OrderItem>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
         while (result.next()) {
             String id = result.getString(1);
             String staffID = result.getString(2);
             String userID = result.getString(3);
-            Timestamp createDate = result.getTimestamp(4);
+            Timestamp createDate =new java.sql.Timestamp(result.getTime(4).getTime());
             String state = result.getString(6);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);           
+            DTO_OrderItem receipt = new DTO_OrderItem(id, staffID,userID,createDate,state);           
             receipts.add(receipt);         
         }
         
          conn.close();
          return receipts;
+    }
+
+    @Override
+    public DTO_OrderItem get(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

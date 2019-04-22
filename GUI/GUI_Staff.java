@@ -1011,7 +1011,7 @@ private DefaultTableModel  model;
     private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
         try {
             loadStaff();
-            tblStaff.setModel(this.model);
+            tblStaff.setModel(model);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

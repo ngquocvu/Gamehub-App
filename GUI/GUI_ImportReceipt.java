@@ -8,6 +8,9 @@ package GUI;
 
 import DTO.DTO_ImportReceipt;
 import BUS.BUS_ImportReceipt;
+import BUS.BUS_OrderItem;
+import BUS.BUS_Product;
+import DTO.DTO_OrderItem;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
@@ -30,14 +33,24 @@ public class GUI_ImportReceipt extends javax.swing.JPanel {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
-private Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+private DefaultTableModel  orderModel;
     public GUI_ImportReceipt() throws SQLException, ClassNotFoundException {
        
        loadReceipt();
+       defaultDetailModel();
        initComponents();
-      
        
-        
+      
+    }
+    public void defaultDetailModel()
+    {
+       Header = new Vector();
+       Header.add("Product ID");
+       Header.add("Product Name");
+       Header.add("Price");
+       Header.add("Quantity");
+       DefaultTableModel model = new DefaultTableModel(Header,0);
+       this.orderModel = model;
     }
     public void loadReceipt() throws SQLException, ClassNotFoundException
     {
@@ -63,6 +76,32 @@ private Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         }
         this.model = model;
     }
+    public void loadOrderItem(String id) throws SQLException, ClassNotFoundException
+    {
+       Header = new Vector();
+       Header.add("Product ID");
+       Header.add("Product Name");
+       Header.add("Price");
+       Header.add("Quantity");
+       DefaultTableModel model = new DefaultTableModel(Header,0);
+       BUS_OrderItem OrderItemBus = new BUS_OrderItem();
+        ArrayList<DTO_OrderItem> items = new ArrayList<DTO_OrderItem>();
+        items=OrderItemBus.getByProductID(id);
+        for(int i=0;i<items.size();i++)
+        {
+            DTO_OrderItem tempOrderItem = new DTO_OrderItem(); 
+            tempOrderItem = items.get(i);
+            Vector Object = new Vector();
+            Object.add(tempOrderItem.getProductID());
+            Object.add(tempOrderItem.getProductName());
+            Object.add(tempOrderItem.getPrice());
+            Object.add(tempOrderItem.getQuantity());
+            model.addRow(Object);
+        }
+        this.orderModel = model;
+        tblImportDetail.setModel(model);
+    }
+    
   
     public DTO_ImportReceipt findItem(String id)
     {
@@ -489,7 +528,7 @@ private Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         tblReceipt.setRowHeight(32);
         tblImportDetail.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        tblImportDetail.setModel(model);
+        tblImportDetail.setModel(orderModel);
         tblImportDetail.setRowHeight(32);
         tblImportDetail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -612,21 +651,22 @@ private Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRestart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbsort)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(tgSort)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbsort))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(8, 8, 8)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(5, 5, 5)))
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -761,6 +801,7 @@ private Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             txtID.setText(tblReceipt.getModel().getValueAt(i, 0).toString());
             txtStaffID.setText(tblReceipt.getModel().getValueAt(i, 1).toString());
             txtCustomerID.setText(tblReceipt.getModel().getValueAt(i, 2).toString());
+            loadOrderItem(tblReceipt.getModel().getValueAt(i, 0).toString());
             if(tblReceipt.getModel().getValueAt(i, 4).toString().equals("Processing"))
             tgProcess.setSelected(false);
             else
