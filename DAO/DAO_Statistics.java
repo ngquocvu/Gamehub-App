@@ -47,12 +47,11 @@ public class DAO_Statistics {
         return products;
     }
     
-    public ArrayList<DTO_ImportReceipt> getImportReceipts(Date date) throws 
+    public ArrayList<DTO_ImportReceipt> getImportReceipts(String date /*yyyy-MM-dd*/) throws 
             SQLException, ClassNotFoundException {
         ArrayList<DTO_ImportReceipt> receipts = new ArrayList<DTO_ImportReceipt>();
-        Timestamp ts = new Timestamp(date.getTime());
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM orders WHERE createdAt = " + ts;
+        String sql = "SELECT * FROM orders WHERE DATE(createdAt) = " + date;
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
 
@@ -71,13 +70,11 @@ public class DAO_Statistics {
         return receipts;
     }
     
-    public int getImportReceiptQuantity(Date date) throws 
+    public int getImportReceiptQuantity(String date /*yyyy-MM-dd*/) throws 
             SQLException, ClassNotFoundException {
         int quantity = 0;
-        
-        Timestamp ts = new Timestamp(date.getTime());
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT COUNT(id) FROM orders WHERE createdAt = " + ts;
+        String sql = "SELECT * FROM orders WHERE DATE(createdAt) = " + date;
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
         
