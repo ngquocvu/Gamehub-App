@@ -40,12 +40,7 @@ public class BUS_OrderItem {
              DAO_OrderItem receiptDAO = new DAO_OrderItem();
              receiptDAO.update(receipt);
      }
-     
-     public void updateState(DTO_OrderItem receipt) throws SQLException, ClassNotFoundException
-     {
-             DAO_OrderItem receiptDAO = new DAO_OrderItem();
-             receiptDAO.updateState(receipt);
-     }
+
      
      public ArrayList<DTO_OrderItem> search(String content) throws ClassNotFoundException, SQLException
      {

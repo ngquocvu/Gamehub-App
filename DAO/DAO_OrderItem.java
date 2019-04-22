@@ -59,7 +59,7 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
 
     @Override
     public void update(DTO_OrderItem object) {
-        try {
+        /*try {
             Connection conn = MySQLConnUtils.getMySQLConnection();
             String sql = "UPDATE orders SET ";
             sql+= "staffID = " + "'" + object.getStaffID() + "'";
@@ -71,35 +71,21 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
             Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
     
-       public void updateState(DTO_OrderItem object) {
-        try {
-            Connection conn = MySQLConnUtils.getMySQLConnection();
-            String sql = "UPDATE orders SET ";
-            sql+="state = " + "'" + object.getState() + "'" + " WHERE id= " + "'" + object.getId()+ "'";
-            Statement stmt = conn.createStatement();
-            stmt.executeUpdate(sql);
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
     @Override
     public void delete(String id) throws SQLException, ClassNotFoundException {
-        Connection conn = MySQLConnUtils.getMySQLConnection();
+       /* Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "DELETE FROM orders WHERE id = " + id ;
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(sql);
-        conn.close();
+        conn.close();*/
     }
     
     public void add(DTO_OrderItem object) throws SQLException, ClassNotFoundException
-    {  
+    {  /*
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "INSERT INTO orders(id,staffID,userID,createdAt,state) VALUES";
                sql+= "(" + "'" + object.getId() + "'";
@@ -109,11 +95,11 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
                sql+= "," +  "'" + object.getState() + "'" + " )";
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(sql);
-        conn.close();
+        conn.close();*/
         
     }
       public ArrayList<DTO_OrderItem> search(String content) throws SQLException, ClassNotFoundException {
-        Connection conn = MySQLConnUtils.getMySQLConnection();
+      /*  Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "SELECT * FROM orders WHERE id LIKE " + "'" + content + "%'";        
         ArrayList<DTO_OrderItem> receipts = new  ArrayList<DTO_OrderItem>();
         Statement stmt = conn.createStatement();
@@ -130,10 +116,11 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
         
          conn.close();
          return receipts;
-    }
+    */
+      return null;}
 
     public ArrayList<DTO_OrderItem> sortBy(String content,Boolean isSelected) throws SQLException, ClassNotFoundException {
-        Connection conn = MySQLConnUtils.getMySQLConnection();
+       /* Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = new String();
         if (isSelected)
         sql = "SELECT * FROM orders ORDER BY " + content + " DESC";
@@ -156,6 +143,13 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
          conn.close();
          return receipts;
     }
+
+    @Override
+    public DTO_OrderItem get(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
+        return null;
+}
 
     @Override
     public DTO_OrderItem get(String id) {
