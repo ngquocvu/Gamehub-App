@@ -5,8 +5,10 @@
  */
 package GUI;
 
-import BUS.BUS_Publisher;
-import DTO.DTO_Publisher;
+import BUS.BUS_Genre;
+import BUS.BUS_Product;
+import DTO.DTO_Genre;
+import DTO.DTO_Product;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -18,30 +20,46 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author AnhhTuann
  */
-public class GUI_PublisherTable extends javax.swing.JFrame {
+public class GUI_ProductTable extends javax.swing.JFrame {
+    private static Object txtProID;
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
-    public GUI_PublisherTable() throws SQLException, ClassNotFoundException {
-        loadPublisher();
+    public GUI_ProductTable() throws SQLException, ClassNotFoundException {
+        loadProduct();
         initComponents();
        
     }
 
-    public void loadPublisher() throws SQLException, ClassNotFoundException
+    public void loadProduct() throws SQLException, ClassNotFoundException
     {
-       BUS_Publisher publisherBUS = new BUS_Publisher();
        Header = new Vector();
        Header.add("ID");
        Header.add("Name");
+       Header.add("Price");
+       Header.add("Quantity");
+       Header.add("Publisher");
+       Header.add("Platform");
+       Header.add("Genre");
+       Header.add("Release Year");
        DefaultTableModel model = new DefaultTableModel(Header,0);
-        for(int i=0;i<publisherBUS.array.size();i++)
+       BUS_Product ProductBus = new BUS_Product();
+        for(int i=0;i<BUS_Product.array.size();i++)
         {
-            Object = new Vector();
-            DTO_Publisher tempPublisher = new DTO_Publisher(); 
-            tempPublisher = BUS_Publisher.array.get(i);  
-            Object.add(tempPublisher.getId());
-            Object.add(tempPublisher.getName());
+            
+            DTO_Product tempProduct = new DTO_Product(); 
+            tempProduct = BUS_Product.array.get(i);
+            String genreName = ProductBus.getGenreName(tempProduct.getGenreID());
+            Vector Object = new Vector();
+            Object.add(tempProduct.getId());
+            Object.add(tempProduct.getName());
+            Object.add(tempProduct.getPrice());
+            Object.add(tempProduct.getQuantity());
+            String name = ProductBus.getPublisherName(tempProduct.getPublisherID());
+            Object.add(name);
+            Object.add(tempProduct.getPlatform());
+            Object.add(genreName);
+            Object.add(tempProduct.getReleaseDate());
             model.addRow(Object);
         }
         this.model = model;
@@ -52,13 +70,13 @@ private DefaultTableModel  model;
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPublisher = new javax.swing.JTable();
+        tblGenre = new javax.swing.JTable();
         btnsellect = new javax.swing.JButton();
 
-        tblPublisher.setRowHeight(32);
-        tblPublisher.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tblPublisher.setModel(model);
-        jScrollPane1.setViewportView(tblPublisher);
+        tblGenre.setRowHeight(32);
+        tblGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tblGenre.setModel(model);
+        jScrollPane1.setViewportView(tblGenre);
 
         btnsellect.setText("Sellect");
         btnsellect.addActionListener(new java.awt.event.ActionListener() {
@@ -90,8 +108,8 @@ private DefaultTableModel  model;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsellectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsellectActionPerformed
-        int i = tblPublisher.getSelectedRow();
-    GUI_Product.txtPublisher.setText(tblPublisher.getModel().getValueAt(i, 0).toString());
+        int i = tblGenre.getSelectedRow();
+    GUI_OrderItem.txtProID.setText(tblGenre.getModel().getValueAt(i, 0).toString());
     this.dispose();
     }//GEN-LAST:event_btnsellectActionPerformed
 
@@ -112,26 +130,25 @@ private DefaultTableModel  model;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_PublisherTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_PublisherTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_PublisherTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_PublisherTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new GUI_PublisherTable().setVisible(true);
+                    new GUI_ProductTable().setVisible(true);
                 } catch (SQLException ex) {
-                    Logger.getLogger(GUI_PublisherTable.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GUI_ProductTable.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUI_PublisherTable.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GUI_ProductTable.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -140,6 +157,6 @@ private DefaultTableModel  model;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnsellect;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPublisher;
+    private javax.swing.JTable tblGenre;
     // End of variables declaration//GEN-END:variables
 }

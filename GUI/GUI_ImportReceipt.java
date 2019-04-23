@@ -58,7 +58,7 @@ private DefaultTableModel  orderModel;
        Header = new Vector();
        Header.add("ID");
        Header.add("Staff ID");
-       Header.add("Customer ID");
+       Header.add("Publisher's ID");
        Header.add("Create at");
        Header.add("State");
        DefaultTableModel model = new DefaultTableModel(Header,0);
@@ -89,7 +89,7 @@ private DefaultTableModel  orderModel;
        DefaultTableModel model = new DefaultTableModel(Header,0);
        BUS_OrderItem OrderItemBus = new BUS_OrderItem();
         ArrayList<DTO_OrderItem> items = new ArrayList<DTO_OrderItem>();
-        items=OrderItemBus.getByProductID(id);
+        items=OrderItemBus.getByOrderID(id);
         for(int i=0;i<items.size();i++)
         {
             DTO_OrderItem tempOrderItem = new DTO_OrderItem(); 
@@ -723,10 +723,11 @@ private DefaultTableModel  orderModel;
         Header = new Vector();
        Header.add("ID");
        Header.add("Staff ID");
-       Header.add("Customer ID");
+       Header.add("Publisher's ID");
        Header.add("Create at");
        Header.add("State");
         DefaultTableModel model = new DefaultTableModel(Header,0);
+        BUS_Product productBUS = new BUS_Product();
         for(int i=0;i<array.size();i++)
         {
             DTO_ImportReceipt tempReceipt = new DTO_ImportReceipt(); 
@@ -734,7 +735,8 @@ private DefaultTableModel  orderModel;
             Vector Object = new Vector();
             Object.add(tempReceipt.getId());
             Object.add(tempReceipt.getStaffID());
-            Object.add(tempReceipt.getCustomerID());
+            String publisherName = productBUS.getPublisherName(tempReceipt.getCustomerID());
+            Object.add(publisherName);
             Object.add(tempReceipt.getCreateDate());
             Object.add(tempReceipt.getState());
             model.addRow(Object);
@@ -779,7 +781,7 @@ private DefaultTableModel  orderModel;
         Header = new Vector();
         Header.add("ID");
         Header.add("Staff ID");
-        Header.add("Customer ID");
+        Header.add("Publisher's ID");
         Header.add("Create at");
         Header.add("State");
         DefaultTableModel model = new DefaultTableModel(Header,0);
@@ -957,7 +959,14 @@ private DefaultTableModel  orderModel;
     }//GEN-LAST:event_tblImportDetailMouseClicked
 
     private void btnAddProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProActionPerformed
-        // TODO add your handling code here:
+    try {
+        GUI_OrderItem orderItemGUI = new GUI_OrderItem(txtID.getText());
+        orderItemGUI.setVisible(true);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_btnAddProActionPerformed
 
     private void tgProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgProcessActionPerformed

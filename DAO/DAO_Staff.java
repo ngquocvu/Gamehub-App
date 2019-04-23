@@ -84,7 +84,6 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
         }
     }
 
-    @Override
     public void delete(String id) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "DELETE FROM staffs WHERE id = " + id ;
