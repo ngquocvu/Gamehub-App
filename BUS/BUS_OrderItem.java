@@ -17,42 +17,42 @@ public class BUS_OrderItem {
         DAO_OrderItem items = new DAO_OrderItem();
         array = items.getAll();
     } 
-    public ArrayList<DTO_OrderItem> getByProductID (String id) throws SQLException, ClassNotFoundException
+    public ArrayList<DTO_OrderItem> getByOrderID (String id) throws SQLException, ClassNotFoundException
     {
         ArrayList<DTO_OrderItem> items = new ArrayList<DTO_OrderItem>();
         DAO_OrderItem oderItemDAO = new DAO_OrderItem();
-        items = oderItemDAO.getByProductID(id);   
+        items = oderItemDAO.getByOrderID(id);   
         return items;
     }
-     public void delete(String id) throws SQLException, ClassNotFoundException { 
+     public void delete(String productID, String orderID) throws SQLException, ClassNotFoundException { 
          DAO_OrderItem items = new DAO_OrderItem();
-         items.delete(id);
+         items.delete(productID,orderID);
     }      
      
-     public void add(DTO_OrderItem receipt) throws SQLException, ClassNotFoundException
+     public void add(DTO_OrderItem orderItem) throws SQLException, ClassNotFoundException
      {
-             DAO_OrderItem receiptDAO = new DAO_OrderItem();
-             receiptDAO.add(receipt);
+             DAO_OrderItem orderItemDAO = new DAO_OrderItem();
+             orderItemDAO.add(orderItem);
      }
         
-     public void update(DTO_OrderItem receipt) throws SQLException, ClassNotFoundException
+     public void update(DTO_OrderItem orderItem) throws SQLException, ClassNotFoundException
      {
-             DAO_OrderItem receiptDAO = new DAO_OrderItem();
-             receiptDAO.update(receipt);
+             DAO_OrderItem orderItemDAO = new DAO_OrderItem();
+             orderItemDAO.update(orderItem);
      }
 
      
-     public ArrayList<DTO_OrderItem> search(String content) throws ClassNotFoundException, SQLException
+     public ArrayList<DTO_OrderItem> search(String content,String orderID) throws ClassNotFoundException, SQLException
      {
-         DAO_OrderItem receiptDAO = new DAO_OrderItem();
-         ArrayList<DTO_OrderItem> array = receiptDAO.search(content);
+         DAO_OrderItem orderItemDAO = new DAO_OrderItem();
+         ArrayList<DTO_OrderItem> array = orderItemDAO.search(content,orderID);
          return array;     
      }
      
-     public ArrayList<DTO_OrderItem> sortBy(String content,Boolean isSelected) throws ClassNotFoundException, SQLException
+     public ArrayList<DTO_OrderItem> sortBy(String content,Boolean isSelected, String orderID) throws ClassNotFoundException, SQLException
      {
-         DAO_OrderItem receiptDAO = new DAO_OrderItem();
-         ArrayList<DTO_OrderItem> array = receiptDAO.sortBy(content, isSelected);
+         DAO_OrderItem orderItemDAO = new DAO_OrderItem();
+         ArrayList<DTO_OrderItem> array = orderItemDAO.sortBy(content, isSelected,orderID);
          return array;     
      }
 }

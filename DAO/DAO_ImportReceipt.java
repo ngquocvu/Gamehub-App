@@ -87,7 +87,6 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         }
     }
 
-    @Override
     public void delete(String id) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "DELETE FROM orders WHERE id = " + id ;
@@ -112,7 +111,10 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
     }
       public ArrayList<DTO_ImportReceipt> search(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM orders WHERE id LIKE " + "'" + content + "%'";        
+        String sql = "SELECT * FROM orders WHERE id LIKE " + "'" + content + "%'"
+                    +" OR staffID LIKE" + "'" + content + "%'" 
+                    +" OR userID LIKE " + "'" + content + "%'" 
+                    +" OR state LIKE " + "'" + content + "%'" ;
         ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);

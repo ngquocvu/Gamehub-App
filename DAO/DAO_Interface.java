@@ -16,5 +16,4 @@ public interface DAO_Interface<T> {
     public ArrayList<T> getAll();
     public T get(String id);
     public void update(T object);
-    public void delete(String id) throws SQLException, ClassNotFoundException ;
 }

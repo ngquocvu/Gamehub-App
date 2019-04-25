@@ -78,7 +78,6 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
         }
     }
 
-    @Override
     public void delete(String id) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "DELETE FROM users WHERE id = " + id ;
