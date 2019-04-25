@@ -51,7 +51,7 @@ public class DAO_Statistics {
             SQLException, ClassNotFoundException {
         ArrayList<DTO_ImportReceipt> receipts = new ArrayList<DTO_ImportReceipt>();
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM orders WHERE DATE(createdAt) = " + date;
+        String sql = "SELECT * FROM orders WHERE DATE(createdAt) = " + "'" + date + "'";
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
 
@@ -66,7 +66,6 @@ public class DAO_Statistics {
             receipts.add(receipt);
         }
         conn.close();
-        
         return receipts;
     }
     
@@ -74,7 +73,7 @@ public class DAO_Statistics {
             SQLException, ClassNotFoundException {
         int quantity = 0;
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM orders WHERE DATE(createdAt) = " + date;
+        String sql = "SELECT * FROM orders WHERE DATE(createdAt) = " + "'" + date + "'";
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
         
@@ -90,30 +89,30 @@ public class DAO_Statistics {
             SQLException, ClassNotFoundException {
         int quantity = 0;
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT SUM(o.quantity) AS total "
-                + "FROM orders AS o JOIN ordereditems AS oi ON oi.orderID = o.id "
-                + "WHERE DATE(o.createdAt) = " + date;
+        String sql = "SELECT SUM(quantity) AS total"
+                + " FROM orders INNER JOIN ordereditems ON ordereditems.orderID = orders.id "
+                + " WHERE DATE(orders.createdAt) = " + "'" + date + "'";
         
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
         
         while (result.next()) {
-            quantity = result.getInt("total");
+            quantity = result.getInt(1);
         }
         conn.close();
         
         return quantity;
     }
     
-    public int getTotalImportingCost(String date) throws 
+    public double getTotalImportingCost(String date) throws 
             SQLException, ClassNotFoundException {
-        int cost = 0;
+        double cost = 0;
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT oi.quantity AS quantity, p.price AS price "
-                + "FROM orders AS o "
-                + "JOIN ordereditems AS oi ON oi.orderID = o.id "
-                + "JOIN products AS p ON p.id = oi.productID "
-                + "WHERE DATE(o.createdAt) = " + date;
+        String sql = "SELECT ordereditems.quantity AS quantity, products.price AS price "
+                + "FROM orders "
+                + "INNER JOIN ordereditems ON ordereditems.orderID = orders.id "
+                + "INNER JOIN products ON products.id = ordereditems.productID "
+                + "WHERE DATE(orders.createdAt) = " + "'" + date + "'";
         
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -124,7 +123,7 @@ public class DAO_Statistics {
             cost += quantity * price;
         }
         conn.close();
-        
+        System.out.print(cost);
         return cost;
     }
 }
