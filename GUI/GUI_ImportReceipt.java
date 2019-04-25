@@ -58,7 +58,6 @@ private DefaultTableModel  orderModel;
        Header = new Vector();
        Header.add("ID");
        Header.add("Staff ID");
-       Header.add("Publisher's ID");
        Header.add("Create at");
        Header.add("State");
        DefaultTableModel model = new DefaultTableModel(Header,0);
@@ -71,8 +70,6 @@ private DefaultTableModel  orderModel;
             Vector Object = new Vector();
             Object.add(tempReceipt.getId());
             Object.add(tempReceipt.getStaffID());
-            String publisherName = productBUS.getPublisherName(tempReceipt.getCustomerID());
-            Object.add(publisherName);
             Object.add(tempReceipt.getCreateDate());
             Object.add(tempReceipt.getState());
             model.addRow(Object);
@@ -134,8 +131,6 @@ private DefaultTableModel  orderModel;
         txtID = new javax.swing.JTextField();
         lbStaffID = new javax.swing.JLabel();
         txtStaffID = new javax.swing.JTextField();
-        lbPublisherID = new javax.swing.JLabel();
-        txtPublisherID = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
@@ -143,7 +138,6 @@ private DefaultTableModel  orderModel;
         btnEdit = new javax.swing.JButton();
         btnAddPro = new javax.swing.JButton();
         tgProcess = new javax.swing.JToggleButton();
-        btnPublisher = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         btnAdSearch = new javax.swing.JButton();
         txtAdSearch = new javax.swing.JTextField();
@@ -237,9 +231,6 @@ private DefaultTableModel  orderModel;
 
         lbStaffID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbStaffID.setText("Staff ID");
-
-        lbPublisherID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbPublisherID.setText("Publisher ID");
 
         btnAdd.setBackground(new java.awt.Color(99, 19, 132));
         btnAdd.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -349,13 +340,6 @@ private DefaultTableModel  orderModel;
             }
         });
 
-        btnPublisher.setText("...");
-        btnPublisher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPublisherActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -364,26 +348,17 @@ private DefaultTableModel  orderModel;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbPublisherID, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPublisherID, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(228, 228, 228))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbID))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbID))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(tgProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, Short.MAX_VALUE)
                         .addGap(99, 99, 99)
                         .addComponent(btnAddPro, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45))
@@ -401,12 +376,7 @@ private DefaultTableModel  orderModel;
                     .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbStaffID)
                     .addComponent(tgProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPublisherID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPublisherID)
-                    .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(81, 81, 81)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -612,7 +582,7 @@ private DefaultTableModel  orderModel;
         });
 
         cbsort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbsort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "StaffID", "CustomerID", "Time", "State" }));
+        cbsort.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sort by", "ID", "StaffID", "Time", "State" }));
         cbsort.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbsortActionPerformed(evt);
@@ -723,7 +693,6 @@ private DefaultTableModel  orderModel;
         Header = new Vector();
        Header.add("ID");
        Header.add("Staff ID");
-       Header.add("Publisher's ID");
        Header.add("Create at");
        Header.add("State");
         DefaultTableModel model = new DefaultTableModel(Header,0);
@@ -735,8 +704,6 @@ private DefaultTableModel  orderModel;
             Vector Object = new Vector();
             Object.add(tempReceipt.getId());
             Object.add(tempReceipt.getStaffID());
-            String publisherName = productBUS.getPublisherName(tempReceipt.getCustomerID());
-            Object.add(publisherName);
             Object.add(tempReceipt.getCreateDate());
             Object.add(tempReceipt.getState());
             model.addRow(Object);
@@ -771,17 +738,15 @@ private DefaultTableModel  orderModel;
         switch(cbsort.getSelectedIndex())
        {
            case 1: content = "id +0";  break;
-           case 2: content = "staffID"; break;
-           case 3: content = "userID"; break;  
-           case 4: content = "createdAt"; break;  
-           case 5: content = "state"; break;   
+           case 2: content = "staffID"; break; 
+           case 3: content = "createdAt"; break;  
+           case 4: content = "state"; break;   
        }
        ArrayList<DTO_ImportReceipt> array = receiptBUS.sortBy(content,tgSort.isSelected());
        
         Header = new Vector();
         Header.add("ID");
         Header.add("Staff ID");
-        Header.add("Publisher's ID");
         Header.add("Create at");
         Header.add("State");
         DefaultTableModel model = new DefaultTableModel(Header,0);
@@ -792,7 +757,6 @@ private DefaultTableModel  orderModel;
             Vector Object = new Vector();
             Object.add(tempReceipt.getId());
             Object.add(tempReceipt.getStaffID());
-            Object.add(tempReceipt.getCustomerID());
             Object.add(tempReceipt.getCreateDate());
             Object.add(tempReceipt.getState());
             model.addRow(Object);
@@ -818,10 +782,8 @@ private DefaultTableModel  orderModel;
             BUS_Product productBUS = new BUS_Product();
             txtID.setText(tblReceipt.getModel().getValueAt(i, 0).toString());
             txtStaffID.setText(tblReceipt.getModel().getValueAt(i, 1).toString());
-            String publisherID = productBUS.getPublisherID(tblReceipt.getModel().getValueAt(i, 2).toString());
-            txtPublisherID.setText(publisherID);
             loadOrderItem(tblReceipt.getModel().getValueAt(i, 0).toString());
-            if(tblReceipt.getModel().getValueAt(i, 4).toString().equals("Processing"))
+            if(tblReceipt.getModel().getValueAt(i, 3).toString().equals("Processing"))
             tgProcess.setSelected(false);
             else
              tgProcess.setSelected(true);    
@@ -866,7 +828,6 @@ private DefaultTableModel  orderModel;
             BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
             receipt.setId(txtID.getText());
             receipt.setStaffID(txtStaffID.getText());
-            receipt.setCustomerID(txtPublisherID.getText());
             receiptBUS.update(receipt);
             loadReceipt();
             tblReceipt.setModel(this.model);
@@ -909,7 +870,6 @@ private DefaultTableModel  orderModel;
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         txtID.setText("");
         txtStaffID.setText("");
-        txtPublisherID.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -921,7 +881,6 @@ private DefaultTableModel  orderModel;
             BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
             receipt.setId(txtID.getText());
             receipt.setStaffID(txtStaffID.getText());
-            receipt.setCustomerID(txtPublisherID.getText());
             receipt.setState("Processing");
             receipt.setCreateDate(ts);
             Vector header = new Vector();
@@ -993,24 +952,12 @@ private DefaultTableModel  orderModel;
     }
     }//GEN-LAST:event_tgProcessActionPerformed
 
-    private void btnPublisherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublisherActionPerformed
-        try {
-            GUI_PublisherTable publisherGUI = new GUI_PublisherTable();
-            publisherGUI.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnPublisherActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdSearch;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddPro;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnPublisher;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnRestart;
@@ -1040,7 +987,6 @@ private DefaultTableModel  orderModel;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbID;
-    private javax.swing.JLabel lbPublisherID;
     private javax.swing.JLabel lbStaffID;
     private javax.swing.JTable tblImportDetail;
     private javax.swing.JTable tblReceipt;
@@ -1048,7 +994,6 @@ private DefaultTableModel  orderModel;
     private javax.swing.JToggleButton tgSort;
     private javax.swing.JTextField txtAdSearch;
     private javax.swing.JTextField txtID;
-    public static javax.swing.JTextField txtPublisherID;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtStaffID;
     // End of variables declaration//GEN-END:variables

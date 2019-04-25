@@ -15,15 +15,13 @@ import java.sql.Timestamp;
 public class DTO_ImportReceipt {
     private String id;
     private String staffID;
-    private String customerID;
     private String state;
     private Timestamp createDate;
     
     public DTO_ImportReceipt() {}
-    public DTO_ImportReceipt(String id, String staffID, String customerID, Timestamp createDate, String state) {
+    public DTO_ImportReceipt(String id, String staffID, Timestamp createDate, String state) {
         this.id = id;
         this.staffID = staffID;
-        this.customerID = customerID;
         this.state = state;
         this.createDate = createDate;
     }
@@ -36,9 +34,6 @@ public class DTO_ImportReceipt {
         return staffID;
     }
 
-    public String getCustomerID() {
-        return customerID;
-    }
 
     public String getState() {
         return state;
@@ -54,10 +49,6 @@ public class DTO_ImportReceipt {
 
     public void setStaffID(String staffID) {
         this.staffID = staffID;
-    }
-
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
     }
 
     public void setState(String state) {

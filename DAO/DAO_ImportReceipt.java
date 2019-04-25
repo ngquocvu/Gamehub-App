@@ -32,10 +32,9 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         while (result.next()) {
             String id = result.getString(1);
             String staffID = result.getString(2);
-            String userID = result.getString(3);
             Timestamp createDate =result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);
             
             receipts.add(receipt);
         }
@@ -61,7 +60,7 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
             Connection conn = MySQLConnUtils.getMySQLConnection();
             String sql = "UPDATE orders SET ";
             sql+= "staffID = " + "'" + object.getStaffID() + "'";
-            sql+= "," + "userID = " + "'" + object.getCustomerID() + "'" + " WHERE id= " + "'" + object.getId()+ "'";
+            sql+= " WHERE id= " + "'" + object.getId()+ "'";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sql);
             conn.close();
@@ -88,20 +87,29 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
     }
 
     public void delete(String id) throws SQLException, ClassNotFoundException {
+        DAO_OrderItem orderItemDAO = new DAO_OrderItem();
+        ArrayList<String> list = orderItemDAO.getItemsID(id);
+        for(String productID: list)
+        {
+            
+            orderItemDAO.delete(productID, id);
+        }
         Connection conn = MySQLConnUtils.getMySQLConnection();
+        
         String sql = "DELETE FROM orders WHERE id = " + id ;
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(sql);
         conn.close();
+        
+        
     }
     
     public void add(DTO_ImportReceipt object) throws SQLException, ClassNotFoundException
     {  
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "INSERT INTO orders(id,staffID,userID,createdAt,state) VALUES";
+        String sql = "INSERT INTO orders(id,staffID,createdAt,state) VALUES";
                sql+= "(" + "'" + object.getId() + "'";
                sql+= "," + "'" + object.getStaffID() + "'";
-               sql+= "," + object.getCustomerID();
                sql+= "," + "'" + object.getCreateDate()+ "'";
                sql+= "," +  "'" + object.getState() + "'" + " )";
         Statement stmt = conn.createStatement();
@@ -121,10 +129,9 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
        while (result.next()) {
             String id = result.getString(1);
             String staffID = result.getString(2);
-            String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);            
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);            
             receipts.add(receipt);             
         }
         
@@ -146,10 +153,9 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         while (result.next()) {
             String id = result.getString(1);
             String staffID = result.getString(2);
-            String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);           
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);           
             receipts.add(receipt);         
         }
         

@@ -61,7 +61,7 @@ public class DAO_Statistics {
             String userID = result.getString(3);
             Timestamp createDate =result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,userID,createDate,state);
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);
             
             receipts.add(receipt);
         }

@@ -100,6 +100,21 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
         conn.close();
     }
     
+        public ArrayList<String> getItemsID(String orderID) throws SQLException, ClassNotFoundException
+    {
+        ArrayList<String> list = new  ArrayList<String>();
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT productID FROM ordereditems WHERE orderID = " + orderID ;
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while(result.next())
+        {
+            list.add(result.getString(1));
+        }
+        conn.close();
+        return list;
+    }
+    
     public void add(DTO_OrderItem object) throws SQLException, ClassNotFoundException
     { 
         Connection conn = MySQLConnUtils.getMySQLConnection();
