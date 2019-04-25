@@ -88,33 +88,35 @@ private DefaultTableModel  model;
         jPanel3 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         cbSort = new javax.swing.JComboBox();
-        jPanel5 = new javax.swing.JPanel();
+        btnSearch = new javax.swing.JButton();
+        btnRestart = new javax.swing.JButton();
+        tgSort = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblStaff = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         lbID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
-        lbFirstname = new javax.swing.JLabel();
-        lbEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtFirstname = new javax.swing.JTextField();
-        lbPhonenumber = new javax.swing.JLabel();
-        lbAddress = new javax.swing.JLabel();
         lbRole = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         txtPhonenumber = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        btnAdd = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
-        btnRemove = new javax.swing.JButton();
         lbSex = new javax.swing.JLabel();
-        lbLastname = new javax.swing.JLabel();
         txtLastname = new javax.swing.JTextField();
         lbPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         cbRole = new javax.swing.JComboBox();
         cbSex = new javax.swing.JComboBox();
+        lbLastname = new javax.swing.JLabel();
+        lbAddress = new javax.swing.JLabel();
+        lbPhonenumber = new javax.swing.JLabel();
+        lbEmail = new javax.swing.JLabel();
+        lbFirstname = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        btnAdd = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        btnRemove = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jTextField10 = new javax.swing.JTextField();
@@ -125,10 +127,6 @@ private DefaultTableModel  model;
         jRadioButton6 = new javax.swing.JRadioButton();
         jRadioButton7 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
-        jPanel6 = new javax.swing.JPanel();
-        btnSearch = new javax.swing.JButton();
-        btnRestart = new javax.swing.JButton();
-        tgSort = new javax.swing.JToggleButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -193,6 +191,35 @@ private DefaultTableModel  model;
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        btnRestart.setBackground(new java.awt.Color(99, 19, 132));
+        btnRestart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
+        btnRestart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRestartActionPerformed(evt);
+            }
+        });
+
+        tgSort.setBackground(new java.awt.Color(99, 19, 132));
+        tgSort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tgSort.setForeground(new java.awt.Color(255, 255, 255));
+        tgSort.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_generic_sorting_32px_1.png"))); // NOI18N
+        tgSort.setText("Desc");
+        tgSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tgSortActionPerformed(evt);
+            }
+        });
+
         tblStaff.setModel(model);
         tblStaff.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblStaff.setInheritsPopupMenu(true);
@@ -218,23 +245,11 @@ private DefaultTableModel  model;
             }
         });
 
-        lbFirstname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbFirstname.setText("First Name");
-
-        lbEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbEmail.setText("Email");
-
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
-
-        lbPhonenumber.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbPhonenumber.setText("Phone Number");
-
-        lbAddress.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbAddress.setText("Address");
 
         lbRole.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbRole.setText("Role");
@@ -245,6 +260,48 @@ private DefaultTableModel  model;
                 txtAddressActionPerformed(evt);
             }
         });
+
+        lbSex.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbSex.setText("Sex");
+
+        txtLastname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLastnameActionPerformed(evt);
+            }
+        });
+
+        lbPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbPassword.setText("Password");
+
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+
+        cbRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Staff" }));
+        cbRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbRoleActionPerformed(evt);
+            }
+        });
+
+        cbSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Femaile" }));
+
+        lbLastname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbLastname.setText("Last Name");
+
+        lbAddress.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbAddress.setText("Address");
+
+        lbPhonenumber.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbPhonenumber.setText("Phone Number");
+
+        lbEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbEmail.setText("Email");
+
+        lbFirstname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbFirstname.setText("First Name");
 
         btnAdd.setBackground(new java.awt.Color(99, 19, 132));
         btnAdd.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -305,133 +362,117 @@ private DefaultTableModel  model;
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+                .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addGap(22, 22, 22))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(110, 110, 110))
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
-
-        lbSex.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbSex.setText("Sex");
-
-        lbLastname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbLastname.setText("Last Name");
-
-        txtLastname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLastnameActionPerformed(evt);
-            }
-        });
-
-        lbPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbPassword.setText("Password");
-
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
-
-        cbRole.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Admin", "Staff" }));
-        cbRole.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbRoleActionPerformed(evt);
-            }
-        });
-
-        cbSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Femaile" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbEmail)
-                    .addComponent(lbLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPassword)
-                    .addComponent(lbID, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                                .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtFirstname, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(48, 48, 48)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbPhonenumber)
-                            .addComponent(lbAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbRole)
-                            .addComponent(lbSex))
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAddress)
-                            .addComponent(txtPhonenumber)
-                            .addComponent(cbRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbSex, 0, 225, Short.MAX_VALUE))))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbID)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbFirstname))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbLastname)
-                            .addComponent(lbRole)
-                            .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbEmail))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtLastname, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                            .addComponent(txtEmail)
+                            .addComponent(txtFirstname)
+                            .addComponent(txtID)))
+                    .addComponent(lbFirstname))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbAddress)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lbRole)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbPhonenumber))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(32, 32, 32)
+                                        .addComponent(lbSex)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                                        .addComponent(cbSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                            .addComponent(txtAddress)
+                                            .addComponent(txtPhonenumber)))))
+                            .addComponent(lbPassword))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lbID))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbPhonenumber)
-                            .addComponent(txtPhonenumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbAddress)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lbPassword)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbPhonenumber)
+                        .addComponent(txtPhonenumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbFirstname))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAddress)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbEmail)
+                    .addComponent(lbRole)
+                    .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbSex)
+                    .addComponent(cbSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbSex, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbSex, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
@@ -527,7 +568,7 @@ private DefaultTableModel  model;
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
                         .addGap(18, 18, 18)
@@ -541,17 +582,16 @@ private DefaultTableModel  model;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jRadioButton6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton5)
-                        .addGap(0, 56, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jRadioButton5)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
@@ -561,98 +601,31 @@ private DefaultTableModel  model;
                     .addComponent(jRadioButton5)
                     .addComponent(jRadioButton6)
                     .addComponent(jRadioButton3))
-                .addGap(335, 335, 335))
+                .addGap(196, 196, 196))
         );
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-
-        jPanel1.getAccessibleContext().setAccessibleName("Customer Infomation");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
-        );
-
-        btnSearch.setBackground(new java.awt.Color(99, 19, 132));
-        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnRestart.setBackground(new java.awt.Color(99, 19, 132));
-        btnRestart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
-        btnRestart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestartActionPerformed(evt);
-            }
-        });
-
-        tgSort.setBackground(new java.awt.Color(99, 19, 132));
-        tgSort.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tgSort.setForeground(new java.awt.Color(255, 255, 255));
-        tgSort.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_generic_sorting_32px_1.png"))); // NOI18N
-        tgSort.setText("Desc");
-        tgSort.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tgSortActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnRestart)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tgSort)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbSort, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10)))
+                        .addComponent(btnRestart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tgSort)
+                        .addGap(55, 55, 55)
+                        .addComponent(cbSort, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -660,33 +633,39 @@ private DefaultTableModel  model;
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRestart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(tgSort)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cbSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tgSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbSort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRestart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
+
+        jPanel1.getAccessibleContext().setAccessibleName("Customer Infomation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1542, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -695,251 +674,133 @@ private DefaultTableModel  model;
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        int  i = tblStaff.getSelectedRow();
-            String id = txtID.getText();
-                  if (i>=0)
-                  {
-                    int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if(dialogResult == JOptionPane.YES_OPTION){
-                    try {
-                        BUS_Staff StaffBus = new BUS_Staff();
-                        StaffBus.delete(id);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                          model.removeRow(i);
-                          tblStaff.setModel(model);     
-                      }   
-                  }
-                  else 
-                  {
-                      JOptionPane.showMessageDialog(null,"Please select a row to delete !");
-                  }
-    }//GEN-LAST:event_btnRemoveActionPerformed
+    private void tgSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgSortActionPerformed
+        cbSortActionPerformed(evt);
+    }//GEN-LAST:event_tgSortActionPerformed
 
-    private void cbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSortActionPerformed
-       try { 
-        BUS_Staff staffBUS = new BUS_Staff();
-        String content = "";
-        if(cbSort.getSelectedIndex()==0)
-        return;
-        switch(cbSort.getSelectedIndex())
-       {
-           case 1: content = "id +0";  break;
-           case 2: content = "firstname"; break;
-           case 3: content = "lastname"; break;
-           case 4: content = "email"; break;
-           case 5: content = "password"; break; 
-           case 6: content = "address"; break;
-           case 7: content = "phonenumber"; break;
-           case 8: content = "role"; break;  
-           case 9: content = "sex"; break;  
-       }
-       ArrayList<DTO_Staff> array = staffBUS.sortBy(content,tgSort.isSelected());
-       
-        Header = new Vector();
-        Header.add("ID");
-        Header.add("First Name");
-        Header.add("Last Name");
-        Header.add("Email");
-        Header.add("Password");
-        Header.add("Address");
-        Header.add("Phone Number");
-        Header.add("Role");
-        Header.add("Sex");
-        DefaultTableModel model = new DefaultTableModel(Header,0);
-        for(int i=0;i<array.size();i++)
-        {
-            DTO_Staff tempStaff = new DTO_Staff(); 
-            tempStaff = array.get(i);
-            Vector Object = new Vector();
-            Object.add(tempStaff.getId());
-            Object.add(tempStaff.getFirstname());
-            Object.add(tempStaff.getLastname());
-            Object.add(tempStaff.getEmail());
-            Object.add(tempStaff.getPassword());
-            Object.add(tempStaff.getAddress());
-            Object.add(tempStaff.getPhonenumber());
-            Object.add(tempStaff.getRole());
-            Object.add(tempStaff.getSex());
-            model.addRow(Object);
-        }
-        this.model = model;
-        tblStaff.setModel(model);
-      }
-      catch (SQLException ex) {
+    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
+        try {
+            loadStaff();
+            tblStaff.setModel(model);
+        } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_cbSortActionPerformed
-
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
+    }//GEN-LAST:event_btnRestartActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-       try {
-        BUS_Staff StaffBus = new BUS_Staff();
-        ArrayList<DTO_Staff> array = StaffBus.search(txtSearch.getText());
-        Header = new Vector();
-        Header.add("ID");
-        Header.add("First Name");
-        Header.add("Last Name");
-        Header.add("Email");
-        Header.add("Password");
-        Header.add("Address");
-        Header.add("Phone Number");
-        Header.add("Role");
-        Header.add("Sex");
-        DefaultTableModel model = new DefaultTableModel(Header,0);
-        for(int i=0;i<array.size();i++)
-        {
-            DTO_Staff tempStaff = new DTO_Staff(); 
-            tempStaff = array.get(i);
-            Vector Object = new Vector();
-            Object.add(tempStaff.getId());
-            Object.add(tempStaff.getFirstname());
-            Object.add(tempStaff.getLastname());
-            Object.add(tempStaff.getEmail());
-            Object.add(tempStaff.getPassword());
-            Object.add(tempStaff.getAddress());
-            Object.add(tempStaff.getPhonenumber());
-            Object.add(tempStaff.getRole());
-            Object.add(tempStaff.getSex());
-            model.addRow(Object);
+        try {
+            BUS_Staff StaffBus = new BUS_Staff();
+            ArrayList<DTO_Staff> array = StaffBus.search(txtSearch.getText());
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Address");
+            Header.add("Phone Number");
+            Header.add("Role");
+            Header.add("Sex");
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            for(int i=0;i<array.size();i++)
+            {
+                DTO_Staff tempStaff = new DTO_Staff();
+                tempStaff = array.get(i);
+                Vector Object = new Vector();
+                Object.add(tempStaff.getId());
+                Object.add(tempStaff.getFirstname());
+                Object.add(tempStaff.getLastname());
+                Object.add(tempStaff.getEmail());
+                Object.add(tempStaff.getPassword());
+                Object.add(tempStaff.getAddress());
+                Object.add(tempStaff.getPhonenumber());
+                Object.add(tempStaff.getRole());
+                Object.add(tempStaff.getSex());
+                model.addRow(Object);
+            }
+            this.model = model;
+            tblStaff.setModel(model);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.model = model;
-        tblStaff.setModel(model);
-    } catch (SQLException ex) {
-        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
-    }
     }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton6ActionPerformed
-
-    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton7ActionPerformed
-
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
-
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
-    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressActionPerformed
+    }//GEN-LAST:event_jRadioButton7ActionPerformed
 
-    private void tblStaffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStaffMouseClicked
-        int i = tblStaff.getSelectedRow();
-            txtID.setText(tblStaff.getModel().getValueAt(i, 0).toString());
-            txtFirstname.setText(tblStaff.getModel().getValueAt(i, 1).toString());
-            txtLastname.setText(tblStaff.getModel().getValueAt(i, 2).toString());
-            txtEmail.setText(tblStaff.getModel().getValueAt(i, 3).toString());
-            txtPassword.setText(tblStaff.getModel().getValueAt(i, 4).toString());
-            txtAddress.setText(tblStaff.getModel().getValueAt(i, 5).toString());
-            txtPhonenumber.setText(tblStaff.getModel().getValueAt(i, 6).toString());
-            cbRole.setSelectedItem(tblStaff.getModel().getValueAt(i, 7).toString());
-            cbSex.setSelectedItem(tblStaff.getModel().getValueAt(i, 8).toString());
-            
-    }//GEN-LAST:event_tblStaffMouseClicked
-
-    private void txtLastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastnameActionPerformed
+    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLastnameActionPerformed
+    }//GEN-LAST:event_jRadioButton6ActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        try {
-        DTO_Staff staff = new DTO_Staff();
-        BUS_Staff staffBUS = new BUS_Staff();
-        staff.setId(txtID.getText());
-        staff.setFirstname(txtFirstname.getText());
-        staff.setLastname(txtLastname.getText()); 
-        staff.setEmail(txtEmail.getText());
-        staff.setPassword(txtPassword.getText());
-        staff.setAddress(txtAddress.getText());
-        staff.setPhonenumber(txtPhonenumber.getText());
-        staff.setRole((String) cbRole.getSelectedItem());
-        staff.setSex((String) cbSex.getSelectedItem());
-        
-        Vector header = new Vector();
-        Vector row=new Vector();
-        if(findItem(staff.getId())==null)
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        int  i = tblStaff.getSelectedRow();
+        String id = txtID.getText();
+        if (i>=0)
         {
-            row.add(staff.getId());
-            row.add(staff.getFirstname());
-            row.add(staff.getLastname());
-            row.add(staff.getEmail());
-            row.add(staff.getPassword());
-            row.add(staff.getAddress());
-            row.add(staff.getPhonenumber());
-            row.add(String.valueOf(staff.getRole()));
-            row.add(String.valueOf(staff.getSex()));
-            model.addRow(row);
-            tblStaff.setModel(model);
-            staffBUS.add(staff);
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                try {
+                    BUS_Staff StaffBus = new BUS_Staff();
+                    StaffBus.delete(id);
+                } catch (SQLException ex) {
+                    Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                model.removeRow(i);
+                tblStaff.setModel(model);
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"This ID is already used !");
+            JOptionPane.showMessageDialog(null,"Please select a row to delete !");
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-            txtID.setText("");
-            txtFirstname.setText("");
-            txtLastname.setText(""); 
-            txtEmail.setText("");
-            txtPassword.setText("");
-            txtAddress.setText("");
-            txtPhonenumber.setText("");
-            cbRole.setSelectedIndex(1);
-            cbSex.setSelectedIndex(1);
+        txtID.setText("");
+        txtFirstname.setText("");
+        txtLastname.setText("");
+        txtEmail.setText("");
+        txtPassword.setText("");
+        txtAddress.setText("");
+        txtPhonenumber.setText("");
+        cbRole.setSelectedIndex(1);
+        cbSex.setSelectedIndex(1);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -955,7 +816,7 @@ private DefaultTableModel  model;
                 model.setValueAt(txtPhonenumber.getText(), i, 6);
                 model.setValueAt(cbRole.getSelectedItem(), i, 7);
                 model.setValueAt(cbSex.getSelectedItem(), i, 8);
-                tblStaff.setModel(model);               
+                tblStaff.setModel(model);
                 DTO_Staff staff= new DTO_Staff();
                 BUS_Staff staffBUS = new BUS_Staff();
                 staff.setId(txtID.getText());
@@ -973,32 +834,150 @@ private DefaultTableModel  model;
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
-    private void tgSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgSortActionPerformed
-        cbSortActionPerformed(evt);
-    }//GEN-LAST:event_tgSortActionPerformed
-
-    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         try {
-            loadStaff();
-            tblStaff.setModel(model);
+            DTO_Staff staff = new DTO_Staff();
+            BUS_Staff staffBUS = new BUS_Staff();
+            staff.setId(txtID.getText());
+            staff.setFirstname(txtFirstname.getText());
+            staff.setLastname(txtLastname.getText());
+            staff.setEmail(txtEmail.getText());
+            staff.setPassword(txtPassword.getText());
+            staff.setAddress(txtAddress.getText());
+            staff.setPhonenumber(txtPhonenumber.getText());
+            staff.setRole((String) cbRole.getSelectedItem());
+            staff.setSex((String) cbSex.getSelectedItem());
+
+            Vector header = new Vector();
+            Vector row=new Vector();
+            if(findItem(staff.getId())==null)
+            {
+                row.add(staff.getId());
+                row.add(staff.getFirstname());
+                row.add(staff.getLastname());
+                row.add(staff.getEmail());
+                row.add(staff.getPassword());
+                row.add(staff.getAddress());
+                row.add(staff.getPhonenumber());
+                row.add(String.valueOf(staff.getRole()));
+                row.add(String.valueOf(staff.getSex()));
+                model.addRow(row);
+                tblStaff.setModel(model);
+                staffBUS.add(staff);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null,"This ID is already used !");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnRestartActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
     private void cbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbRoleActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtLastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLastnameActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void tblStaffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStaffMouseClicked
+        int i = tblStaff.getSelectedRow();
+        txtID.setText(tblStaff.getModel().getValueAt(i, 0).toString());
+        txtFirstname.setText(tblStaff.getModel().getValueAt(i, 1).toString());
+        txtLastname.setText(tblStaff.getModel().getValueAt(i, 2).toString());
+        txtEmail.setText(tblStaff.getModel().getValueAt(i, 3).toString());
+        txtPassword.setText(tblStaff.getModel().getValueAt(i, 4).toString());
+        txtAddress.setText(tblStaff.getModel().getValueAt(i, 5).toString());
+        txtPhonenumber.setText(tblStaff.getModel().getValueAt(i, 6).toString());
+        cbRole.setSelectedItem(tblStaff.getModel().getValueAt(i, 7).toString());
+        cbSex.setSelectedItem(tblStaff.getModel().getValueAt(i, 8).toString());
+
+    }//GEN-LAST:event_tblStaffMouseClicked
+
+    private void cbSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSortActionPerformed
+        try {
+            BUS_Staff staffBUS = new BUS_Staff();
+            String content = "";
+            if(cbSort.getSelectedIndex()==0)
+            return;
+            switch(cbSort.getSelectedIndex())
+            {
+                case 1: content = "id +0";  break;
+                case 2: content = "firstname"; break;
+                case 3: content = "lastname"; break;
+                case 4: content = "email"; break;
+                case 5: content = "password"; break;
+                case 6: content = "address"; break;
+                case 7: content = "phonenumber"; break;
+                case 8: content = "role"; break;
+                case 9: content = "sex"; break;
+            }
+            ArrayList<DTO_Staff> array = staffBUS.sortBy(content,tgSort.isSelected());
+
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Address");
+            Header.add("Phone Number");
+            Header.add("Role");
+            Header.add("Sex");
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            for(int i=0;i<array.size();i++)
+            {
+                DTO_Staff tempStaff = new DTO_Staff();
+                tempStaff = array.get(i);
+                Vector Object = new Vector();
+                Object.add(tempStaff.getId());
+                Object.add(tempStaff.getFirstname());
+                Object.add(tempStaff.getLastname());
+                Object.add(tempStaff.getEmail());
+                Object.add(tempStaff.getPassword());
+                Object.add(tempStaff.getAddress());
+                Object.add(tempStaff.getPhonenumber());
+                Object.add(tempStaff.getRole());
+                Object.add(tempStaff.getSex());
+                model.addRow(Object);
+            }
+            this.model = model;
+            tblStaff.setModel(model);
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cbSortActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1019,8 +998,6 @@ private DefaultTableModel  model;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
