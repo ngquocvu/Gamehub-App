@@ -73,10 +73,32 @@ public class BUS_Product {
          DAO_Product productDAO = new DAO_Product();
          return productDAO.getPublisherName(id);
      }
-     public String getPublisherID(String name) throws SQLException, ClassNotFoundException
+    public String getPublisherID(String name) throws SQLException, ClassNotFoundException
      {
          DAO_Product productDAO = new DAO_Product();
          return productDAO.getPublisherID(name);
+     }
+     
+    public ArrayList<DTO_Product> dateSearch(String content1,String content2) throws ClassNotFoundException, SQLException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         ArrayList<DTO_Product> array = productDAO.dateSearch(content1,content2);
+         return array;     
+     }
+    
+    
+    public ArrayList<DTO_Product> priceSearch(String content1,String content2) throws ClassNotFoundException, SQLException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         ArrayList<DTO_Product> array = productDAO.priceSearch(content1,content2);
+         return array;     
+     }
+    
+    public ArrayList<DTO_Product> quantitySearch(String content1,String content2) throws ClassNotFoundException, SQLException
+     {
+         DAO_Product productDAO = new DAO_Product();
+         ArrayList<DTO_Product> array = productDAO.quantitySearch(content1,content2);
+         return array;     
      }
 }
 

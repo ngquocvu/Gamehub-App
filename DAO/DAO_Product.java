@@ -219,4 +219,79 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
         conn.close();
         return str;
     }
+    
+    public ArrayList<DTO_Product> dateSearch(String content1 , String content2) throws ClassNotFoundException, SQLException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM products WHERE releaseDate BETWEEN '" + content1 +"' AND '"+ content2+"'";
+        ArrayList<DTO_Product> array = new  ArrayList<DTO_Product>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String name = result.getString(2);
+            String description = result.getString(3);
+            double price = result.getDouble(4);
+            String publisherID = result.getString(5);
+            String genreID = result.getString(6);
+            String platform = result.getString(7);
+            String releaseDate = result.getString(8);
+            int quantity = result.getInt(9);
+            DTO_Product product = new DTO_Product(id, name, description, publisherID, 
+            genreID, platform, releaseDate, quantity, price);    
+            array.add(product);
+        }
+        
+         conn.close();
+         return array;
+    }
+    
+        public ArrayList<DTO_Product> priceSearch(String content1 , String content2) throws ClassNotFoundException, SQLException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM products WHERE price BETWEEN '" + content1 +"' AND '"+ content2+"'";
+        ArrayList<DTO_Product> array = new  ArrayList<DTO_Product>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String name = result.getString(2);
+            String description = result.getString(3);
+            double price = result.getDouble(4);
+            String publisherID = result.getString(5);
+            String genreID = result.getString(6);
+            String platform = result.getString(7);
+            String releaseDate = result.getString(8);
+            int quantity = result.getInt(9);
+            DTO_Product product = new DTO_Product(id, name, description, publisherID, 
+            genreID, platform, releaseDate, quantity, price);    
+            array.add(product);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Product> quantitySearch(String content1, String content2) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM products WHERE quantity BETWEEN '" + content1 +"' AND '"+ content2+"'";
+        ArrayList<DTO_Product> array = new  ArrayList<DTO_Product>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String name = result.getString(2);
+            String description = result.getString(3);
+            double price = result.getDouble(4);
+            String publisherID = result.getString(5);
+            String genreID = result.getString(6);
+            String platform = result.getString(7);
+            String releaseDate = result.getString(8);
+            int quantity = result.getInt(9);
+            DTO_Product product = new DTO_Product(id, name, description, publisherID, 
+            genreID, platform, releaseDate, quantity, price);    
+            array.add(product);
+        }
+        
+         conn.close();
+         return array;
+    }
 }

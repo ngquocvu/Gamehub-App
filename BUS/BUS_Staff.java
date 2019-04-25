@@ -5,7 +5,9 @@
  */
 package BUS;
 
+import DAO.DAO_Product;
 import DAO.DAO_Staff;
+import DTO.DTO_Product;
 import DTO.DTO_Staff;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -60,5 +62,11 @@ public class BUS_Staff {
         return array;
          
      }
-         
+    
+    public ArrayList<DTO_Staff> sexSearch(String content1,String content2) throws ClassNotFoundException, SQLException
+    {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.sexSearch(content1,content2);
+         return array;     
+    }
 }
