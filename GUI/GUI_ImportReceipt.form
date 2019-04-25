@@ -61,7 +61,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel2" max="32767" attributes="0"/>
-          <Component id="jPanel3" alignment="0" pref="1494" max="32767" attributes="0"/>
+          <Component id="jPanel3" alignment="0" pref="1493" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -149,7 +149,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel1" min="-2" pref="179" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jPanel5" pref="1460" max="32767" attributes="0"/>
+                              <Component id="jPanel5" pref="1459" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -562,7 +562,7 @@
                                   <Component id="jRadioButton5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
