@@ -19,13 +19,13 @@ import java.util.logging.Logger;
  *
  * @author phandungtri
  */
-public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
+public class DAO_SaleItem implements DAO_Interface<DTO_OrderItem> {
     private ArrayList<DTO_OrderItem> items;
     
-    public DAO_OrderItem() throws SQLException, ClassNotFoundException {
+    public DAO_SaleItem() throws SQLException, ClassNotFoundException {
         items = new ArrayList<DTO_OrderItem>();
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT orderID,id,products.name,ordereditems.quantity,price FROM ordereditems \nINNER JOIN products WHERE products.id = ordereditems.productID;";
+        String sql = "SELECT orderID,id,products.name,saleordereditems.quantity,price FROM saleordereditems \nINNER JOIN products WHERE products.id = saleordereditems.productID;";
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
         
@@ -71,14 +71,14 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
             stmt.executeUpdate(sql);
             
             sql = "UPDATE products SET ";
-            sql+= "quantity =  quantity - " + previousQuantity + " + " + object.getQuantity() + " WHERE id = " + object.getProductID();
+            sql+= "quantity =  quantity + " + previousQuantity + " - " + object.getQuantity() + " WHERE id = " + object.getProductID();
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_SaleItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DAO_OrderItem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAO_SaleItem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -89,7 +89,7 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
         object.setProductID(productID);
         int quantity = getQuantity(object);
         Connection conn = MySQLConnUtils.getMySQLConnection();    
-        String sql = "DELETE FROM ordereditems WHERE productID = " +"'" + productID + "'" + "AND orderID = " + "'" + orderID + "'";
+        String sql = "DELETE FROM saleordereditems WHERE productID = " +"'" + productID + "'" + "AND orderID = " + "'" + orderID + "'";
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(sql);
         
@@ -104,7 +104,7 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
     {
         ArrayList<String> list = new  ArrayList<String>();
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT productID FROM ordereditems WHERE orderID = " + orderID ;
+        String sql = "SELECT productID FROM saleordereditems WHERE orderID = " + orderID ;
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
         while(result.next())
@@ -118,7 +118,7 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
     public void add(DTO_OrderItem object) throws SQLException, ClassNotFoundException
     { 
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "INSERT INTO ordereditems(orderID,productID,quantity) VALUES";
+        String sql = "INSERT INTO saleordereditems(orderID,productID,quantity) VALUES";
                sql+= "(" + "'" + object.getOrderID() + "'";
                sql+= "," + "'" + object.getProductID() + "'";
                sql+= "," + object.getQuantity() + " )";
@@ -126,7 +126,7 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
         stmt.executeUpdate(sql);
         
         sql = "UPDATE products SET ";
-        sql+= "quantity =  quantity + '" + object.getQuantity() + "' " + "WHERE id = " + object.getProductID();
+        sql+= "quantity =  quantity - '" + object.getQuantity() + "' " + "WHERE id = " + object.getProductID();
         stmt = conn.createStatement();
         stmt.executeUpdate(sql);
         conn.close();
@@ -134,8 +134,8 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
     }
       public ArrayList<DTO_OrderItem> search(String content, String orderID) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT orderid,id,products.name,ordereditems.quantity,price FROM ordereditems\n INNER JOIN products"
-                    +" WHERE products.id = ordereditems.productID AND orderID = "+ "'" + orderID + "'" + " AND (name LIKE " + "'" + content + "%'"
+        String sql = "SELECT orderid,id,products.name,saleordereditems.quantity,price FROM saleordereditems\n INNER JOIN products"
+                    +" WHERE products.id = saleordereditems.productID AND orderID = "+ "'" + orderID + "'" + " AND (name LIKE " + "'" + content + "%'"
                     +" OR price LIKE " + "'" + content + "%'" 
                     +" OR id LIKE " + "'" + content + "%')";
             ArrayList<DTO_OrderItem> items = new  ArrayList<DTO_OrderItem>();
@@ -159,9 +159,9 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
        Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = new String();
         if (isSelected)
-        sql = "SELECT orderID,id,products.name,ordereditems.quantity,price FROM ordereditems\n INNER JOIN products WHERE orderID =" +orderID +" AND products.id = ordereditems.productID\n ORDER BY " + content + " DESC";
+        sql = "SELECT orderID,id,products.name,saleordereditems.quantity,price FROM saleordereditems\n INNER JOIN products WHERE orderID =" +orderID +" AND products.id = saleordereditems.productID\n ORDER BY " + content + " DESC";
         else
-        sql = "SELECT orderID,id,products.name,ordereditems.quantity,price FROM ordereditems\n INNER JOIN products WHERE orderID =" +orderID +" AND products.id = ordereditems.productID\n ORDER BY " + content + " ASC";
+        sql = "SELECT orderID,id,products.name,saleordereditems.quantity,price FROM saleordereditems\n INNER JOIN products WHERE orderID =" +orderID +" AND products.id = saleordereditems.productID\n ORDER BY " + content + " ASC";
         
         ArrayList<DTO_OrderItem> items = new  ArrayList<DTO_OrderItem>();
         Statement stmt = conn.createStatement();
@@ -189,7 +189,7 @@ public class DAO_OrderItem implements DAO_Interface<DTO_OrderItem> {
 
     public int getQuantity(DTO_OrderItem object) throws ClassNotFoundException, SQLException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT quantity FROM ordereditems WHERE productID = " + object.getProductID();
+        String sql = "SELECT quantity FROM saleordereditems WHERE productID = " + object.getProductID();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);   
         int quantity = 0;

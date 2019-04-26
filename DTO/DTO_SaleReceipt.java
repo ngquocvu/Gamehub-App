@@ -12,16 +12,18 @@ import java.sql.Timestamp;
  *
  * @author phandungtri
  */
-public class DTO_ImportReceipt {
+public class DTO_SaleReceipt {
     private String id;
     private String staffID;
+    private String userID;
     private String state;
     private Timestamp createDate;
     
-    public DTO_ImportReceipt() {}
-    public DTO_ImportReceipt(String id, String staffID, Timestamp createDate, String state) {
+    public DTO_SaleReceipt() {}
+    public DTO_SaleReceipt(String id, String staffID,String userID, Timestamp createDate, String state) {
         this.id = id;
         this.staffID = staffID;
+        this.userID = userID;
         this.state = state;
         this.createDate = createDate;
     }
@@ -32,6 +34,10 @@ public class DTO_ImportReceipt {
 
     public String getStaffID() {
         return staffID;
+    }
+
+    public String getUserID() {
+        return userID;
     }
 
 
@@ -57,6 +63,10 @@ public class DTO_ImportReceipt {
 
     public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
     
 }

@@ -121,7 +121,6 @@ private DefaultTableModel  model;
         btnSexSearch = new javax.swing.JButton();
         cbMale = new javax.swing.JCheckBox();
         cbFemale = new javax.swing.JCheckBox();
-
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -281,7 +280,6 @@ private DefaultTableModel  model;
         });
 
         cbSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
-
         lbLastname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbLastname.setText("Last Name");
 

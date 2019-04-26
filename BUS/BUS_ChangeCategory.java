@@ -110,6 +110,9 @@ public class BUS_ChangeCategory {
                     case "Receipt":
                         node = new GUI_ImportReceipt();
                         break;
+                    case "SaleReceipt":
+                        node = new GUI_SaleReceipt();
+                        break;
                     case "Statistics":
                         node = new GUI_Statistics();
                         break;
