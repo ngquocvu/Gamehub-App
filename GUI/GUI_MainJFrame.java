@@ -302,7 +302,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         jlbPublisher.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jlbPublisher.setForeground(new java.awt.Color(255, 255, 255));
         jlbPublisher.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlbPublisher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_conference_26px_1.png"))); // NOI18N
+        jlbPublisher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/outline_supervisor_account_white_18dp.png"))); // NOI18N
         jlbPublisher.setText("PUBLISHER");
         jlbPublisher.setPreferredSize(new java.awt.Dimension(138, 48));
 

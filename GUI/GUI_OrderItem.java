@@ -559,7 +559,7 @@ public void loadOrderItem() throws SQLException, ClassNotFoundException
 
     private void btnGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenreActionPerformed
         try {
-            GUI_ProductTable productTabGUI = new GUI_ProductTable();     
+            GUI_ProductTable productTabGUI = new GUI_ProductTable(1);     
             productTabGUI.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);

@@ -360,20 +360,17 @@
                                           </Group>
                                           <Component id="lbPhonenumber" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
                                               <Component id="lbSex" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="57" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                               <Component id="cbSex" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtPassword" pref="179" max="32767" attributes="0"/>
-                                                  <Component id="txtAddress" max="32767" attributes="0"/>
-                                                  <Component id="txtPhonenumber" max="32767" attributes="0"/>
-                                              </Group>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtPassword" pref="179" max="32767" attributes="0"/>
+                                              <Component id="txtAddress" max="32767" attributes="0"/>
+                                              <Component id="txtPhonenumber" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -402,35 +399,35 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtID" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="txtPassword" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtFirstname" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFirstname" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="lbPhonenumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPhonenumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPhonenumber" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                           <Component id="lbFirstname" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lbLastname" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
-                          <Component id="txtLastname" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtLastname" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="lbAddress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAddress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtAddress" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtEmail" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="lbEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbRole" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbRole" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbRole" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="lbSex" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cbSex" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSex" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
@@ -719,12 +716,24 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSexSearch" min="-2" pref="132" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cbMale" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnSexSearch" min="-2" pref="132" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cbMale" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnRoleSearch" min="-2" pref="132" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cbAdmin" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="cbFemale" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace pref="334" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbStaff" min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="cbFemale" min="-2" pref="101" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="320" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -737,7 +746,13 @@
                           <Component id="cbMale" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbFemale" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnRoleSearch" alignment="3" max="32767" attributes="0"/>
+                          <Component id="cbAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbStaff" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="172" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -767,6 +782,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Male"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMaleActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="cbFemale">
               <Properties>
@@ -775,7 +793,42 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Female"/>
               </Properties>
-
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRoleSearch">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="84" green="13" red="63" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="16" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Role Search"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRoleSearchActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbAdmin">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Admin"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbAdminActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbStaff">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Staff"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

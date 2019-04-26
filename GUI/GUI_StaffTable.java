@@ -6,9 +6,9 @@
 package GUI;
 
 import BUS.BUS_Genre;
-import BUS.BUS_Product;
+import BUS.BUS_Staff;
 import DTO.DTO_Genre;
-import DTO.DTO_Product;
+import DTO.DTO_Staff;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -20,48 +20,48 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author AnhhTuann
  */
-public class GUI_ProductTable extends javax.swing.JFrame {
+public class GUI_StaffTable extends javax.swing.JFrame {
     private static Object txtProID;
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
 private int key;
-    public GUI_ProductTable(int key) throws SQLException, ClassNotFoundException {
+    public GUI_StaffTable(int key) throws SQLException, ClassNotFoundException {
         this.key = key;
-        loadProduct();
+        loadStaff();
         initComponents();
        
     }
 
-    public void loadProduct() throws SQLException, ClassNotFoundException
+    public void loadStaff() throws SQLException, ClassNotFoundException
     {
        Header = new Vector();
-       Header.add("ID");
-       Header.add("Name");
-       Header.add("Price");
-       Header.add("Quantity");
-       Header.add("Publisher");
-       Header.add("Platform");
-       Header.add("Genre");
-       Header.add("Release Year");
-       DefaultTableModel model = new DefaultTableModel(Header,0);
-       BUS_Product ProductBus = new BUS_Product();
-        for(int i=0;i<BUS_Product.array.size();i++)
+        Header.add("ID");
+        Header.add("First Name");
+        Header.add("Last Name");
+        Header.add("Email");
+        Header.add("Password");
+        Header.add("Address");
+        Header.add("Phone Number");
+        Header.add("Role");
+        Header.add("Sex");
+        
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        BUS_Staff staffbus = new BUS_Staff();
+        for(int i=0;i<BUS_Staff.array.size();i++)
         {
-            
-            DTO_Product tempProduct = new DTO_Product(); 
-            tempProduct = BUS_Product.array.get(i);
-            String genreName = ProductBus.getGenreName(tempProduct.getGenreID());
+            DTO_Staff tempStaff = new DTO_Staff(); 
+            tempStaff = BUS_Staff.array.get(i);
             Vector Object = new Vector();
-            Object.add(tempProduct.getId());
-            Object.add(tempProduct.getName());
-            Object.add(tempProduct.getPrice());
-            Object.add(tempProduct.getQuantity());
-            String name = ProductBus.getPublisherName(tempProduct.getPublisherID());
-            Object.add(name);
-            Object.add(tempProduct.getPlatform());
-            Object.add(genreName);
-            Object.add(tempProduct.getReleaseDate());
+            Object.add(tempStaff.getId());
+            Object.add(tempStaff.getFirstname());
+            Object.add(tempStaff.getLastname());
+            Object.add(tempStaff.getEmail());
+            Object.add(tempStaff.getPassword());
+            Object.add(tempStaff.getAddress());
+            Object.add(tempStaff.getPhonenumber());
+            Object.add(tempStaff.getRole());
+            Object.add(tempStaff.getSex());
             model.addRow(Object);
         }
         this.model = model;
@@ -72,13 +72,13 @@ private int key;
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblGenre = new javax.swing.JTable();
+        tblStaff = new javax.swing.JTable();
         btnsellect = new javax.swing.JButton();
 
-        tblGenre.setRowHeight(32);
-        tblGenre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        tblGenre.setModel(model);
-        jScrollPane1.setViewportView(tblGenre);
+        tblStaff.setRowHeight(32);
+        tblStaff.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tblStaff.setModel(model);
+        jScrollPane1.setViewportView(tblStaff);
 
         btnsellect.setText("Sellect");
         btnsellect.addActionListener(new java.awt.event.ActionListener() {
@@ -116,17 +116,17 @@ private int key;
     }//GEN-LAST:event_btnsellectActionPerformed
     public void setSelectOption()
     {   
-        int i = tblGenre.getSelectedRow();
+        int i = tblStaff.getSelectedRow();
         if(key == 1)
-        GUI_OrderItem.txtProID.setText(tblGenre.getModel().getValueAt(i, 0).toString());
+        GUI_ImportReceipt.txtStaffID.setText(tblStaff.getModel().getValueAt(i, 0).toString());
         else if(key == 2)
-        GUI_SaleItem.txtProID.setText(tblGenre.getModel().getValueAt(i, 0).toString());
+        GUI_SaleReceipt.txtStaffID.setText(tblStaff.getModel().getValueAt(i, 0).toString());
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnsellect;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblGenre;
+    private javax.swing.JTable tblStaff;
     // End of variables declaration//GEN-END:variables
 }

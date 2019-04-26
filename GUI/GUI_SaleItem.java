@@ -382,16 +382,16 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         try {
-            DTO_OrderItem orderItem = new DTO_OrderItem();
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
-            orderItem.setOrderID(orderID);
-            orderItem.setProductID(txtProID.getText()); 
-            orderItem.setQuantity(Integer.parseInt(txtQuantity.getText()));
+            DTO_OrderItem saleitem = new DTO_OrderItem();
+            BUS_SaleItem saleitemBUS = new BUS_SaleItem();
+            saleitem.setOrderID(orderID);
+            saleitem.setProductID(txtProID.getText()); 
+            saleitem.setQuantity(Integer.parseInt(txtQuantity.getText()));
             Vector header = new Vector();
             Vector row=new Vector();
                 model.addRow(row);
                 tblSaleItem.setModel(model);
-                orderItemBUS.add(orderItem);
+                saleitemBUS.add(saleitem);
                 loadSaleItem();
                 tblSaleItem.setModel(this.model);
         } catch (SQLException ex) {
@@ -403,12 +403,12 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         try {
-            DTO_OrderItem orderItem = new DTO_OrderItem();
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
-            orderItem.setOrderID(orderID);
-            orderItem.setProductID(txtProID.getText());
-            orderItem.setQuantity(Integer.parseInt(txtQuantity.getText()));
-            orderItemBUS.update(orderItem);
+            DTO_OrderItem saleitem = new DTO_OrderItem();
+            BUS_SaleItem saleitemBUS = new BUS_SaleItem();
+            saleitem.setOrderID(orderID);
+            saleitem.setProductID(txtProID.getText());
+            saleitem.setQuantity(Integer.parseInt(txtQuantity.getText()));
+            saleitemBUS.update(saleitem);
             loadSaleItem();
             tblSaleItem.setModel(this.model);
         } catch (SQLException ex) {
@@ -451,7 +451,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
     private void tblSaleItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSaleItemMouseClicked
         try {
             int i = tblSaleItem.getSelectedRow();
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
+            BUS_SaleItem saleitemBUS = new BUS_SaleItem();
             txtProID.setText(tblSaleItem.getModel().getValueAt(i, 0).toString());
             txtQuantity.setText(tblSaleItem.getModel().getValueAt(i, 3).toString());
         } catch (SQLException ex) {
@@ -506,7 +506,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void cbsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbsortActionPerformed
         try {
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
+            BUS_SaleItem saleitemBUS = new BUS_SaleItem();
             String content = "";
             if(cbsort.getSelectedIndex()==0)
             return;
@@ -517,7 +517,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
                 case 3: content = "price"; break;  
                 case 4: content = "quantity"; break;      
             }
-            ArrayList<DTO_OrderItem> items = orderItemBUS.sortBy(content,tgSort.isSelected(),orderID);
+            ArrayList<DTO_OrderItem> items = saleitemBUS.sortBy(content,tgSort.isSelected(),orderID);
 
        Header = new Vector();
        Header.add("Product ID");
@@ -560,7 +560,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void btnGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenreActionPerformed
         try {
-            GUI_ProductTable productTabGUI = new GUI_ProductTable();     
+            GUI_ProductTable productTabGUI = new GUI_ProductTable(2);     
             productTabGUI.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);

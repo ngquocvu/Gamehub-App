@@ -63,10 +63,17 @@ public class BUS_Staff {
          
      }
     
-    public ArrayList<DTO_Staff> sexSearch(String content1,String content2) throws ClassNotFoundException, SQLException
+    public ArrayList<DTO_Staff> sexSearch(String content) throws ClassNotFoundException, SQLException
     {
          DAO_Staff staffDAO = new DAO_Staff();
-         ArrayList<DTO_Staff> array = staffDAO.sexSearch(content1,content2);
+         ArrayList<DTO_Staff> array = staffDAO.sexSearch(content);
+         return array;     
+    }
+    
+        public ArrayList<DTO_Staff> roleSearch(String content) throws ClassNotFoundException, SQLException
+    {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.roleSearch(content);
          return array;     
     }
 }

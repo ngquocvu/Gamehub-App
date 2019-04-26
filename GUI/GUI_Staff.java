@@ -121,6 +121,10 @@ private DefaultTableModel  model;
         btnSexSearch = new javax.swing.JButton();
         cbMale = new javax.swing.JCheckBox();
         cbFemale = new javax.swing.JCheckBox();
+        btnRoleSearch = new javax.swing.JButton();
+        cbAdmin = new javax.swing.JCheckBox();
+        cbStaff = new javax.swing.JCheckBox();
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -280,6 +284,7 @@ private DefaultTableModel  model;
         });
 
         cbSex.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
+
         lbLastname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbLastname.setText("Last Name");
 
@@ -409,18 +414,16 @@ private DefaultTableModel  model;
                                         .addGap(18, 18, 18)
                                         .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(lbPhonenumber))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(lbSex)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                                        .addGap(26, 26, 26)
                                         .addComponent(cbSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                            .addComponent(txtAddress)
-                                            .addComponent(txtPhonenumber)))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                        .addComponent(txtAddress)
+                                        .addComponent(txtPhonenumber))))
                             .addComponent(lbPassword))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -439,29 +442,29 @@ private DefaultTableModel  model;
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbPassword)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbPhonenumber)
-                        .addComponent(txtPhonenumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPhonenumber, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbFirstname))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbAddress)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbEmail)
                     .addComponent(lbRole)
-                    .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbSex)
-                    .addComponent(cbSex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbSex, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -481,9 +484,35 @@ private DefaultTableModel  model;
 
         cbMale.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         cbMale.setText("Male");
+        cbMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMaleActionPerformed(evt);
+            }
+        });
 
         cbFemale.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         cbFemale.setText("Female");
+
+        btnRoleSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnRoleSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnRoleSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnRoleSearch.setText("Role Search");
+        btnRoleSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRoleSearchActionPerformed(evt);
+            }
+        });
+
+        cbAdmin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cbAdmin.setText("Admin");
+        cbAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAdminActionPerformed(evt);
+            }
+        });
+
+        cbStaff.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cbStaff.setText("Staff");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -491,12 +520,20 @@ private DefaultTableModel  model;
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSexSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cbMale)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnSexSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbMale))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnRoleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbAdmin)))
                 .addGap(39, 39, 39)
-                .addComponent(cbFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -506,7 +543,12 @@ private DefaultTableModel  model;
                     .addComponent(btnSexSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbMale)
                     .addComponent(cbFemale))
-                .addGap(241, 241, 241))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRoleSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbAdmin)
+                    .addComponent(cbStaff))
+                .addGap(172, 172, 172))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -637,7 +679,8 @@ private DefaultTableModel  model;
     private void btnSexSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSexSearchActionPerformed
        try {
             BUS_Staff StaffBus = new BUS_Staff();
-            ArrayList<DTO_Staff> array = StaffBus.sexSearch(cbMale.getText(),cbMale.getText());
+            if (cbMale.isSelected()) {
+            ArrayList<DTO_Staff> array = StaffBus.sexSearch(cbMale.getText());
             Header = new Vector();
             Header.add("ID");
             Header.add("First Name");
@@ -667,6 +710,40 @@ private DefaultTableModel  model;
             }
             this.model = model;
             tblStaff.setModel(model);
+            }
+            else if(cbFemale.isSelected()) {
+            ArrayList<DTO_Staff> array = StaffBus.sexSearch(cbFemale.getText());
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Address");
+            Header.add("Phone Number");
+            Header.add("Role");
+            Header.add("Sex");
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            for(int i=0;i<array.size();i++)
+            {
+                DTO_Staff tempStaff = new DTO_Staff();
+                tempStaff = array.get(i);
+                Vector Object = new Vector();
+                Object.add(tempStaff.getId());
+                Object.add(tempStaff.getFirstname());
+                Object.add(tempStaff.getLastname());
+                Object.add(tempStaff.getEmail());
+                Object.add(tempStaff.getPassword());
+                Object.add(tempStaff.getAddress());
+                Object.add(tempStaff.getPhonenumber());
+                Object.add(tempStaff.getRole());
+                Object.add(tempStaff.getSex());
+                model.addRow(Object);
+            }
+            this.model = model;
+            tblStaff.setModel(model);
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -888,6 +965,90 @@ private DefaultTableModel  model;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
 
+    private void cbMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMaleActionPerformed
+
+    private void btnRoleSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoleSearchActionPerformed
+    try {
+        BUS_Staff StaffBus = new BUS_Staff();
+        if (cbAdmin.isSelected()) {
+            ArrayList<DTO_Staff> array = StaffBus.roleSearch(cbAdmin.getText());
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Address");
+            Header.add("Phone Number");
+            Header.add("Role");
+            Header.add("Sex");
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            for(int i=0;i<array.size();i++)
+            {
+                DTO_Staff tempStaff = new DTO_Staff();
+                tempStaff = array.get(i);
+                Vector Object = new Vector();
+                Object.add(tempStaff.getId());
+                Object.add(tempStaff.getFirstname());
+                Object.add(tempStaff.getLastname());
+                Object.add(tempStaff.getEmail());
+                Object.add(tempStaff.getPassword());
+                Object.add(tempStaff.getAddress());
+                Object.add(tempStaff.getPhonenumber());
+                Object.add(tempStaff.getRole());
+                Object.add(tempStaff.getSex());
+                model.addRow(Object);
+            }
+            this.model = model;
+            tblStaff.setModel(model);
+        }
+        else if(cbStaff.isSelected()) {
+            ArrayList<DTO_Staff> array = StaffBus.roleSearch(cbStaff.getText());
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Address");
+            Header.add("Phone Number");
+            Header.add("Role");
+            Header.add("Sex");
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            for(int i=0;i<array.size();i++)
+            {
+                DTO_Staff tempStaff = new DTO_Staff();
+                tempStaff = array.get(i);
+                Vector Object = new Vector();
+                Object.add(tempStaff.getId());
+                Object.add(tempStaff.getFirstname());
+                Object.add(tempStaff.getLastname());
+                Object.add(tempStaff.getEmail());
+                Object.add(tempStaff.getPassword());
+                Object.add(tempStaff.getAddress());
+                Object.add(tempStaff.getPhonenumber());
+                Object.add(tempStaff.getRole());
+                Object.add(tempStaff.getSex());
+                model.addRow(Object);
+            }
+            this.model = model;
+            tblStaff.setModel(model);
+        }
+            
+           } catch (SQLException ex) {
+        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+    } 
+
+    }//GEN-LAST:event_btnRoleSearchActionPerformed
+
+    private void cbAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbAdminActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -895,14 +1056,17 @@ private DefaultTableModel  model;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnRestart;
+    private javax.swing.JButton btnRoleSearch;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSexSearch;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox cbAdmin;
     private javax.swing.JCheckBox cbFemale;
     private javax.swing.JCheckBox cbMale;
     private javax.swing.JComboBox cbRole;
     private javax.swing.JComboBox cbSex;
     private javax.swing.JComboBox cbSort;
+    private javax.swing.JCheckBox cbStaff;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

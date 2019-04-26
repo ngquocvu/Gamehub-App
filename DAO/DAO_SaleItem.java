@@ -64,7 +64,7 @@ public class DAO_SaleItem implements DAO_Interface<DTO_OrderItem> {
             System.out.print(previousQuantity);
             System.out.print(object.getQuantity());
             Connection conn = MySQLConnUtils.getMySQLConnection();
-            String sql = "UPDATE orderedItems SET ";
+            String sql = "UPDATE saleordereditems SET ";
             sql+= "ProductID = " + "'" + object.getProductID()+ "'";
             sql+= "," + "quantity = " + "'" + object.getQuantity()+ "'" + " WHERE productID= " + "'" + object.getProductID()+ "'" + "AND orderID = " + "'" + object.getOrderID() + "'";
             Statement stmt = conn.createStatement();
@@ -94,7 +94,7 @@ public class DAO_SaleItem implements DAO_Interface<DTO_OrderItem> {
         stmt.executeUpdate(sql);
         
         sql = "UPDATE products SET ";
-        sql+= "quantity =  quantity - " + quantity + " WHERE id = " + object.getProductID();
+        sql+= "quantity =  quantity + " + quantity + " WHERE id = " + object.getProductID();
         stmt = conn.createStatement();
         stmt.executeUpdate(sql);
         conn.close();
