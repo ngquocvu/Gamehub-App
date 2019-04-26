@@ -114,7 +114,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/baseline_receipt_white_24dp.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Import Receipt"/>
+            <Property name="text" type="java.lang.String" value="Sale Receipt"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
@@ -146,7 +146,7 @@
                                   <Component id="tgSort" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Component id="cbsort" min="-2" pref="116" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="525" max="32767" attributes="0"/>
                                   <Component id="jLabel1" min="-2" pref="179" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel5" pref="1460" max="32767" attributes="0"/>
@@ -279,16 +279,27 @@
                                       <Component id="txtStaffID" min="-2" pref="183" max="-2" attributes="0"/>
                                       <Component id="txtID" alignment="1" min="-2" pref="183" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="141" max="32767" attributes="0"/>
                                   <Component id="tgProcess" min="-2" pref="248" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jPanel4" pref="347" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="btnAddPro" min="-2" pref="248" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbStaffID1" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                                  <Component id="txtUserID" min="-2" pref="183" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -307,9 +318,14 @@
                               <Component id="lbStaffID" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tgProcess" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtUserID" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="lbStaffID1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jPanel4" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel4" min="-2" pref="125" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -524,6 +540,16 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tgProcessActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JTextField" name="txtUserID">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lbStaffID1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="15" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="User ID"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel7">
@@ -563,7 +589,7 @@
                                   <Component id="jRadioButton5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

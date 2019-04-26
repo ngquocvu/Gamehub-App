@@ -58,9 +58,8 @@ public class DAO_Statistics {
         while (result.next()) {
             String id = result.getString(1);
             String staffID = result.getString(2);
-            String userID = result.getString(3);
-            Timestamp createDate =result.getTimestamp(4);
-            String state = result.getString(6);
+            Timestamp createDate =result.getTimestamp(3);
+            String state = result.getString(5);
             DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);
             
             receipts.add(receipt);

@@ -6,9 +6,9 @@
 
 package GUI;
 
-import DTO.DTO_ImportReceipt;
-import BUS.BUS_ImportReceipt;
-import BUS.BUS_OrderItem;
+import DTO.DTO_SaleReceipt;
+import BUS.BUS_SaleReceipt;
+import BUS.BUS_SaleItem;
 import BUS.BUS_Product;
 import BUS.BUS_Publisher;
 import DTO.DTO_OrderItem;
@@ -30,12 +30,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Vu Nguyen
  */
-public class GUI_ImportReceipt extends javax.swing.JPanel {
+public class GUI_SaleReceipt extends javax.swing.JPanel {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
 private DefaultTableModel  orderModel;
-    public GUI_ImportReceipt() throws SQLException, ClassNotFoundException {
+    public GUI_SaleReceipt() throws SQLException, ClassNotFoundException {
        
        loadReceipt();
        defaultDetailModel();
@@ -57,26 +57,28 @@ private DefaultTableModel  orderModel;
     {
        Header = new Vector();
        Header.add("ID");
-       Header.add("Staff ID");
+       Header.add("Staff ID");       
+       Header.add("User ID");
        Header.add("Create at");
        Header.add("State");
        DefaultTableModel model = new DefaultTableModel(Header,0);
-       BUS_ImportReceipt ReceiptBus = new BUS_ImportReceipt();
-        for(int i=0;i<BUS_ImportReceipt.array.size();i++)
+       BUS_SaleReceipt ReceiptBus = new BUS_SaleReceipt();
+        for(int i=0;i<BUS_SaleReceipt.array.size();i++)
         {
-            DTO_ImportReceipt tempReceipt = new DTO_ImportReceipt(); 
+            DTO_SaleReceipt tempReceipt = new DTO_SaleReceipt(); 
             BUS_Product productBUS = new BUS_Product();
-            tempReceipt = BUS_ImportReceipt.array.get(i);
+            tempReceipt = BUS_SaleReceipt.array.get(i);
             Vector Object = new Vector();
             Object.add(tempReceipt.getId());
             Object.add(tempReceipt.getStaffID());
+            Object.add(tempReceipt.getUserID());
             Object.add(tempReceipt.getCreateDate());
             Object.add(tempReceipt.getState());
             model.addRow(Object);
         }
         this.model = model;
     }
-    public void loadOrderItem(String id) throws SQLException, ClassNotFoundException
+    public void loadSaleItem(String id) throws SQLException, ClassNotFoundException
     {
        Header = new Vector();
        Header.add("Product ID");
@@ -84,12 +86,12 @@ private DefaultTableModel  orderModel;
        Header.add("Price");
        Header.add("Quantity");
        DefaultTableModel model = new DefaultTableModel(Header,0);
-       BUS_OrderItem OrderItemBus = new BUS_OrderItem();
+       BUS_SaleItem SaleItemBus = new BUS_SaleItem();
         ArrayList<DTO_OrderItem> items = new ArrayList<DTO_OrderItem>();
-        items=OrderItemBus.getByOrderID(id);
+        items=SaleItemBus.getByOrderID(id);
         for(int i=0;i<items.size();i++)
         {
-            DTO_OrderItem tempOrderItem = new DTO_OrderItem(); 
+            DTO_OrderItem tempOrderItem = new DTO_OrderItem();
             tempOrderItem = items.get(i);
             Vector Object = new Vector();
             Object.add(tempOrderItem.getProductID());
@@ -103,9 +105,9 @@ private DefaultTableModel  orderModel;
     }
     
   
-    public DTO_ImportReceipt findItem(String id)
+    public DTO_SaleReceipt findItem(String id)
     {
-        for(DTO_ImportReceipt receipt : BUS_ImportReceipt.array)
+        for(DTO_SaleReceipt receipt : BUS_SaleReceipt.array)
          {
             if(receipt.getId().equalsIgnoreCase(id))
                 return receipt;
@@ -138,6 +140,8 @@ private DefaultTableModel  orderModel;
         btnEdit = new javax.swing.JButton();
         btnAddPro = new javax.swing.JButton();
         tgProcess = new javax.swing.JToggleButton();
+        txtUserID = new javax.swing.JTextField();
+        lbStaffID1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         btnAdSearch = new javax.swing.JButton();
         txtAdSearch = new javax.swing.JTextField();
@@ -184,7 +188,7 @@ private DefaultTableModel  orderModel;
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_receipt_white_24dp.png"))); // NOI18N
-        jLabel2.setText("Import Receipt");
+        jLabel2.setText("Sale Receipt");
         jLabel2.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -340,6 +344,9 @@ private DefaultTableModel  orderModel;
             }
         });
 
+        lbStaffID1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lbStaffID1.setText("User ID");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -355,13 +362,21 @@ private DefaultTableModel  orderModel;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 141, Short.MAX_VALUE)
                         .addComponent(tgProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 347, Short.MAX_VALUE)
-                        .addGap(99, 99, 99)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnAddPro, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbStaffID1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,9 +391,13 @@ private DefaultTableModel  orderModel;
                     .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbStaffID)
                     .addComponent(tgProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbStaffID1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
@@ -480,7 +499,7 @@ private DefaultTableModel  orderModel;
                         .addComponent(jRadioButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButton3)
-                        .addGap(0, 13, Short.MAX_VALUE))))
+                        .addGap(0, 14, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -628,7 +647,7 @@ private DefaultTableModel  orderModel;
                                 .addComponent(tgSort)
                                 .addGap(27, 27, 27)
                                 .addComponent(cbsort, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 525, Short.MAX_VALUE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1460, Short.MAX_VALUE))
                         .addGap(10, 10, 10)))
@@ -689,22 +708,24 @@ private DefaultTableModel  orderModel;
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
     try {
-        BUS_ImportReceipt ReceiptBus = new BUS_ImportReceipt();
-        ArrayList<DTO_ImportReceipt> array = ReceiptBus.search(txtSearch.getText());
+        BUS_SaleReceipt ReceiptBus = new BUS_SaleReceipt();
+        ArrayList<DTO_SaleReceipt> array = ReceiptBus.search(txtSearch.getText());
         Header = new Vector();
        Header.add("ID");
-       Header.add("Staff ID");
+       Header.add("Staff ID");       
+       Header.add("User ID");       
        Header.add("Create at");
        Header.add("State");
         DefaultTableModel model = new DefaultTableModel(Header,0);
         BUS_Product productBUS = new BUS_Product();
         for(int i=0;i<array.size();i++)
         {
-            DTO_ImportReceipt tempReceipt = new DTO_ImportReceipt(); 
+            DTO_SaleReceipt tempReceipt = new DTO_SaleReceipt(); 
             tempReceipt = array.get(i);
             Vector Object = new Vector();
             Object.add(tempReceipt.getId());
             Object.add(tempReceipt.getStaffID());
+            Object.add(tempReceipt.getUserID());
             Object.add(tempReceipt.getCreateDate());
             Object.add(tempReceipt.getState());
             model.addRow(Object);
@@ -712,9 +733,9 @@ private DefaultTableModel  orderModel;
         this.model = model;
         tblReceipt.setModel(model);
     } catch (SQLException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
     }
         
     }//GEN-LAST:event_btnSearchActionPerformed
@@ -724,15 +745,15 @@ private DefaultTableModel  orderModel;
             loadReceipt();
             tblReceipt.setModel(this.model);
         } catch (SQLException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRestartActionPerformed
 
     private void cbsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbsortActionPerformed
       try { 
-        BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
+        BUS_SaleReceipt receiptBUS = new BUS_SaleReceipt();
         String content = "";
         if(cbsort.getSelectedIndex()==0)
         return;
@@ -740,24 +761,27 @@ private DefaultTableModel  orderModel;
        {
            case 1: content = "id +0";  break;
            case 2: content = "staffID"; break; 
-           case 3: content = "createdAt"; break;  
-           case 4: content = "state"; break;   
+           case 3: content = "userID"; break;     
+           case 4: content = "createdAt"; break;  
+           case 5: content = "state"; break;   
        }
-       ArrayList<DTO_ImportReceipt> array = receiptBUS.sortBy(content,tgSort.isSelected());
+       ArrayList<DTO_SaleReceipt> array = receiptBUS.sortBy(content,tgSort.isSelected());
        
         Header = new Vector();
         Header.add("ID");
-        Header.add("Staff ID");
+        Header.add("Staff ID");       
+        Header.add("User ID");
         Header.add("Create at");
         Header.add("State");
         DefaultTableModel model = new DefaultTableModel(Header,0);
         for(int i=0;i<array.size();i++)
         {
-            DTO_ImportReceipt tempReceipt = new DTO_ImportReceipt(); 
+            DTO_SaleReceipt tempReceipt = new DTO_SaleReceipt(); 
             tempReceipt = array.get(i);
             Vector Object = new Vector();
             Object.add(tempReceipt.getId());
             Object.add(tempReceipt.getStaffID());
+            Object.add(tempReceipt.getUserID());
             Object.add(tempReceipt.getCreateDate());
             Object.add(tempReceipt.getState());
             model.addRow(Object);
@@ -766,9 +790,9 @@ private DefaultTableModel  orderModel;
         tblReceipt.setModel(model);
       }
       catch (SQLException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cbsortActionPerformed
 
@@ -779,19 +803,20 @@ private DefaultTableModel  orderModel;
     private void tblReceiptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReceiptMouseClicked
         try {
             int i = tblReceipt.getSelectedRow();
-            BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
+            BUS_SaleReceipt receiptBUS = new BUS_SaleReceipt();
             BUS_Product productBUS = new BUS_Product();
-            txtID.setText(tblReceipt.getModel().getValueAt(i, 0).toString());
+            txtID.setText(tblReceipt.getModel().getValueAt(i, 0).toString()); 
             txtStaffID.setText(tblReceipt.getModel().getValueAt(i, 1).toString());
-            loadOrderItem(tblReceipt.getModel().getValueAt(i, 0).toString());
+            txtUserID.setText(tblReceipt.getModel().getValueAt(i, 2).toString());
+            loadSaleItem(tblReceipt.getModel().getValueAt(i, 0).toString());
             if(tblReceipt.getModel().getValueAt(i, 3).toString().equals("Processing"))
             tgProcess.setSelected(false);
             else
              tgProcess.setSelected(true);    
         } catch (SQLException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tblReceiptMouseClicked
 
@@ -825,17 +850,18 @@ private DefaultTableModel  orderModel;
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         try {
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt();
-            BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt();
+            BUS_SaleReceipt receiptBUS = new BUS_SaleReceipt();
             receipt.setId(txtID.getText());
             receipt.setStaffID(txtStaffID.getText());
+            receipt.setUserID(txtUserID.getText());
             receiptBUS.update(receipt);
             loadReceipt();
             tblReceipt.setModel(this.model);
         } catch (SQLException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -852,14 +878,14 @@ private DefaultTableModel  orderModel;
         if(dialogResult == JOptionPane.YES_OPTION)
         {
             try {
-                BUS_ImportReceipt ReceiptBus = new BUS_ImportReceipt();
+                BUS_SaleReceipt ReceiptBus = new BUS_SaleReceipt();
                 ReceiptBus.delete(id);
                 loadReceipt();
                 tblReceipt.setModel(this.model);
             } catch (SQLException ex) {
-                Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         else
@@ -878,10 +904,11 @@ private DefaultTableModel  orderModel;
             Date date= new Date();
             long time = date.getTime();
             Timestamp ts = new Timestamp(time);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt();
-            BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt();
+            BUS_SaleReceipt receiptBUS = new BUS_SaleReceipt();
             receipt.setId(txtID.getText());
             receipt.setStaffID(txtStaffID.getText());
+            receipt.setUserID(txtUserID.getText());
             receipt.setState("Processing");
             receipt.setCreateDate(ts);
             Vector header = new Vector();
@@ -904,9 +931,9 @@ private DefaultTableModel  orderModel;
             loadReceipt();
             tblReceipt.setModel(this.model);
         } catch (SQLException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -920,19 +947,19 @@ private DefaultTableModel  orderModel;
 
     private void btnAddProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProActionPerformed
     try {
-        GUI_OrderItem orderItemGUI = new GUI_OrderItem(txtID.getText());
+        GUI_SaleItem orderItemGUI = new GUI_SaleItem(txtID.getText());
         orderItemGUI.setVisible(true);
     } catch (SQLException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_btnAddProActionPerformed
 
     private void tgProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgProcessActionPerformed
     try {
-        DTO_ImportReceipt receipt = new DTO_ImportReceipt();
-        BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
+        DTO_SaleReceipt receipt = new DTO_SaleReceipt();
+        BUS_SaleReceipt receiptBUS = new BUS_SaleReceipt();
         receipt.setId(txtID.getText());
         if(tgProcess.isSelected())
         {
@@ -947,9 +974,9 @@ private DefaultTableModel  orderModel;
         loadReceipt();
         tblReceipt.setModel(this.model);
     } catch (SQLException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(GUI_SaleReceipt.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_tgProcessActionPerformed
 
@@ -989,6 +1016,7 @@ private DefaultTableModel  orderModel;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbStaffID;
+    private javax.swing.JLabel lbStaffID1;
     private javax.swing.JTable tblImportDetail;
     private javax.swing.JTable tblReceipt;
     private javax.swing.JToggleButton tgProcess;
@@ -997,5 +1025,6 @@ private DefaultTableModel  orderModel;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtStaffID;
+    private javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
 }
