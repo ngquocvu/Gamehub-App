@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package DAO;
-import DTO.DTO_ImportReceipt;
+import DTO.DTO_StatisticReceiptInfo;
 import DTO.DTO_Product;
-import java.util.Date;
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,22 +47,74 @@ public class DAO_Statistics {
         return products;
     }
     
-    public ArrayList<DTO_ImportReceipt> getImportReceipts(String date /*yyyy-MM-dd*/) throws 
+    public ArrayList<DTO_Product> getReceiptByProduct() throws 
             SQLException, ClassNotFoundException {
-        ArrayList<DTO_ImportReceipt> receipts = new ArrayList<DTO_ImportReceipt>();
+        ArrayList<DTO_Product> receipts = new ArrayList<DTO_Product>();
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM orders WHERE DATE(createdAt) = " + "'" + date + "'";
+        String sql = "SELECT productID,name,SUM(ordereditems.quantity),price FROM ordereditems INNER JOIN products ON id = productID \n GROUP BY productID";
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
 
         while (result.next()) {
-            String id = result.getString(1);
-            String staffID = result.getString(2);
-            Timestamp createDate =result.getTimestamp(3);
-            String state = result.getString(5);
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);
+            DTO_Product product = new DTO_Product();
+           product.setId(result.getString(1));
+           product.setName(result.getString(2));
+           product.setQuantity(Integer.parseInt(result.getString(3)));
+           product.setPrice(Double.parseDouble(result.getString(4)));
+        
             
-            receipts.add(receipt);
+            receipts.add(product);
+        }
+        conn.close();
+        return receipts;
+    }
+    
+    public ArrayList<DTO_StatisticReceiptInfo> getReceiptByProductAndStaff() throws 
+            SQLException, ClassNotFoundException {
+        ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql =    "SELECT products.name,staffs.firstname,products.price,SUM(ordereditems.quantity) FROM orders\n" +
+                        "INNER JOIN ordereditems ON orderID = id\n" +
+                        "INNER JOIN products ON products.id = ordereditems.productID \n" +
+                        "INNER JOIN staffs ON staffID = staffs.id \n" +
+                        "GROUP BY productID,staffID";
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+
+        while (result.next()) {
+           DTO_StatisticReceiptInfo info = new DTO_StatisticReceiptInfo();
+           info.setProductName(result.getString(1));
+           info.setStaffName(result.getString(2));
+           info.setPrice(Double.parseDouble(result.getString(3)));
+           info.setQuantity(Integer.parseInt(result.getString(4)));      
+           receipts.add(info);
+        }
+        conn.close();
+        return receipts;
+    }
+    
+       public ArrayList<DTO_StatisticReceiptInfo> getReceiptByProductAndStaffAndDate() throws 
+            SQLException, ClassNotFoundException {
+        ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql =    "SELECT orders.updatedAt,products.name,staffs.firstname,products.price,SUM(ordereditems.quantity) FROM orders\n" +
+                        "INNER JOIN ordereditems ON orderID = id\n" +
+                        "INNER JOIN products ON products.id = ordereditems.productID \n" +
+                        "INNER JOIN staffs ON staffID = staffs.id \n" +
+                        "GROUP BY productID,staffID,orders.updatedAt";
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+
+        while (result.next()) {
+           DTO_StatisticReceiptInfo info = new DTO_StatisticReceiptInfo();
+           Timestamp ts=Timestamp.valueOf(result.getString(1));
+           Date date=new Date(ts.getTime());    
+           info.setDate(date);
+           info.setProductName(result.getString(2));
+           info.setStaffName(result.getString(3));
+           info.setPrice(Double.parseDouble(result.getString(4)));
+           info.setQuantity(Integer.parseInt(result.getString(5)));      
+           receipts.add(info);
         }
         conn.close();
         return receipts;

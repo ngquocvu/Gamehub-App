@@ -181,8 +181,8 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
             jpnStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnStaffLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addComponent(jlbStaff, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpnStaffLayout.setVerticalGroup(
             jpnStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

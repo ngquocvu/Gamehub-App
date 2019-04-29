@@ -60,8 +60,8 @@
           <Component id="jPanel2" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jPanel3" min="-2" pref="1475" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="jPanel3" min="-2" pref="1485" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,8 +70,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel3" min="-2" pref="949" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel3" pref="962" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,52 +131,51 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane3" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="btnRestart" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnSearch" min="-2" pref="99" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtSearch" min="-2" pref="247" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="tgSort" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                          <Component id="cbSort" min="-2" pref="146" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel7" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
+              <Group type="102" attributes="0">
+                  <Component id="btnRestart" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="btnSearch" min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Component id="txtSearch" min="-2" pref="247" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="tgSort" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cbSort" min="-2" pref="158" max="-2" attributes="0"/>
+              </Group>
+              <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tgSort" alignment="3" max="32767" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="tgSort" alignment="3" max="32767" attributes="0"/>
-                          <Component id="cbSort" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="txtSearch" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="btnSearch" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtSearch" alignment="0" max="32767" attributes="0"/>
-                      <Component id="btnSearch" max="32767" attributes="0"/>
-                      <Component id="btnRestart" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbSort" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="btnRestart" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane3" min="-2" pref="520" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" min="-2" pref="481" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jPanel1" max="32767" attributes="0"/>
                       <Component id="jPanel7" max="32767" attributes="0"/>
-                      <Component id="jPanel1" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="846" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -335,10 +333,10 @@
                               </Group>
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtLastname" pref="185" max="32767" attributes="0"/>
-                                  <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="185" max="32767" attributes="0"/>
                                   <Component id="txtFirstname" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtID" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtLastname" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtID" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="lbFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -355,23 +353,22 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="lbRole" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="cbRole" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="lbPhonenumber" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                               <Component id="lbSex" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="cbSex" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtPassword" pref="179" max="32767" attributes="0"/>
-                                              <Component id="txtAddress" max="32767" attributes="0"/>
-                                              <Component id="txtPhonenumber" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="txtPassword" pref="179" max="32767" attributes="0"/>
+                                          <Component id="txtAddress" max="32767" attributes="0"/>
+                                          <Component id="txtPhonenumber" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="lbPassword" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -380,10 +377,10 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="34" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -405,13 +402,11 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtFirstname" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="lbPhonenumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPhonenumber" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lbFirstname" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtFirstname" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="lbPhonenumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPhonenumber" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="lbFirstname" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -429,9 +424,9 @@
                           <Component id="lbSex" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbSex" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -583,14 +578,13 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnRemove" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnReset" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnEdit" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                               <Component id="btnAdd" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="23" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -733,7 +727,7 @@
                           <Component id="cbStaff" min="-2" pref="101" max="-2" attributes="0"/>
                           <Component id="cbFemale" min="-2" pref="101" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="320" max="32767" attributes="0"/>
+                      <EmptySpace pref="342" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

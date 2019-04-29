@@ -299,7 +299,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                           <Component id="lbFirstname" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
@@ -308,38 +308,30 @@
                                       <Component id="lbLastname" alignment="1" min="-2" pref="84" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtID" min="-2" pref="91" max="-2" attributes="0"/>
-                                      <Component id="txtFirstname" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
-                                      <Component id="txtLastname" min="-2" pref="225" max="-2" attributes="0"/>
+                                      <Component id="txtFirstname" alignment="0" pref="199" max="32767" attributes="0"/>
+                                      <Component id="txtLastname" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbPhone" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtPhone" min="-2" pref="225" max="-2" attributes="0"/>
-                                              <Component id="txtEmail" min="-2" pref="199" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lbPassword" min="-2" pref="82" max="-2" attributes="0"/>
-                                          <EmptySpace pref="45" max="32767" attributes="0"/>
-                                          <Component id="txtPassword" min="-2" pref="225" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="lbPhone" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lbPassword" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtPassword" pref="225" max="32767" attributes="0"/>
+                                      <Component id="txtPhone" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="txtEmail" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -375,7 +367,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jPanel4" min="-2" pref="62" max="-2" attributes="0"/>
-                          <EmptySpace pref="91" max="32767" attributes="0"/>
+                          <EmptySpace pref="56" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -623,7 +615,7 @@
                                   <Component id="jRadioButton7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Component id="jRadioButton6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="232" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="226" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -646,7 +638,7 @@
                               <Component id="jRadioButton7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jRadioButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="335" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

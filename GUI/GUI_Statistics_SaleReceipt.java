@@ -34,11 +34,6 @@ public class GUI_Statistics_SaleReceipt extends javax.swing.JFrame {
        Header.add("State");
        model = new DefaultTableModel(Header,0);
               initComponents();
-       txtProductID.setEditable(false);
-       txtUserID.setEditable(false);
-       txtStaffID.setEditable(false);
-       txtDateFrom.setEditable(false);
-       txtDateTo.setEditable(false);
  
         
     }
@@ -92,22 +87,6 @@ public void setSaleReceiptQuantity() throws SQLException, ClassNotFoundException
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         Wrapper = new javax.swing.JPanel();
-        txtDateFrom = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtDateTo = new javax.swing.JTextField();
-        txtStaffID = new javax.swing.JTextField();
-        txtProductID = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtUserID = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
-        checkProductID = new javax.swing.JCheckBox();
-        checkDate = new javax.swing.JCheckBox();
-        checkStaffID = new javax.swing.JCheckBox();
-        checkUserID = new javax.swing.JCheckBox();
         lbQuantity = new javax.swing.JLabel();
         lbTotal = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
@@ -127,186 +106,15 @@ public void setSaleReceiptQuantity() throws SQLException, ClassNotFoundException
         Wrapper.setToolTipText("");
         Wrapper.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        txtDateFrom.setMaximumSize(null);
-        txtDateFrom.setMinimumSize(null);
-        txtDateFrom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDateFromActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("TO");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("(YYYY-MM-DD)");
-
-        txtDateTo.setMaximumSize(null);
-        txtDateTo.setMinimumSize(null);
-        txtDateTo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDateToActionPerformed(evt);
-            }
-        });
-
-        txtStaffID.setMaximumSize(null);
-        txtStaffID.setMinimumSize(null);
-        txtStaffID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStaffIDActionPerformed(evt);
-            }
-        });
-
-        txtProductID.setMaximumSize(null);
-        txtProductID.setMinimumSize(null);
-        txtProductID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProductIDActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("PRODUCT ID");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("USER ID");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("STAFF ID");
-
-        txtUserID.setMaximumSize(null);
-        txtUserID.setMinimumSize(null);
-        txtUserID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserIDActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("FROM");
-
-        btnAdd.setBackground(new java.awt.Color(99, 19, 132));
-        btnAdd.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("GET");
-        btnAdd.setFocusTraversalPolicyProvider(true);
-        btnAdd.setMaximumSize(new java.awt.Dimension(79, 25));
-        btnAdd.setMinimumSize(new java.awt.Dimension(79, 25));
-        btnAdd.setPreferredSize(new java.awt.Dimension(79, 25));
-        btnAdd.setVerifyInputWhenFocusTarget(false);
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
-        checkProductID.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                checkProductIDMouseClicked(evt);
-            }
-        });
-        checkProductID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkProductIDActionPerformed(evt);
-            }
-        });
-
-        checkDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkDateActionPerformed(evt);
-            }
-        });
-
-        checkStaffID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkStaffIDActionPerformed(evt);
-            }
-        });
-
-        checkUserID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkUserIDActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout WrapperLayout = new javax.swing.GroupLayout(Wrapper);
         Wrapper.setLayout(WrapperLayout);
         WrapperLayout.setHorizontalGroup(
             WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(WrapperLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtStaffID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtProductID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WrapperLayout.createSequentialGroup()
-                        .addComponent(txtDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtUserID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(WrapperLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(checkDate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(WrapperLayout.createSequentialGroup()
-                        .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkProductID)
-                            .addComponent(checkStaffID)
-                            .addComponent(checkUserID))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(WrapperLayout.createSequentialGroup()
-                .addGap(292, 292, 292)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 766, Short.MAX_VALUE)
         );
         WrapperLayout.setVerticalGroup(
             WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(WrapperLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkProductID))
-                .addGap(18, 18, 18)
-                .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkStaffID))
-                .addGap(18, 18, 18)
-                .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtUserID, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(checkUserID))
-                .addGap(19, 19, 19)
-                .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(WrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(checkDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addGap(0, 291, Short.MAX_VALUE)
         );
 
         lbQuantity.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -370,7 +178,7 @@ public void setSaleReceiptQuantity() throws SQLException, ClassNotFoundException
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbCost, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                     .addComponent(txtCost))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
             .addComponent(Wrapper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
@@ -474,90 +282,10 @@ public void setSaleReceiptQuantity() throws SQLException, ClassNotFoundException
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtDateFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateFromActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDateFromActionPerformed
-
-    private void txtDateToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateToActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDateToActionPerformed
-
-    private void txtStaffIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStaffIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStaffIDActionPerformed
-
-    private void txtProductIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtProductIDActionPerformed
-
-    private void txtUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserIDActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        try {
-            loadReceipt();
-            setTotalImportingCost();
-            setImportReceiptQuantity();
-            setImportItemQuantity();
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void checkProductIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkProductIDActionPerformed
-       if(!checkProductID.isSelected())
-           txtProductID.setEditable(false);
-       else
-           txtProductID.setEditable(true);
-    }//GEN-LAST:event_checkProductIDActionPerformed
-
-    private void checkDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDateActionPerformed
-        if(!checkDate.isSelected())
-        {
-            txtDateTo.setEditable(false);
-            txtDateFrom.setEditable(false);
-        }
-       else
-            txtDateTo.setEditable(true);
-            txtDateFrom.setEditable(true);
-    }//GEN-LAST:event_checkDateActionPerformed
-
-    private void checkStaffIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkStaffIDActionPerformed
-        if(!checkStaffID.isSelected())
-           txtStaffID.setEditable(false);
-       else
-           txtStaffID.setEditable(true);
-    }//GEN-LAST:event_checkStaffIDActionPerformed
-
-    private void checkUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkUserIDActionPerformed
-       if(!checkUserID.isSelected())
-           txtUserID.setEditable(false);
-       else
-           txtUserID.setEditable(true);
-    }//GEN-LAST:event_checkUserIDActionPerformed
-
-    private void checkProductIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkProductIDMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkProductIDMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Wrapper;
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JCheckBox checkDate;
-    private javax.swing.JCheckBox checkProductID;
-    private javax.swing.JCheckBox checkStaffID;
-    private javax.swing.JCheckBox checkUserID;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel3;
@@ -569,13 +297,8 @@ public void setSaleReceiptQuantity() throws SQLException, ClassNotFoundException
     private javax.swing.JLabel lbTotal;
     private javax.swing.JTable tblStatistics;
     private javax.swing.JTextField txtCost;
-    private javax.swing.JTextField txtDateFrom;
-    private javax.swing.JTextField txtDateTo;
-    private javax.swing.JTextField txtProductID;
     private javax.swing.JTextField txtQuantity;
-    private javax.swing.JTextField txtStaffID;
     private javax.swing.JTextField txtTotal;
-    private javax.swing.JTextField txtUserID;
     // End of variables declaration//GEN-END:variables
 }
 
