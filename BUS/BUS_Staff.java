@@ -28,6 +28,13 @@ public class BUS_Staff {
          staffs.delete(id);
     } 
      
+     public DTO_Staff getByEmail(String email) throws SQLException, ClassNotFoundException
+     {
+         DTO_Staff staff = new DTO_Staff();
+         DAO_Staff staffDAO = new DAO_Staff();
+         staff = staffDAO.getByEmail(email);
+         return staff;
+     }
      public DTO_Staff findItem(String id)
      {
          for(DTO_Staff staff : array)

@@ -61,6 +61,14 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
         }
         return null;
     }
+     public DTO_Staff getByEmail(String email) {
+         for (DTO_Staff staff : staffs) {
+            if (staff.getEmail().equals(email)) {
+                return staff;
+            }
+        }
+        return null;
+    }
 
     @Override
     public void update(DTO_Staff object) {

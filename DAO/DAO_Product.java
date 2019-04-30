@@ -70,7 +70,6 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
             sql+= "," + "publisherID = " + "'" + object.getPublisherID() + "'";
             sql+= "," + "genreID = " + "'" + object.getGenreID() + "'";
             sql+= "," + "platform = " + "'" + object.getPlatform() + "'";
-            sql+= "," + "quantity = " + object.getQuantity();
             sql+= "," + "releaseDate = " +  "'" + object.getReleaseDate() + "'" + " WHERE id= " + "'" + object.getId()+ "'";
             Statement stmt = conn.createStatement();
             stmt.executeUpdate(sql);

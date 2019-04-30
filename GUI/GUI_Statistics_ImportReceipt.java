@@ -158,9 +158,7 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         lbOrderID = new javax.swing.JPanel();
-        btnGetReceiptByProduct = new javax.swing.JButton();
-        btnGetReceiptByProductAndStaff = new javax.swing.JButton();
-        btnGetReceiptByProductAndStaffAndDate = new javax.swing.JButton();
+        cbChoose = new javax.swing.JComboBox();
         lbQuantity = new javax.swing.JLabel();
         lbTotal = new javax.swing.JLabel();
         lbCost = new javax.swing.JLabel();
@@ -179,48 +177,14 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
         lbOrderID.setToolTipText("");
         lbOrderID.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        btnGetReceiptByProduct.setBackground(new java.awt.Color(99, 19, 132));
-        btnGetReceiptByProduct.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnGetReceiptByProduct.setForeground(new java.awt.Color(255, 255, 255));
-        btnGetReceiptByProduct.setText("GET RECEIPT BY PRODUCT");
-        btnGetReceiptByProduct.setFocusTraversalPolicyProvider(true);
-        btnGetReceiptByProduct.setMaximumSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProduct.setMinimumSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProduct.setPreferredSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProduct.setVerifyInputWhenFocusTarget(false);
-        btnGetReceiptByProduct.addActionListener(new java.awt.event.ActionListener() {
+        cbChoose.setBackground(new java.awt.Color(204, 204, 204));
+        cbChoose.setEditable(true);
+        cbChoose.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        cbChoose.setForeground(new java.awt.Color(255, 255, 255));
+        cbChoose.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "STATISTICS CHOOSE", "GET RECEIPT BY PRODUCT", "GET RECEIPT BY PRODUCT AND STAFF", "GET RECEIPT BY PRODUCT AND STAFF AND DATE" }));
+        cbChoose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGetReceiptByProductActionPerformed(evt);
-            }
-        });
-
-        btnGetReceiptByProductAndStaff.setBackground(new java.awt.Color(99, 19, 132));
-        btnGetReceiptByProductAndStaff.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnGetReceiptByProductAndStaff.setForeground(new java.awt.Color(255, 255, 255));
-        btnGetReceiptByProductAndStaff.setText("GET RECEIPT BY PRODUCT AND STAFF");
-        btnGetReceiptByProductAndStaff.setFocusTraversalPolicyProvider(true);
-        btnGetReceiptByProductAndStaff.setMaximumSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProductAndStaff.setMinimumSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProductAndStaff.setPreferredSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProductAndStaff.setVerifyInputWhenFocusTarget(false);
-        btnGetReceiptByProductAndStaff.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGetReceiptByProductAndStaffActionPerformed(evt);
-            }
-        });
-
-        btnGetReceiptByProductAndStaffAndDate.setBackground(new java.awt.Color(99, 19, 132));
-        btnGetReceiptByProductAndStaffAndDate.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnGetReceiptByProductAndStaffAndDate.setForeground(new java.awt.Color(255, 255, 255));
-        btnGetReceiptByProductAndStaffAndDate.setText("GET RECEIPT BY PRODUCT AND STAFF AND DATE");
-        btnGetReceiptByProductAndStaffAndDate.setFocusTraversalPolicyProvider(true);
-        btnGetReceiptByProductAndStaffAndDate.setMaximumSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProductAndStaffAndDate.setMinimumSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProductAndStaffAndDate.setPreferredSize(new java.awt.Dimension(79, 25));
-        btnGetReceiptByProductAndStaffAndDate.setVerifyInputWhenFocusTarget(false);
-        btnGetReceiptByProductAndStaffAndDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGetReceiptByProductAndStaffAndDateActionPerformed(evt);
+                cbChooseActionPerformed(evt);
             }
         });
 
@@ -228,23 +192,17 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
         lbOrderID.setLayout(lbOrderIDLayout);
         lbOrderIDLayout.setHorizontalGroup(
             lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lbOrderIDLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGetReceiptByProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGetReceiptByProductAndStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGetReceiptByProductAndStaffAndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lbOrderIDLayout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(cbChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
         lbOrderIDLayout.setVerticalGroup(
             lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbOrderIDLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnGetReceiptByProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGetReceiptByProductAndStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGetReceiptByProductAndStaffAndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addComponent(cbChoose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         lbQuantity.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -400,41 +358,25 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGetReceiptByProductAndStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetReceiptByProductAndStaffActionPerformed
-        try {
-            loadReceiptByProductAndStaff();
-        } catch (SQLException ex) {
+    private void cbChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChooseActionPerformed
+       try {
+        switch(cbChoose.getSelectedIndex())
+        {
+            case 1 : loadReceiptByProduct(); break;
+            case 2 : loadReceiptByProductAndStaff(); break;
+            case 3 : loadReceiptByProductAndStaffAndDate(); break;    
+        }
+       }
+        catch (SQLException ex) {
             Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnGetReceiptByProductAndStaffActionPerformed
-
-    private void btnGetReceiptByProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetReceiptByProductActionPerformed
-        try {
-            loadReceiptByProduct();
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnGetReceiptByProductActionPerformed
-
-    private void btnGetReceiptByProductAndStaffAndDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetReceiptByProductAndStaffAndDateActionPerformed
-        try {
-            loadReceiptByProductAndStaffAndDate();
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_Statistics_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnGetReceiptByProductAndStaffAndDateActionPerformed
+    }//GEN-LAST:event_cbChooseActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGetReceiptByProduct;
-    private javax.swing.JButton btnGetReceiptByProductAndStaff;
-    private javax.swing.JButton btnGetReceiptByProductAndStaffAndDate;
+    private javax.swing.JComboBox cbChoose;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;

@@ -23,16 +23,15 @@ public class GUI_Home extends javax.swing.JPanel {
      */
     public GUI_Home() {
         initComponents();
+        setWelcomeText();
         
     }
 
    public void setWelcomeText()
    {
-       DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-       Date date = new Date();
        String text = new String();
-       text = dateFormat.format(date);
-      lbWelcome.setText(text);
+       text ="Welcome, " + GUI_Login.staff.getFirstname();
+       lbWelcome.setText(text);
        
    }
     @SuppressWarnings("unchecked")
@@ -47,6 +46,7 @@ public class GUI_Home extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        lbGamehub = new javax.swing.JLabel();
         lbWelcome = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
@@ -95,24 +95,32 @@ public class GUI_Home extends javax.swing.JPanel {
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1479, 989));
 
-        lbWelcome.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lbWelcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gamehub.png"))); // NOI18N
+        lbGamehub.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lbGamehub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gamehub.png"))); // NOI18N
+
+        lbWelcome.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(577, Short.MAX_VALUE)
+                .addComponent(lbGamehub, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(516, 516, 516))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(539, 539, 539)
-                .addComponent(lbWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(554, Short.MAX_VALUE))
+                .addGap(53, 53, 53)
+                .addComponent(lbWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(763, Short.MAX_VALUE))
+                .addComponent(lbGamehub)
+                .addGap(49, 49, 49)
+                .addComponent(lbWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(698, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -148,6 +156,7 @@ public class GUI_Home extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbGamehub;
     private javax.swing.JLabel lbWelcome;
     // End of variables declaration//GEN-END:variables
 }
