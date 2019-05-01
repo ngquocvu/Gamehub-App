@@ -30,7 +30,7 @@ public class GUI_Home extends javax.swing.JPanel {
    public void setWelcomeText()
    {
        String text = new String();
-       text ="Welcome, " + GUI_Login.staff.getFirstname();
+       text ="Welcome, "  /*+ GUI_Login.staff.getFirstname()*/;
        lbWelcome.setText(text);
        
    }

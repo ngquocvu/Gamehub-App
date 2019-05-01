@@ -38,7 +38,7 @@ public class GUI_Statistics_SaleReceipt extends javax.swing.JFrame {
         initComponents();
         
     }
-public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
+public void loadSaleReceiptByProduct() throws SQLException, ClassNotFoundException
     {
        Header = new Vector();
        Header.add("#");
@@ -49,7 +49,7 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
        DefaultTableModel model = new DefaultTableModel(Header,0);
        BUS_Statistics statisticBUS = new BUS_Statistics();
        ArrayList<DTO_Product> receipts = new ArrayList<DTO_Product>();
-       receipts = statisticBUS.getReceiptByProduct();
+       receipts = statisticBUS.getSaleReceiptByProduct();
        double TotalCost =0;
        int    TotalQuantity=0;
         for(int i=0;i<receipts.size();i++)
@@ -75,12 +75,12 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
         tblStatistics.setModel(model);
     }
 
-    public void loadReceiptByProductAndStaff() throws SQLException, ClassNotFoundException
+    public void loadReceiptByProductAndCustomer() throws SQLException, ClassNotFoundException
     {
        Header = new Vector();
        Header.add("#");
        Header.add("Product Name");
-       Header.add("Staff Name");
+       Header.add("Customer Name");
        Header.add("Quantity");
        Header.add("Total Price");
        DefaultTableModel model = new DefaultTableModel(Header,0);
@@ -96,7 +96,7 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
             Vector Object = new Vector();
             Object.add(i+1);
             Object.add(tempProduct.getProductName());
-            Object.add(tempProduct.getStaffName());
+            Object.add(tempProduct.getCustomerName());
             Object.add(tempProduct.getQuantity());
             double price = (double)tempProduct.getQuantity() * tempProduct.getPrice();
             Object.add(price);
@@ -112,13 +112,13 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
         tblStatistics.setModel(model);
     }
 
-    public void loadReceiptByProductAndStaffAndDate() throws SQLException, ClassNotFoundException
+    public void loadReceiptByProductAndCustomerAndDate() throws SQLException, ClassNotFoundException
     {
        Header = new Vector();
        Header.add("#");
        Header.add("Date");
        Header.add("Product Name");
-       Header.add("Staff Name");
+       Header.add("Customer Name");
        Header.add("Quantity");
        Header.add("Total Price");
        DefaultTableModel model = new DefaultTableModel(Header,0);
@@ -135,7 +135,7 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
             Object.add(i+1);
             Object.add(tempProduct.getDate());
             Object.add(tempProduct.getProductName());
-            Object.add(tempProduct.getStaffName());
+            Object.add(tempProduct.getCustomerName());
             Object.add(tempProduct.getQuantity());
             double price = (double)tempProduct.getQuantity() * tempProduct.getPrice();
             Object.add(price);
@@ -210,7 +210,7 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
 
         lbTotal.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTotal.setText("Total Import Item");
+        lbTotal.setText("Total Sale Item");
 
         lbCost.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lbCost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -221,7 +221,7 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Import Receipt");
+        jLabel6.setText("Sale Receipt");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -351,7 +351,7 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 868, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -362,9 +362,9 @@ public void loadReceiptByProduct() throws SQLException, ClassNotFoundException
        try {
         switch(cbChoose.getSelectedIndex())
         {
-            case 1 : loadReceiptByProduct(); break;
-            case 2 : loadReceiptByProductAndStaff(); break;
-            case 3 : loadReceiptByProductAndStaffAndDate(); break;    
+            case 1 : loadSaleReceiptByProduct(); break;
+            case 2 : loadReceiptByProductAndCustomer(); break;
+            case 3 : loadReceiptByProductAndCustomerAndDate(); break;    
         }
        }
         catch (SQLException ex) {

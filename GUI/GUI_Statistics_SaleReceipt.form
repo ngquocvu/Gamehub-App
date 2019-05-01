@@ -217,7 +217,7 @@
                   <Font name="Roboto" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Total Import Item"/>
+                <Property name="text" type="java.lang.String" value="Total Sale Item"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbCost">
@@ -265,7 +265,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Import Receipt"/>
+                    <Property name="text" type="java.lang.String" value="Sale Receipt"/>
                   </Properties>
                 </Component>
               </SubComponents>

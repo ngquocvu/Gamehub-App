@@ -21,11 +21,32 @@ public class BUS_Statistics {
               receipts = staDAO.getReceiptByProduct();
               return receipts;
          }
-             public ArrayList<DTO_StatisticReceiptInfo> getReceiptByProductAndStaff() throws SQLException, ClassNotFoundException
+          public ArrayList<DTO_Product> getSaleReceiptByProduct() throws SQLException, ClassNotFoundException
+         {
+              ArrayList<DTO_Product> receipts = new ArrayList<DTO_Product>();
+              DAO_Statistics staDAO = new DAO_Statistics();
+              receipts = staDAO.getSaleReceiptByProduct();
+              return receipts;
+         }
+             public ArrayList<DTO_StatisticReceiptInfo> getReceiptByProductAndCustomer() throws SQLException, ClassNotFoundException
+         {
+              ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
+              DAO_Statistics staDAO = new DAO_Statistics();
+              receipts = staDAO.getReceiptByProductAndCustomer();
+              return receipts;
+         }
+               public ArrayList<DTO_StatisticReceiptInfo> getReceiptByProductAndStaff() throws SQLException, ClassNotFoundException
          {
               ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
               DAO_Statistics staDAO = new DAO_Statistics();
               receipts = staDAO.getReceiptByProductAndStaff();
+              return receipts;
+         }
+                   public ArrayList<DTO_StatisticReceiptInfo> getReceiptByProductAndCustomerAndDate() throws SQLException, ClassNotFoundException
+         {
+              ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
+              DAO_Statistics staDAO = new DAO_Statistics();
+              receipts = staDAO.getReceiptByProductAndCustomerAndDate();
               return receipts;
          }
               public ArrayList<DTO_StatisticReceiptInfo> getReceiptByProductAndStaffAndDate() throws SQLException, ClassNotFoundException

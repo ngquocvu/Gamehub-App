@@ -112,7 +112,7 @@ private DefaultTableModel  model;
         btnGenre = new javax.swing.JButton();
         btnPublisher = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        btnDateSearch = new javax.swing.JButton();
+        btnYearSearch = new javax.swing.JButton();
         txtPriceSearch1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtPriceSearch2 = new javax.swing.JTextField();
@@ -420,13 +420,13 @@ private DefaultTableModel  model;
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
 
-        btnDateSearch.setBackground(new java.awt.Color(99, 19, 132));
-        btnDateSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnDateSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnDateSearch.setText("Release Date Search");
-        btnDateSearch.addActionListener(new java.awt.event.ActionListener() {
+        btnYearSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnYearSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnYearSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnYearSearch.setText("Release Year Search");
+        btnYearSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDateSearchActionPerformed(evt);
+                btnYearSearchActionPerformed(evt);
             }
         });
 
@@ -515,7 +515,7 @@ private DefaultTableModel  model;
                 .addGap(23, 23, 23)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnQuantitySearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDateSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnYearSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPriceSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,7 +539,7 @@ private DefaultTableModel  model;
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnYearSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDateSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDateSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -584,7 +584,8 @@ private DefaultTableModel  model;
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -671,14 +672,13 @@ private DefaultTableModel  model;
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRestart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbsort, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tgSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(6, 6, 6)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -787,7 +787,7 @@ private DefaultTableModel  model;
         
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnDateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDateSearchActionPerformed
+    private void btnYearSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearSearchActionPerformed
 
     try {
         BUS_Product ProductBus = new BUS_Product();
@@ -825,7 +825,7 @@ private DefaultTableModel  model;
         Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
     }
         
-    }//GEN-LAST:event_btnDateSearchActionPerformed
+    }//GEN-LAST:event_btnYearSearchActionPerformed
 
     private void txtPriceSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceSearch1ActionPerformed
         // TODO add your handling code here:
@@ -1125,7 +1125,6 @@ private DefaultTableModel  model;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnDateSearch;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnGenre;
     private javax.swing.JButton btnPriceSearch;
@@ -1135,6 +1134,7 @@ private DefaultTableModel  model;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnRestart;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnYearSearch;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbPlatform;
     private javax.swing.JComboBox cbsort;
