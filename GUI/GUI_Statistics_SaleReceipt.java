@@ -86,7 +86,7 @@ public void loadSaleReceiptByProduct() throws SQLException, ClassNotFoundExcepti
        DefaultTableModel model = new DefaultTableModel(Header,0);
        BUS_Statistics statisticBUS = new BUS_Statistics();
        ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
-       receipts = statisticBUS.getReceiptByProductAndStaff();
+       receipts = statisticBUS.getReceiptByProductAndCustomer();
        double TotalCost =0;
        int    TotalQuantity=0;
         for(int i=0;i<receipts.size();i++)
@@ -181,7 +181,7 @@ public void loadSaleReceiptByProduct() throws SQLException, ClassNotFoundExcepti
         cbChoose.setEditable(true);
         cbChoose.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         cbChoose.setForeground(new java.awt.Color(255, 255, 255));
-        cbChoose.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "STATISTICS CHOOSE", "GET RECEIPT BY PRODUCT", "GET RECEIPT BY PRODUCT AND STAFF", "GET RECEIPT BY PRODUCT AND STAFF AND DATE" }));
+        cbChoose.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "STATISTICS CHOOSE", "GET RECEIPT BY PRODUCT", "GET RECEIPT BY PRODUCT AND CUSTOMER", "GET RECEIPT BY PRODUCT AND CUSTOMER AND DATE" }));
         cbChoose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbChooseActionPerformed(evt);

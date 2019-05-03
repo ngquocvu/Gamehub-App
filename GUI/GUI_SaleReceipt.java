@@ -1099,7 +1099,7 @@ private DefaultTableModel  orderModel;
                 Font regular = new Font(FontFamily.HELVETICA, 12);
                 Font bold = new Font(FontFamily.HELVETICA, 12, Font.BOLD);
                 
-                String dir = "C:\\sale_receipt" + tblReceipt.getValueAt(receiptRow, 0) + ".pdf";
+                String dir = "D:\\sale_receipt" + tblReceipt.getValueAt(receiptRow, 0) + ".pdf";
                 PdfWriter.getInstance(document, new FileOutputStream(dir));
                 document.open();
                 Paragraph paragraph = new Paragraph("Sale Receipt",new Font(FontFamily.HELVETICA, 24, Font.BOLD));

@@ -60,6 +60,14 @@ public class GUI_Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setPreferredSize(new java.awt.Dimension(875, 902));
@@ -90,6 +98,11 @@ public class GUI_Login extends javax.swing.JFrame {
                 txtEmailActionPerformed(evt);
             }
         });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailKeyPressed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_perm_identity_black_18dp.png"))); // NOI18N
 
@@ -100,6 +113,11 @@ public class GUI_Login extends javax.swing.JFrame {
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
 
@@ -180,6 +198,44 @@ public class GUI_Login extends javax.swing.JFrame {
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+ 
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+       
+    }//GEN-LAST:event_formKeyTyped
+
+    private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
+          try {
+              if(evt.getKeyCode() == 10)
+                if(checking()==true)
+                    {
+                        this.setVisible(false);  
+                        new GUI_MainJFrame().setVisible(true);
+                    }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txtEmailKeyPressed
+
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        try {
+              if(evt.getKeyCode() == 10)
+                if(checking()==true)
+                    {
+                        this.setVisible(false);  
+                        new GUI_MainJFrame().setVisible(true);
+                    }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
     /**
      * @param args the command line arguments

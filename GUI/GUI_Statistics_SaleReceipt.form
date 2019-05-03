@@ -192,8 +192,8 @@
                       <StringArray count="4">
                         <StringItem index="0" value="STATISTICS CHOOSE"/>
                         <StringItem index="1" value="GET RECEIPT BY PRODUCT"/>
-                        <StringItem index="2" value="GET RECEIPT BY PRODUCT AND STAFF"/>
-                        <StringItem index="3" value="GET RECEIPT BY PRODUCT AND STAFF AND DATE"/>
+                        <StringItem index="2" value="GET RECEIPT BY PRODUCT AND CUSTOMER"/>
+                        <StringItem index="3" value="GET RECEIPT BY PRODUCT AND CUSTOMER AND DATE"/>
                       </StringArray>
                     </Property>
                   </Properties>

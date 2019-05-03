@@ -119,7 +119,7 @@ public class DAO_Statistics {
             SQLException, ClassNotFoundException {
         ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql =    "SELECT products.name,users.firstname,products.price,SUM(ordereditems.quantity) FROM saleorders\n" +
+        String sql =    "SELECT products.name,users.firstname,products.price,SUM(saleordereditems.quantity) FROM saleorders\n" +
                         "INNER JOIN saleordereditems ON orderID = id\n" +
                         "INNER JOIN products ON products.id = saleordereditems.productID \n" +
                         "INNER JOIN users ON userID = users.id \n" +
