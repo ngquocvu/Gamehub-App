@@ -186,7 +186,9 @@ public class GUI_Login extends javax.swing.JFrame {
             if(checking()==true)
             {
                 this.setVisible(false);  
-                new GUI_MainJFrame().setVisible(true);
+                new GUI_Animation().setVisible(true);
+                
+                //new GUI_MainJFrame().setVisible(true);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,7 +215,9 @@ public class GUI_Login extends javax.swing.JFrame {
                 if(checking()==true)
                     {
                         this.setVisible(false);  
-                        new GUI_MainJFrame().setVisible(true);
+                        new GUI_Animation().setVisible(true);
+                       // new GUI_MainJFrame().setVisible(true);
+                       
                     }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_Login.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,7 +232,8 @@ public class GUI_Login extends javax.swing.JFrame {
                 if(checking()==true)
                     {
                         this.setVisible(false);  
-                        new GUI_MainJFrame().setVisible(true);
+                        new GUI_Animation().setVisible(true);
+                        //new GUI_MainJFrame().setVisible(true);
                     }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_Login.class.getName()).log(Level.SEVERE, null, ex);
