@@ -121,7 +121,6 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "SELECT * FROM orders WHERE id LIKE " + "'" + content + "%'"
                     +" OR staffID LIKE" + "'" + content + "%'" 
-                    +" OR userID LIKE " + "'" + content + "%'" 
                     +" OR state LIKE " + "'" + content + "%'" ;
         ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
         Statement stmt = conn.createStatement();

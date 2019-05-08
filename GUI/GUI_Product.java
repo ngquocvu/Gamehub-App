@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,8 @@ private String directory = "";
     public GUI_Product() throws SQLException, ClassNotFoundException {
        loadProduct();
        initComponents();
+       txtGenre.setEditable(false);
+       txtPublisher.setEditable(false);
        
         
     }
@@ -312,7 +315,7 @@ private String directory = "";
         lbGenre.setText("Genre");
         lbGenre.setFocusTraversalPolicyProvider(true);
 
-        cbPlatform.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Steam", "PC", "Xbox" }));
+        cbPlatform.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Steam", "PC", "Wii", "Xbox", "Playstation" }));
 
         txtReDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,7 +430,7 @@ private String directory = "";
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Features", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
 
         btnYearSearch.setBackground(new java.awt.Color(99, 19, 132));
         btnYearSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -597,23 +600,22 @@ private String directory = "";
                     .addComponent(txtQuantitySearch2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
                 .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(368, Short.MAX_VALUE)
                         .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDir))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(419, 419, 419)))
+                        .addComponent(txtDir)))
                 .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -948,31 +950,52 @@ private String directory = "";
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     try {
-        DTO_Product product = new DTO_Product();
-        BUS_Product productBUS = new BUS_Product();
-        product.setId(txtID.getText());
-        product.setName(txtName.getText());
-        product.setPrice(Double.parseDouble(txtPrice.getText()));
-        product.setQuantity(0);
-        product.setPublisherID(txtPublisher.getText());
-        product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
-        product.setGenreID(String.valueOf(txtGenre.getText()));
-        product.setReleaseDate(txtReDate.getText());      
-        Vector header = new Vector();
-        Vector row=new Vector();  
-        if(findItem(product.getId())==null && product.getId().matches("[0-9]+") && product.getId().length() >= 1)
-        {
-            model.addRow(row);
-            tblProduct.setModel(model);
-            productBUS.add(product);
-        }
-        else if (findItem(product.getId())!=null)
+        
+        if (findItem(txtID.getText())!=null)
         {
             JOptionPane.showMessageDialog(null,"This ID is already used !");
         }
-         else if (!product.getId().matches("[0-9]+"))
+         else if (!txtID.getText().matches("[0-9]+"))
         {
             JOptionPane.showMessageDialog(null,"ID must contain digit numbers from 0 to 9 !");
+        }
+        else if (txtName.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input name ! ");
+        }
+         else if (txtPublisher.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Publisher ! ");
+        }
+         else if (txtGenre.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Genre ! ");
+        }
+         else if (txtPrice.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Price ! ");
+        }
+          else if (txtReDate.getText().equals("") || (Integer.parseInt(txtReDate.getText())>Calendar.getInstance().get(Calendar.YEAR)) || (Integer.parseInt(txtReDate.getText()))<1970)
+        {
+            JOptionPane.showMessageDialog(null,"Please input Year from 1970 - present ! ");
+        }
+        else
+          {
+           DTO_Product product = new DTO_Product();
+            BUS_Product productBUS = new BUS_Product();
+            product.setId(txtID.getText());
+            product.setName(txtName.getText());
+            product.setPrice(Double.parseDouble(txtPrice.getText()));
+            product.setQuantity(0);
+            product.setPublisherID(txtPublisher.getText());
+            product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
+            product.setGenreID(String.valueOf(txtGenre.getText()));
+            product.setReleaseDate(txtReDate.getText());      
+            Vector header = new Vector();
+            Vector row=new Vector();     
+            model.addRow(row);
+            tblProduct.setModel(model);
+            productBUS.add(product);
         }
         
             loadProduct();
@@ -995,24 +1018,54 @@ private String directory = "";
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-           try {   
-                DTO_Product product = new DTO_Product();
-                BUS_Product productBUS = new BUS_Product();
-                product.setId(txtID.getText());
-                product.setName(txtName.getText());
-                product.setPrice(Double.parseDouble(txtPrice.getText()));
-                product.setPublisherID(txtPublisher.getText());
-                product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
-                product.setGenreID(String.valueOf(txtGenre.getText()));      
-                product.setReleaseDate(txtReDate.getText());
-                productBUS.update(product);
-                loadProduct();
-                tblProduct.setModel(this.model);
-            } catch (SQLException ex) {
-                Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-            }                     
+             try {
+        
+
+        if (txtName.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input name ! ");
+        }
+         else if (txtPublisher.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Publisher ! ");
+        }
+         else if (txtGenre.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Genre ! ");
+        }
+         else if (txtPrice.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Price ! ");
+        }
+          else if (txtReDate.getText().equals("") || (Integer.parseInt(txtReDate.getText())>Calendar.getInstance().get(Calendar.YEAR)) || (Integer.parseInt(txtReDate.getText()))<1970)
+        {
+            JOptionPane.showMessageDialog(null,"Please input Year from 1970 - present ! ");
+        }
+        else
+          {
+           DTO_Product product = new DTO_Product();
+            BUS_Product productBUS = new BUS_Product();
+            product.setId(txtID.getText());
+            product.setName(txtName.getText());
+            product.setPrice(Double.parseDouble(txtPrice.getText()));
+            product.setQuantity(0);
+            product.setPublisherID(txtPublisher.getText());
+            product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
+            product.setGenreID(String.valueOf(txtGenre.getText()));
+            product.setReleaseDate(txtReDate.getText());      
+            Vector header = new Vector();
+            Vector row=new Vector();     
+            model.addRow(row);
+            productBUS.update(product);
+        }
+        
+            loadProduct();
+            tblProduct.setModel(this.model);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }        
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
@@ -1214,18 +1267,39 @@ private String directory = "";
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
     try {
-        ExcelReader exreader = new ExcelReader();
-        BUS_Product productBUS = new BUS_Product();
         if(directory.equals(""))
             JOptionPane.showMessageDialog(null, "Please choose xls file to import");
         else
         {
-            ArrayList<DTO_Product> array = exreader.readExcel(directory);
-                for(int i=0;i<array.size();i++)
-                    {
-                        productBUS.add(array.get(i));
-                    }
-                btnRestartActionPerformed(evt);       
+        Object[] options = {"Add new","Update"};
+        int choice = JOptionPane.showOptionDialog(null, //Component parentComponent
+                               "Add new or Update?", //Object message,
+                               "Choose an option", //String title
+                               JOptionPane.YES_NO_OPTION, //int optionType
+                               JOptionPane.INFORMATION_MESSAGE, //int messageType
+                               null, //Icon icon,
+                               options, "Import");
+        ExcelReader exreader = new ExcelReader();
+        BUS_Product productBUS = new BUS_Product();
+            ArrayList<DTO_Product> array = exreader.readExcelForProduct(directory);
+            if(choice==0)     
+                {  for(int i=0;i<array.size();i++)
+                        {
+                            productBUS.add(array.get(i));
+                        }
+                    btnRestartActionPerformed(evt);   
+                }
+            else 
+            {
+                productBUS.deleteAll();
+                {  for(int i=0;i<array.size();i++)
+                        {
+                            productBUS.add(array.get(i));
+                        }
+                    btnRestartActionPerformed(evt);   
+                }
+                 btnRestartActionPerformed(evt); 
+            }
         }
         
        
@@ -1245,7 +1319,7 @@ private String directory = "";
         ExcelWriter excel = new ExcelWriter();
         if(directory.equals(""))
         JOptionPane.showMessageDialog(null," Choose a file directory");
-        excel.writeExcel(BUS_Product.array,directory);
+        excel.writeExcelForProduct(BUS_Product.array,directory);
     } catch (SQLException ex) {
         Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
     } catch (ClassNotFoundException ex) {

@@ -22,6 +22,11 @@ public class BUS_Product {
          products.delete(id);
     } 
      
+       public void deleteAll() throws SQLException, ClassNotFoundException { 
+         DAO_Product products = new DAO_Product();
+         products.deleteAll();
+    } 
+     
      public DTO_Product findItem(String id)
      {
          for(DTO_Product product : array)
@@ -50,6 +55,8 @@ public class BUS_Product {
          ArrayList<DTO_Product> array = productDAO.search(content);
          return array;     
      }
+     
+     
      
      public ArrayList<DTO_Product> sortBy(String content,Boolean isSelected) throws ClassNotFoundException, SQLException
      {

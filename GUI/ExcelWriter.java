@@ -7,6 +7,7 @@
 package GUI;
 
 import DTO.DTO_Product;
+import DTO.DTO_Staff;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ import org.apache.poi.ss.util.CellReference;
  */
 public class ExcelWriter {
     ExcelWriter(){}
-    public void writeExcel(ArrayList<DTO_Product>products, String excelFilePath) throws IOException  {
+    public void writeExcelForProduct(ArrayList<DTO_Product> products, String excelFilePath) throws IOException  {
         // Create Workbook
         Workbook workbook = getWorkbook(excelFilePath);
         if(workbook == null )
@@ -53,8 +54,6 @@ public class ExcelWriter {
             rowIndex++;
         }
          
-        // Write footer
-        //writeFooter(sheet, rowIndex);
  
         // Auto resize column witdth
         int numberOfColumn = sheet.getRow(0).getPhysicalNumberOfCells();
@@ -108,7 +107,7 @@ public class ExcelWriter {
         // Create font
         Font font = sheet.getWorkbook().createFont();
         font.setFontName("Arial");
-        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+        font.setBold(true);
         font.setColor(IndexedColors.BLACK.getIndex()); // text color
  
         // Create CellStyle
@@ -167,5 +166,5 @@ public class ExcelWriter {
             workbook.write(os);
         }
     }
- 
+    
 }

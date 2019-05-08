@@ -11,10 +11,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -26,7 +29,7 @@ import org.apache.poi.ss.usermodel.Workbook;
  */
 public class ExcelReader {
     ExcelReader() {}
-    public ArrayList<DTO_Product> readExcel(String excelFilePath) throws IOException {
+    public ArrayList<DTO_Product> readExcelForProduct(String excelFilePath) throws IOException {
         ArrayList<DTO_Product> array = new ArrayList<DTO_Product>();
  
         // Get file
@@ -55,23 +58,23 @@ public class ExcelReader {
             while (cellIterator.hasNext()) {
                 //Read cell
                 Cell cell = cellIterator.next();
+                Object cellValue = getCellValue(cell);
                 // Set value for product object
                 int columnIndex = cell.getColumnIndex();
                 switch (columnIndex) {
-                case 0:
-                    int id =(int) cell.getNumericCellValue();
-                    product.setId(String.valueOf(id));
+                case 0:               
+                    product.setId(cell.getStringCellValue());
                     break;
                 case 1:
                     product.setName(cell.getStringCellValue());
                     break;
                 case 2:
-                    product.setPrice(cell.getNumericCellValue());
+                    product.setPrice((Double) cell.getNumericCellValue());
                     break;    
                 case 3:
-                    product.setQuantity((int) cell.getNumericCellValue());
+                     product.setQuantity((int) cell.getNumericCellValue());
                     break;
-                case 4:
+                case 4:                
                     product.setPublisherID(cell.getStringCellValue());
                     break;
                case 5:
@@ -108,6 +111,33 @@ public class ExcelReader {
         return workbook;
     }
  
-   
+   private static Object getCellValue(Cell cell) {
+        CellType cellType = cell.getCellType();
+        Object cellValue = null;
+        switch (cellType) {
+        case BOOLEAN:
+            cellValue = cell.getBooleanCellValue();
+            break;
+        case FORMULA:
+            Workbook workbook = cell.getSheet().getWorkbook();
+            FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
+            cellValue = evaluator.evaluate(cell).getNumberValue();
+            break;
+        case NUMERIC:
+            cellValue = cell.getNumericCellValue();
+            break;
+        case STRING:
+            cellValue = cell.getStringCellValue();
+            break;
+        case _NONE:
+        case BLANK:
+        case ERROR:
+            break;
+        default:
+            break;
+        }
+ 
+        return cellValue;
+    }
     
 }

@@ -89,6 +89,14 @@ public class DAO_Product implements DAO_Interface<DTO_Product> {
         conn.close();
     }
     
+      public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "DELETE FROM products";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        conn.close();
+    }
+    
     public void add(DTO_Product object) throws SQLException, ClassNotFoundException
     {  
         Connection conn = MySQLConnUtils.getMySQLConnection();

@@ -64,7 +64,7 @@ private DefaultTableModel  model;
             Object.add(tempCustomer.getPhonenumber());
             model.addRow(Object);
         }
-        this.model = model;     
+        this.model = model;  
     }
     
     public DTO_Customer findItem(String id) {
@@ -738,7 +738,7 @@ private DefaultTableModel  model;
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
@@ -863,7 +863,14 @@ private DefaultTableModel  model;
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        try {
+            loadCustomer();
+            tblCustomer.setModel(this.model);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void tgSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgSortActionPerformed

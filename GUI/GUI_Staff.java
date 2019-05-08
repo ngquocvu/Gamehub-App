@@ -622,20 +622,25 @@ private DefaultTableModel  model;
 
     private void btnSexSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSexSearchActionPerformed
        try {
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Address");
+            Header.add("Phone Number");
+            Header.add("Role");
+            Header.add("Sex");
+            DefaultTableModel model = new DefaultTableModel(Header,0);
             BUS_Staff StaffBus = new BUS_Staff();
-            if (cbMale.isSelected()) {
-            ArrayList<DTO_Staff> array = StaffBus.sexSearch(cbMale.getText());
-            Header = new Vector();
-            Header.add("ID");
-            Header.add("First Name");
-            Header.add("Last Name");
-            Header.add("Email");
-            Header.add("Password");
-            Header.add("Address");
-            Header.add("Phone Number");
-            Header.add("Role");
-            Header.add("Sex");
-            DefaultTableModel model = new DefaultTableModel(Header,0);
+            ArrayList<DTO_Staff> array = null;
+            if (cbMale.isSelected() && !cbFemale.isSelected()) 
+            array = StaffBus.sexSearch(cbMale.getText());
+            else if(cbFemale.isSelected() && !cbMale.isSelected())
+            array = StaffBus.sexSearch(cbFemale.getText());  
+            else if(cbFemale.isSelected() && cbMale.isSelected())
+            array = BUS_Staff.array;
             for(int i=0;i<array.size();i++)
             {
                 DTO_Staff tempStaff = new DTO_Staff();
@@ -654,40 +659,7 @@ private DefaultTableModel  model;
             }
             this.model = model;
             tblStaff.setModel(model);
-            }
-            else if(cbFemale.isSelected()) {
-            ArrayList<DTO_Staff> array = StaffBus.sexSearch(cbFemale.getText());
-            Header = new Vector();
-            Header.add("ID");
-            Header.add("First Name");
-            Header.add("Last Name");
-            Header.add("Email");
-            Header.add("Password");
-            Header.add("Address");
-            Header.add("Phone Number");
-            Header.add("Role");
-            Header.add("Sex");
-            DefaultTableModel model = new DefaultTableModel(Header,0);
-            for(int i=0;i<array.size();i++)
-            {
-                DTO_Staff tempStaff = new DTO_Staff();
-                tempStaff = array.get(i);
-                Vector Object = new Vector();
-                Object.add(tempStaff.getId());
-                Object.add(tempStaff.getFirstname());
-                Object.add(tempStaff.getLastname());
-                Object.add(tempStaff.getEmail());
-                Object.add(tempStaff.getPassword());
-                Object.add(tempStaff.getAddress());
-                Object.add(tempStaff.getPhonenumber());
-                Object.add(tempStaff.getRole());
-                Object.add(tempStaff.getSex());
-                model.addRow(Object);
-            }
-            this.model = model;
-            tblStaff.setModel(model);
-            }
-
+                  
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -1039,7 +1011,7 @@ private DefaultTableModel  model;
 
     private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
         try {
-            loadStaff();
+            model = loadStaff();
             tblStaff.setModel(model);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);

@@ -33,7 +33,7 @@ public class GUI_Statistics_SaleReceipt extends javax.swing.JFrame {
        Header.add("Product ID");
        Header.add("Product Name");
        Header.add("Quantity");
-       Header.add("Total Price");
+       Header.add("Total Cost");
        model = new DefaultTableModel(Header,0);
         initComponents();
         
@@ -45,7 +45,7 @@ public void loadSaleReceiptByProduct() throws SQLException, ClassNotFoundExcepti
        Header.add("Product ID");
        Header.add("Product Name");
        Header.add("Quantity");
-       Header.add("Total Price");
+       Header.add("Total Cost");
        DefaultTableModel model = new DefaultTableModel(Header,0);
        BUS_Statistics statisticBUS = new BUS_Statistics();
        ArrayList<DTO_Product> receipts = new ArrayList<DTO_Product>();
@@ -82,7 +82,7 @@ public void loadSaleReceiptByProduct() throws SQLException, ClassNotFoundExcepti
        Header.add("Product Name");
        Header.add("Customer Name");
        Header.add("Quantity");
-       Header.add("Total Price");
+       Header.add("Total Cost");
        DefaultTableModel model = new DefaultTableModel(Header,0);
        BUS_Statistics statisticBUS = new BUS_Statistics();
        ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
@@ -120,7 +120,7 @@ public void loadSaleReceiptByProduct() throws SQLException, ClassNotFoundExcepti
        Header.add("Product Name");
        Header.add("Customer Name");
        Header.add("Quantity");
-       Header.add("Total Price");
+       Header.add("Total Cost");
        DefaultTableModel model = new DefaultTableModel(Header,0);
        BUS_Statistics statisticBUS = new BUS_Statistics();
        ArrayList<DTO_StatisticReceiptInfo> receipts = new ArrayList<DTO_StatisticReceiptInfo>();
