@@ -115,13 +115,13 @@ private String directory = new String("") ;
         lbPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
-        jButton7 = new javax.swing.JButton();
-        jTextField10 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        btnAdSearch = new javax.swing.JButton();
+        txtAdSearch = new javax.swing.JTextField();
+        rbID = new javax.swing.JRadioButton();
+        rbFirstname = new javax.swing.JRadioButton();
+        rbEmail = new javax.swing.JRadioButton();
         rbLastname = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
+        rbPhonenumber = new javax.swing.JRadioButton();
         btnExport1 = new javax.swing.JButton();
         txtDir = new javax.swing.JTextField();
         btnImport = new javax.swing.JButton();
@@ -398,48 +398,48 @@ private String directory = new String("") ;
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
 
-        jButton7.setBackground(new java.awt.Color(99, 19, 132));
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Search");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnAdSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnAdSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnAdSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdSearch.setText("Search");
+        btnAdSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnAdSearchActionPerformed(evt);
             }
         });
 
-        jTextField10.setMaximumSize(null);
-        jTextField10.setMinimumSize(null);
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        txtAdSearch.setMaximumSize(null);
+        txtAdSearch.setMinimumSize(null);
+        txtAdSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                txtAdSearchActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton1.setText("ID");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rbID);
+        rbID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbID.setText("ID");
+        rbID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbIDActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton2.setText("First Name");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rbFirstname);
+        rbFirstname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbFirstname.setText("First Name");
+        rbFirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                rbFirstnameActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton4.setText("Email");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rbEmail);
+        rbEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbEmail.setText("Email");
+        rbEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                rbEmailActionPerformed(evt);
             }
         });
 
@@ -452,12 +452,12 @@ private String directory = new String("") ;
             }
         });
 
-        buttonGroup1.add(jRadioButton7);
-        jRadioButton7.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton7.setText("Phone Number");
-        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rbPhonenumber);
+        rbPhonenumber.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbPhonenumber.setText("Phone Number");
+        rbPhonenumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton7ActionPerformed(evt);
+                rbPhonenumberActionPerformed(evt);
             }
         });
 
@@ -523,19 +523,19 @@ private String directory = new String("") ;
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addGap(55, 55, 55)
+                        .addComponent(rbID)
+                        .addGap(37, 37, 37)
+                        .addComponent(rbFirstname)
+                        .addGap(62, 62, 62)
                         .addComponent(rbLastname)
-                        .addGap(64, 64, 64)
-                        .addComponent(jRadioButton4)
+                        .addGap(58, 58, 58)
+                        .addComponent(rbEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton7))
+                        .addComponent(rbPhonenumber))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(0, 472, Short.MAX_VALUE)
                         .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -547,7 +547,7 @@ private String directory = new String("") ;
                         .addComponent(txtDir))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 620, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -555,14 +555,14 @@ private String directory = new String("") ;
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAdSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAdSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton7)
+                    .addComponent(rbID)
+                    .addComponent(rbEmail)
+                    .addComponent(rbFirstname)
+                    .addComponent(rbPhonenumber)
                     .addComponent(rbLastname))
                 .addGap(70, 70, 70)
                 .addComponent(jLabel5)
@@ -822,37 +822,81 @@ private String directory = new String("") ;
     }
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdSearchActionPerformed
+        try {
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            BUS_Customer CustomerBus = new BUS_Customer();
+            ArrayList<DTO_Customer> array = CustomerBus.adSearch(txtAdSearch.getText());
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Phone Number");
 
-    }//GEN-LAST:event_jButton7ActionPerformed
+            if (rbID.isSelected()) 
+                array = CustomerBus.idSearch(rbID.getText());
+            else if(rbFirstname.isSelected())
+                array = CustomerBus.firstnameSearch(rbFirstname.getText());  
+            else if(rbLastname.isSelected())
+                array = CustomerBus.lastnameSearch(rbLastname.getText()); 
+            else if(rbEmail.isSelected())
+                array = CustomerBus.emailSearch(rbEmail.getText()); 
+            else if(rbPhonenumber.isSelected())
+                array = CustomerBus.phonenumberSearch(rbLastname.getText()); 
+            
+            for(int i=0;i<array.size();i++)
+            {
+                DTO_Customer tempCustomer = new DTO_Customer();
+                tempCustomer = array.get(i);
+                Vector Object = new Vector();
+                Object.add(tempCustomer.getId());
+                Object.add(tempCustomer.getFirstname());
+                Object.add(tempCustomer.getLastname());
+                Object.add(tempCustomer.getEmail());
+                Object.add(tempCustomer.getPassword());
+                Object.add(tempCustomer.getPhonenumber());
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+                model.addRow(Object);
+            }
+            this.model = model;
+            tblCustomer.setModel(model);
+                  
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAdSearchActionPerformed
+
+    private void txtAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_txtAdSearchActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rbIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rbIDActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void rbFirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFirstnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_rbFirstnameActionPerformed
 
     private void rbLastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLastnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbLastnameActionPerformed
 
-    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
+    private void rbPhonenumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPhonenumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton7ActionPerformed
+    }//GEN-LAST:event_rbPhonenumberActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void rbEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+    }//GEN-LAST:event_rbEmailActionPerformed
 
     private void tblCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomerMouseClicked
         int i = tblCustomer.getSelectedRow();
@@ -1044,6 +1088,7 @@ private String directory = new String("") ;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdSearch;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExport;
@@ -1055,7 +1100,6 @@ private String directory = new String("") ;
     private javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbSort;
-    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -1066,24 +1110,24 @@ private String directory = new String("") ;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JLabel lbEmail;
     private javax.swing.JLabel lbFirstname;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbLastname;
     private javax.swing.JLabel lbPassword;
     private javax.swing.JLabel lbPhone;
+    private javax.swing.JRadioButton rbEmail;
+    private javax.swing.JRadioButton rbFirstname;
+    private javax.swing.JRadioButton rbID;
     private javax.swing.JRadioButton rbLastname;
+    private javax.swing.JRadioButton rbPhonenumber;
     private javax.swing.JTable tblCustomer;
     private javax.swing.JToggleButton tgSort;
+    private javax.swing.JTextField txtAdSearch;
     private javax.swing.JTextField txtDir;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstname;
