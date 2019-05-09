@@ -7,14 +7,18 @@
 package GUI;
 
 import BUS.BUS_Customer;
+import BUS.BUS_Customer;
+import DTO.DTO_Customer;
 import DTO.DTO_Customer;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,6 +30,7 @@ public class GUI_Customer extends javax.swing.JPanel {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
+private String directory = new String("") ;
     /**
      * Creates new form Customer
      */
@@ -115,11 +120,16 @@ private DefaultTableModel  model;
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
+        rbLastname = new javax.swing.JRadioButton();
         jRadioButton7 = new javax.swing.JRadioButton();
+        btnExport1 = new javax.swing.JButton();
+        txtDir = new javax.swing.JTextField();
+        btnImport = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnRestart = new javax.swing.JButton();
         tgSort = new javax.swing.JToggleButton();
 
         jTextArea1.setColumns(20);
@@ -417,7 +427,7 @@ private DefaultTableModel  model;
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton2.setText("Name");
+        jRadioButton2.setText("First Name");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -433,12 +443,12 @@ private DefaultTableModel  model;
             }
         });
 
-        buttonGroup1.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton6.setText("Address");
-        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rbLastname);
+        rbLastname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbLastname.setText("Last Name");
+        rbLastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton6ActionPerformed(evt);
+                rbLastnameActionPerformed(evt);
             }
         });
 
@@ -450,6 +460,60 @@ private DefaultTableModel  model;
                 jRadioButton7ActionPerformed(evt);
             }
         });
+
+        btnExport1.setBackground(new java.awt.Color(99, 19, 132));
+        btnExport1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnExport1.setForeground(new java.awt.Color(255, 255, 255));
+        btnExport1.setText("Browser");
+        btnExport1.setFocusTraversalPolicyProvider(true);
+        btnExport1.setMaximumSize(new java.awt.Dimension(79, 25));
+        btnExport1.setMinimumSize(new java.awt.Dimension(79, 25));
+        btnExport1.setPreferredSize(new java.awt.Dimension(79, 25));
+        btnExport1.setVerifyInputWhenFocusTarget(false);
+        btnExport1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExport1ActionPerformed(evt);
+            }
+        });
+
+        txtDir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDirActionPerformed(evt);
+            }
+        });
+
+        btnImport.setBackground(new java.awt.Color(99, 19, 132));
+        btnImport.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnImport.setForeground(new java.awt.Color(255, 255, 255));
+        btnImport.setText("IMPORT");
+        btnImport.setFocusTraversalPolicyProvider(true);
+        btnImport.setMaximumSize(new java.awt.Dimension(79, 25));
+        btnImport.setMinimumSize(new java.awt.Dimension(79, 25));
+        btnImport.setPreferredSize(new java.awt.Dimension(79, 25));
+        btnImport.setVerifyInputWhenFocusTarget(false);
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+
+        btnExport.setBackground(new java.awt.Color(99, 19, 132));
+        btnExport.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnExport.setForeground(new java.awt.Color(255, 255, 255));
+        btnExport.setText("EXPORT");
+        btnExport.setFocusTraversalPolicyProvider(true);
+        btnExport.setMaximumSize(new java.awt.Dimension(79, 25));
+        btnExport.setMinimumSize(new java.awt.Dimension(79, 25));
+        btnExport.setPreferredSize(new java.awt.Dimension(79, 25));
+        btnExport.setVerifyInputWhenFocusTarget(false);
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel5.setText("File Directory");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -466,13 +530,24 @@ private DefaultTableModel  model;
                         .addComponent(jRadioButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButton2)
-                        .addGap(18, 18, 18)
+                        .addGap(55, 55, 55)
+                        .addComponent(rbLastname)
+                        .addGap(64, 64, 64)
                         .addComponent(jRadioButton4)
-                        .addGap(22, 22, 22)
-                        .addComponent(jRadioButton7)
-                        .addGap(14, 14, 14)
-                        .addComponent(jRadioButton6)
-                        .addGap(0, 226, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRadioButton7))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 472, Short.MAX_VALUE)
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDir))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -488,8 +563,18 @@ private DefaultTableModel  model;
                     .addComponent(jRadioButton4)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton6))
-                .addGap(250, 250, 250))
+                    .addComponent(rbLastname))
+                .addGap(70, 70, 70)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -536,13 +621,13 @@ private DefaultTableModel  model;
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(99, 19, 132));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnRestart.setBackground(new java.awt.Color(99, 19, 132));
+        btnRestart.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnRestart.setForeground(new java.awt.Color(255, 255, 255));
+        btnRestart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/baseline_refresh_white_18dp.png"))); // NOI18N
+        btnRestart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnRestartActionPerformed(evt);
             }
         });
 
@@ -569,7 +654,7 @@ private DefaultTableModel  model;
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton8)
+                                .addComponent(btnRestart)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -586,7 +671,7 @@ private DefaultTableModel  model;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRestart, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -753,9 +838,9 @@ private DefaultTableModel  model;
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+    private void rbLastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLastnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton6ActionPerformed
+    }//GEN-LAST:event_rbLastnameActionPerformed
 
     private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
         // TODO add your handling code here:
@@ -862,34 +947,118 @@ private DefaultTableModel  model;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
         try {
             loadCustomer();
             tblCustomer.setModel(this.model);
         } catch (SQLException ex) {
-            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnRestartActionPerformed
 
     private void tgSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgSortActionPerformed
         cbSortActionPerformed(evt);
     }//GEN-LAST:event_tgSortActionPerformed
 
+    private void btnExport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExport1ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle("Browse the folder to process");
+        chooser.setAcceptAllFileFilterUsed(false);
+        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            directory = chooser.getSelectedFile().toString();
+            txtDir.setText(directory);
+        } else {
+            txtDir.setText("");
+        }
+    }//GEN-LAST:event_btnExport1ActionPerformed
+
+    private void txtDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDirActionPerformed
+
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        try {
+            if(directory.equals(""))
+            JOptionPane.showMessageDialog(null, "Please choose xls file to import");
+            else
+            {
+                Object[] options = {"Add new","Update"};
+                int choice = JOptionPane.showOptionDialog(null, //Component parentComponent
+                    "Add new or Update?", //Object message,
+                    "Choose an option", //String title
+                    JOptionPane.YES_NO_OPTION, //int optionType
+                    JOptionPane.INFORMATION_MESSAGE, //int messageType
+                    null, //Icon icon,
+                    options, "Import");
+                ExcelReader exreader = new ExcelReader();
+                BUS_Customer customerBUS = new BUS_Customer();
+                ArrayList<DTO_Customer> array = exreader.readExcelForCustomer(directory);
+                if(choice==0)
+                {  for(int i=0;i<array.size();i++)
+                    {
+                        customerBUS.add(array.get(i));
+                    }
+                    btnRestartActionPerformed(evt);
+                }
+                else
+                {
+                    customerBUS.deleteAll();
+                    {  for(int i=0;i<array.size();i++)
+                        {
+                            customerBUS.add(array.get(i));
+                        }
+                        btnRestartActionPerformed(evt);
+                    }
+                    btnRestartActionPerformed(evt);
+                }
+            }
+
+        } catch (IOException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnImportActionPerformed
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        try {
+            BUS_Customer customerBUS = new BUS_Customer();
+            ExcelWriter excel = new ExcelWriter();
+            if(directory.equals(""))
+            JOptionPane.showMessageDialog(null," Choose a file directory");
+            else
+            excel.writeExcelForCustomer(BUS_Customer.array,directory);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExportActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnExport;
+    private javax.swing.JButton btnExport1;
+    private javax.swing.JButton btnImport;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnRestart;
     private javax.swing.JButton btnSearch;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbSort;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -900,7 +1069,6 @@ private DefaultTableModel  model;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -913,8 +1081,10 @@ private DefaultTableModel  model;
     private javax.swing.JLabel lbLastname;
     private javax.swing.JLabel lbPassword;
     private javax.swing.JLabel lbPhone;
+    private javax.swing.JRadioButton rbLastname;
     private javax.swing.JTable tblCustomer;
     private javax.swing.JToggleButton tgSort;
+    private javax.swing.JTextField txtDir;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstname;
     private javax.swing.JTextField txtID;

@@ -6,6 +6,7 @@
 
 package GUI;
 
+import DTO.DTO_Customer;
 import DTO.DTO_Product;
 import DTO.DTO_Staff;
 import java.io.File;
@@ -213,6 +214,87 @@ public class ExcelReader {
  
         return array;
     }
+    
+    public ArrayList<DTO_Customer> readExcelForCustomer(String excelFilePath) throws IOException {
+        ArrayList<DTO_Customer> array = new ArrayList<DTO_Customer>();
+ 
+        // Get file
+        InputStream inputStream = new FileInputStream(new File(excelFilePath));
+ 
+        // Get workproduct
+        Workbook workbook = getWorkbook(inputStream, excelFilePath);
+ 
+        // Get sheet
+        Sheet sheet = workbook.getSheetAt(0);
+ 
+        // Get all rows
+        Iterator<Row> iterator = sheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            if (nextRow.getRowNum() == 0) {
+                // Ignore header
+                continue;
+            }
+ 
+            // Get all cells
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+ 
+            // Read cells and set value for product object
+            DTO_Customer customer = new DTO_Customer();
+            while (cellIterator.hasNext()) {
+                //Read cell
+                Cell cell = cellIterator.next();
+                Object cellValue = getCellValue(cell);
+                // Set value for product object
+                int columnIndex = cell.getColumnIndex();
+                switch (columnIndex) {
+                case 0:               
+                    if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    customer.setId(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int id = (int) cell.getNumericCellValue();
+                                    customer.setId(String.valueOf(id));
+                                }
+                    break;  
+                case 1:
+                    customer.setFirstname(cell.getStringCellValue());
+                    break;
+                case 2:
+                    customer.setLastname(cell.getStringCellValue());
+                    break;    
+                case 3:
+                     customer.setEmail(cell.getStringCellValue());
+                    break;
+                case 4:                
+                    customer.setPassword(cell.getStringCellValue());
+                    break;  
+               case 5:
+                    if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    customer.setPhonenumber(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int phonenum = (int) cell.getNumericCellValue();
+                                    customer.setPhonenumber(String.valueOf(phonenum));
+                                }
+               break;
+              
+                }
+ 
+            }
+            array.add(customer);
+        }
+ 
+        inputStream.close();
+ 
+        return array;
+    }
+    
+    
     
     // Get Workbook
     private static Workbook getWorkbook(InputStream inputStream, String excelFilePath) throws IOException {

@@ -1319,6 +1319,7 @@ private String directory = "";
         ExcelWriter excel = new ExcelWriter();
         if(directory.equals(""))
         JOptionPane.showMessageDialog(null," Choose a file directory");
+        else
         excel.writeExcelForProduct(BUS_Product.array,directory);
     } catch (SQLException ex) {
         Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);

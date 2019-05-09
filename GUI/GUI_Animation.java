@@ -103,7 +103,7 @@ public class GUI_Animation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void welcomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_welcomeMouseClicked
-
+        
     }//GEN-LAST:event_welcomeMouseClicked
     
     /**

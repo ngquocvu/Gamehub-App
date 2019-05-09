@@ -153,5 +153,13 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
          conn.close();
          return array;
     }
+
+    public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "DELETE FROM users";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        conn.close();
+    }
     
 }

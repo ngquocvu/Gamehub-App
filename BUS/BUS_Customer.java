@@ -31,7 +31,12 @@ public class BUS_Customer {
         DAO_Customer users = new DAO_Customer();
         users.delete(id);
     }
-
+    
+         public void deleteAll() throws SQLException, ClassNotFoundException { 
+         DAO_Customer customers = new DAO_Customer();
+         customers.deleteAll();
+    } 
+    
     public void update(DTO_Customer user) throws SQLException, ClassNotFoundException {
         DAO_Customer customerDAO = new DAO_Customer();
         customerDAO.update(user);

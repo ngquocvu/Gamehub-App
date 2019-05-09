@@ -28,7 +28,7 @@ public class GUI_Staff extends javax.swing.JPanel {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
-private String directory;
+private String directory = new String("") ;
 
 
     public GUI_Staff() throws SQLException, ClassNotFoundException  {
@@ -1179,6 +1179,7 @@ private String directory;
             ExcelWriter excel = new ExcelWriter();
             if(directory.equals(""))
             JOptionPane.showMessageDialog(null," Choose a file directory");
+            else
             excel.writeExcelForStaff(BUS_Staff.array,directory);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);

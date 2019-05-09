@@ -6,6 +6,7 @@
 
 package GUI;
 
+import DTO.DTO_Customer;
 import DTO.DTO_Product;
 import DTO.DTO_Staff;
 import java.io.*;
@@ -86,6 +87,42 @@ public class ExcelWriter {
             Row row = sheet.createRow(rowIndex);
             // Write data on row
             writeStaff(staff, row);
+            rowIndex++;
+        }
+         
+ 
+        // Auto resize column witdth
+        int numberOfColumn = sheet.getRow(0).getPhysicalNumberOfCells();
+        autosizeColumn(sheet, numberOfColumn);
+ 
+        // Create file excel
+        createOutputFile(workbook, excelFilePath);
+        JOptionPane.showMessageDialog(null,"Successully !\nDirectory: " + excelFilePath);
+    }
+    
+    
+    public void writeExcelForCustomer(ArrayList<DTO_Customer> users, String excelFilePath) throws IOException  {
+        // Create Workbook
+        Workbook workbook = getWorkbook(excelFilePath);
+        if(workbook == null )
+        {
+         workbook = new HSSFWorkbook();  
+        }
+        // Create sheet
+        Sheet sheet = workbook.createSheet("Customers"); // Create sheet with sheet name
+ 
+        int rowIndex = 0;
+         
+        // Write header
+        writeCustomerHeader(sheet, rowIndex);
+ 
+        // Write data
+        rowIndex++;
+        for (DTO_Customer user : users) {
+            // Create row
+            Row row = sheet.createRow(rowIndex);
+            // Write data on row
+            writeCustomer(user, row);
             rowIndex++;
         }
          
@@ -186,6 +223,42 @@ public class ExcelWriter {
         cell.setCellValue("Sex");
     }
      
+    private static void writeCustomerHeader(Sheet sheet, int rowIndex) {
+        // create CellStyle
+        CellStyle cellStyle = createStyleForHeader(sheet);
+         
+        // Create row
+        Row row = sheet.createRow(rowIndex);
+         
+        // Create cells
+        Cell cell = row.createCell(0);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("ID");
+ 
+        cell = row.createCell(1);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("First Name");
+ 
+        cell = row.createCell(2);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Last Name");
+ 
+        cell = row.createCell(3);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Email");
+        
+        cell = row.createCell(4);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Password");
+        
+        cell = row.createCell(5);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Phone number");
+ 
+    }
+     
+      
+     
      
      private static CellStyle createStyleForHeader(Sheet sheet) {
         // Create font
@@ -268,6 +341,32 @@ public class ExcelWriter {
         cell.setCellValue(staff.getSex());
 
     }
+    
+    
+        
+    private static void writeCustomer(DTO_Customer customer, Row row) {
+         
+        Cell cell = row.createCell(0);
+        cell.setCellValue(customer.getId());
+ 
+        cell = row.createCell(1);
+        cell.setCellValue(customer.getFirstname());
+ 
+        cell = row.createCell(2);
+        cell.setCellValue(customer.getLastname());
+ 
+        cell = row.createCell(3);
+        cell.setCellValue(customer.getEmail());
+        
+        cell = row.createCell(4);
+        cell.setCellValue(customer.getPassword());
+        
+        cell = row.createCell(5);
+        cell.setCellValue(customer.getPhonenumber());
+        
+
+    }
+    
     // Auto resize column width
     private static void autosizeColumn(Sheet sheet, int lastColumn) {
         for (int columnIndex = 0; columnIndex < lastColumn; columnIndex++) {
