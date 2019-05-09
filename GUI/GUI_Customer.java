@@ -836,15 +836,15 @@ private String directory = new String("") ;
             Header.add("Phone Number");
 
             if (rbID.isSelected()) 
-                array = CustomerBus.idSearch(rbID.getText());
+                array = CustomerBus.idSearch(txtAdSearch.getText());
             else if(rbFirstname.isSelected())
-                array = CustomerBus.firstnameSearch(rbFirstname.getText());  
+                array = CustomerBus.firstnameSearch(txtAdSearch.getText());  
             else if(rbLastname.isSelected())
-                array = CustomerBus.lastnameSearch(rbLastname.getText()); 
+                array = CustomerBus.lastnameSearch(txtAdSearch.getText()); 
             else if(rbEmail.isSelected())
-                array = CustomerBus.emailSearch(rbEmail.getText()); 
+                array = CustomerBus.emailSearch(txtAdSearch.getText()); 
             else if(rbPhonenumber.isSelected())
-                array = CustomerBus.phonenumberSearch(rbLastname.getText()); 
+                array = CustomerBus.phonenumberSearch(txtAdSearch.getText()); 
             
             for(int i=0;i<array.size();i++)
             {

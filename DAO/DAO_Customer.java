@@ -278,7 +278,7 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
 
     public ArrayList<DTO_Customer> idSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM users WHERE id = '"+content+"'"; 
+        String sql = "SELECT * FROM users WHERE id = ' "+content+" '"; 
         ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);

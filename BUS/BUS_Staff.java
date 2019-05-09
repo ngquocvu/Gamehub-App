@@ -87,4 +87,46 @@ public class BUS_Staff {
          ArrayList<DTO_Staff> array = staffDAO.roleSearch(content);
          return array;     
     }
+
+    public ArrayList<DTO_Staff> adSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.adSearch(content);
+         return array; 
+    }
+
+    public ArrayList<DTO_Staff> idSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.idSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.firstnameSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.lastnameSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> emailSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.emailSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> addressSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.addressSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> phonenumberSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.phonenumberSearch(content);
+         return array;
+    }
 }

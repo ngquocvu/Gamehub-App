@@ -132,6 +132,14 @@ private String directory = new String("") ;
         jLabel5 = new javax.swing.JLabel();
         btnImport = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
+        btnAdSearch = new javax.swing.JButton();
+        txtAdSearch = new javax.swing.JTextField();
+        rbID = new javax.swing.JRadioButton();
+        rbFirstname = new javax.swing.JRadioButton();
+        rbLastname = new javax.swing.JRadioButton();
+        rbEmail = new javax.swing.JRadioButton();
+        rbPhonenumber = new javax.swing.JRadioButton();
+        rbAddress = new javax.swing.JRadioButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -471,7 +479,7 @@ private String directory = new String("") ;
                     .addComponent(cbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbSex)
                     .addComponent(cbSex, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -574,6 +582,72 @@ private String directory = new String("") ;
             }
         });
 
+        btnAdSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnAdSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnAdSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdSearch.setText("Search");
+        btnAdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdSearchActionPerformed(evt);
+            }
+        });
+
+        txtAdSearch.setMaximumSize(null);
+        txtAdSearch.setMinimumSize(null);
+        txtAdSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAdSearchActionPerformed(evt);
+            }
+        });
+
+        rbID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbID.setText("ID");
+        rbID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbIDActionPerformed(evt);
+            }
+        });
+
+        rbFirstname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbFirstname.setText("First Name");
+        rbFirstname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbFirstnameActionPerformed(evt);
+            }
+        });
+
+        rbLastname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbLastname.setText("Last Name");
+        rbLastname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbLastnameActionPerformed(evt);
+            }
+        });
+
+        rbEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbEmail.setText("Email");
+        rbEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbEmailActionPerformed(evt);
+            }
+        });
+
+        rbPhonenumber.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbPhonenumber.setText("Phone Number");
+        rbPhonenumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPhonenumberActionPerformed(evt);
+            }
+        });
+
+        rbAddress.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        rbAddress.setText("Address");
+        rbAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAddressActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -584,33 +658,53 @@ private String directory = new String("") ;
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(btnSexSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbMale))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(btnRoleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbAdmin)))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(342, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(0, 434, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(27, 27, 27)
                                 .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDir))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(32, 32, 32))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDir)))
+                        .addContainerGap())
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(btnSexSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbMale))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(btnRoleSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbAdmin)))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(rbID)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbFirstname)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbLastname)
+                        .addGap(31, 31, 31)
+                        .addComponent(rbEmail)
+                        .addGap(27, 27, 27)
+                        .addComponent(rbAddress)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(rbPhonenumber))))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(0, 120, Short.MAX_VALUE)
+                    .addComponent(txtAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(3, 3, 3)))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -625,17 +719,32 @@ private String directory = new String("") ;
                     .addComponent(btnRoleSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbAdmin)
                     .addComponent(cbStaff))
-                .addGap(83, 83, 83)
+                .addGap(18, 18, 18)
+                .addComponent(btnAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbID)
+                    .addComponent(rbFirstname)
+                    .addComponent(rbLastname)
+                    .addComponent(rbEmail)
+                    .addComponent(rbPhonenumber)
+                    .addComponent(rbAddress))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                .addContainerGap())
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(127, 127, 127)
+                    .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(172, 172, 172)))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -645,8 +754,7 @@ private String directory = new String("") ;
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(btnRestart)
@@ -1190,8 +1298,89 @@ private String directory = new String("") ;
         }
     }//GEN-LAST:event_btnExportActionPerformed
 
+    private void btnAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdSearchActionPerformed
+        try {
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            BUS_Staff StaffBus = new BUS_Staff();
+            ArrayList<DTO_Staff> array = StaffBus.adSearch(txtAdSearch.getText());
+            Header = new Vector();
+            Header.add("ID");
+            Header.add("First Name");
+            Header.add("Last Name");
+            Header.add("Email");
+            Header.add("Password");
+            Header.add("Phone Number");
+            Header.add("Role");
+            Header.add("Sex");
+            
+            if (rbID.isSelected())
+            array = StaffBus.idSearch(txtAdSearch.getText());
+            else if(rbFirstname.isSelected())
+            array = StaffBus.firstnameSearch(txtAdSearch.getText());
+            else if(rbLastname.isSelected())
+            array = StaffBus.lastnameSearch(txtAdSearch.getText());
+            else if(rbEmail.isSelected())
+            array = StaffBus.emailSearch(txtAdSearch.getText());
+            else if(rbAddress.isSelected())
+            array = StaffBus.addressSearch(txtAdSearch.getText());
+            else if(rbPhonenumber.isSelected())
+            array = StaffBus.phonenumberSearch(txtAdSearch.getText());
+
+            for(int i=0;i<array.size();i++)
+            {
+                DTO_Staff tempStaff = new DTO_Staff();
+                tempStaff = array.get(i);
+                Vector Object = new Vector();
+                Object.add(tempStaff.getId());
+                Object.add(tempStaff.getFirstname());
+                Object.add(tempStaff.getLastname());
+                Object.add(tempStaff.getEmail());
+                Object.add(tempStaff.getPassword());
+                Object.add(tempStaff.getPhonenumber());
+
+                model.addRow(Object);
+            }
+            this.model = model;
+            tblStaff.setModel(model);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAdSearchActionPerformed
+
+    private void txtAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAdSearchActionPerformed
+
+    private void rbIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbIDActionPerformed
+
+    private void rbFirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFirstnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbFirstnameActionPerformed
+
+    private void rbLastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLastnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbLastnameActionPerformed
+
+    private void rbEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbEmailActionPerformed
+
+    private void rbPhonenumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPhonenumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPhonenumberActionPerformed
+
+    private void rbAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbAddressActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdSearch;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExport;
@@ -1232,8 +1421,15 @@ private String directory = new String("") ;
     private javax.swing.JLabel lbPhonenumber;
     private javax.swing.JLabel lbRole;
     private javax.swing.JLabel lbSex;
+    private javax.swing.JRadioButton rbAddress;
+    private javax.swing.JRadioButton rbEmail;
+    private javax.swing.JRadioButton rbFirstname;
+    private javax.swing.JRadioButton rbID;
+    private javax.swing.JRadioButton rbLastname;
+    private javax.swing.JRadioButton rbPhonenumber;
     private javax.swing.JTable tblStaff;
     private javax.swing.JToggleButton tgSort;
+    private javax.swing.JTextField txtAdSearch;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtDir;
     private javax.swing.JTextField txtEmail;
