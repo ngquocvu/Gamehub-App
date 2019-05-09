@@ -86,7 +86,6 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
         btnEdit = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnGenre = new javax.swing.JButton();
-        btnPrint = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSaleItem = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
@@ -188,21 +187,6 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
             }
         });
 
-        btnPrint.setBackground(new java.awt.Color(99, 19, 132));
-        btnPrint.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnPrint.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrint.setText("Print");
-        btnPrint.setFocusTraversalPolicyProvider(true);
-        btnPrint.setMaximumSize(new java.awt.Dimension(79, 25));
-        btnPrint.setMinimumSize(new java.awt.Dimension(79, 25));
-        btnPrint.setPreferredSize(new java.awt.Dimension(79, 25));
-        btnPrint.setVerifyInputWhenFocusTarget(false);
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout lbOrderIDLayout = new javax.swing.GroupLayout(lbOrderID);
         lbOrderID.setLayout(lbOrderIDLayout);
         lbOrderIDLayout.setHorizontalGroup(
@@ -220,16 +204,13 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
                         .addComponent(btnGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
+                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
                 .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(lbOrderIDLayout.createSequentialGroup()
-                        .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
-                        .addGap(20, 20, 20)
-                        .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))))
+                    .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                 .addGap(32, 32, 32))
         );
         lbOrderIDLayout.setVerticalGroup(
@@ -254,9 +235,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
                 .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tblSaleItem.setRowHeight(32);
@@ -631,41 +610,6 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
         }
     }//GEN-LAST:event_btnGenreActionPerformed
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-         try {
-            PdfWriter.getInstance(document, new FileOutputStream("C:\\sale_receipt.pdf"));
-            document.open();
-            document.add(new Paragraph("Sale Receipt"));
-            int row = tblSaleItem.getModel().getRowCount();
-            PdfPTable t = new PdfPTable(4);
-            t.setSpacingBefore(25);
-            t.setSpacingAfter(25);
-            PdfPCell productID = new PdfPCell(new Phrase("Product ID"));
-            t.addCell(productID);
-            PdfPCell productName = new PdfPCell(new Phrase("Name"));
-            t.addCell(productName);
-            PdfPCell price = new PdfPCell(new Phrase("Price"));
-            t.addCell(price);
-            PdfPCell quantity = new PdfPCell(new Phrase("Quantity"));
-            t.addCell(price);
-            for(int i=0;i<row;i++)
-            {   
-            t.addCell(tblSaleItem.getValueAt(i, 0).toString());
-            t.addCell(tblSaleItem.getValueAt(i, 1).toString());
-            t.addCell(tblSaleItem.getValueAt(i, 2).toString());
-            t.addCell(tblSaleItem.getValueAt(i, 3).toString());
-           
-            }
-            document.add(t);
-            
-            document.close();
-            JOptionPane.showMessageDialog(null,"Receipt has been printed at !");
-        } catch (FileNotFoundException | DocumentException e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnPrintActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -675,7 +619,6 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnGenre;
-    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnRestart;

@@ -27,6 +27,10 @@ public class BUS_Staff {
          DAO_Staff staffs = new DAO_Staff();
          staffs.delete(id);
     } 
+     public void deleteAll() throws SQLException, ClassNotFoundException { 
+         DAO_Staff staffs = new DAO_Staff();
+         staffs.deleteAll();
+    } 
      
      public DTO_Staff getByEmail(String email) throws SQLException, ClassNotFoundException
      {

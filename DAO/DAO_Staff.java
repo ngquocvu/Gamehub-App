@@ -100,6 +100,14 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
         stmt.executeUpdate(sql);
         conn.close();
     }
+    
+     public void deleteAll() throws SQLException, ClassNotFoundException  {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "DELETE FROM staffs";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        conn.close();
+    }
 
     public void add(DTO_Staff object) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
@@ -233,5 +241,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
          conn.close();
          return array;
     }
+
+   
    
 }

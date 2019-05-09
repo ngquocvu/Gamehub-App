@@ -38,6 +38,17 @@ public class GUI_Animation extends javax.swing.JFrame {
         anim.jLabelYDown(blue.getY(), 1000, 2, 1, blue);
         
         anim.jLabelXRight(-500, 10, 2, 1, welcome);
+        
+        new java.util.Timer().schedule( 
+        new java.util.TimerTask() {
+            @Override
+            public void run() {
+                 setVisible(false);
+            new GUI_MainJFrame().setVisible(true);
+            }
+        }, 
+        3000
+);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -50,7 +61,6 @@ public class GUI_Animation extends javax.swing.JFrame {
         yellow = new javax.swing.JLabel();
         welcome = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(32767, 32767));
         setPreferredSize(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,7 +88,8 @@ public class GUI_Animation extends javax.swing.JFrame {
         welcome.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         welcome.setForeground(new java.awt.Color(102, 102, 102));
         welcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcome.setText("Welcome And Work Hard");
+        welcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gamehub.png"))); // NOI18N
+        welcome.setToolTipText("");
         welcome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 welcomeMouseClicked(evt);
@@ -92,12 +103,7 @@ public class GUI_Animation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void welcomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_welcomeMouseClicked
-        if(evt.getClickCount()==1)
-        {
-            this.setVisible(false);
-            //new GUI_Animation().setVisible(true);
-            new GUI_MainJFrame().setVisible(true);
-        }
+
     }//GEN-LAST:event_welcomeMouseClicked
     
     /**

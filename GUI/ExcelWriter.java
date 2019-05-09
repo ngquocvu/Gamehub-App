@@ -63,6 +63,43 @@ public class ExcelWriter {
         createOutputFile(workbook, excelFilePath);
         JOptionPane.showMessageDialog(null,"Successully !\nDirectory: " + excelFilePath);
     }
+    
+    public void writeExcelForStaff(ArrayList<DTO_Staff> staffs, String excelFilePath) throws IOException  {
+        // Create Workbook
+        Workbook workbook = getWorkbook(excelFilePath);
+        if(workbook == null )
+        {
+         workbook = new HSSFWorkbook();  
+        }
+        // Create sheet
+        Sheet sheet = workbook.createSheet("Staffs"); // Create sheet with sheet name
+ 
+        int rowIndex = 0;
+         
+        // Write header
+        writeStaffHeader(sheet, rowIndex);
+ 
+        // Write data
+        rowIndex++;
+        for (DTO_Staff staff : staffs) {
+            // Create row
+            Row row = sheet.createRow(rowIndex);
+            // Write data on row
+            writeStaff(staff, row);
+            rowIndex++;
+        }
+         
+ 
+        // Auto resize column witdth
+        int numberOfColumn = sheet.getRow(0).getPhysicalNumberOfCells();
+        autosizeColumn(sheet, numberOfColumn);
+ 
+        // Create file excel
+        createOutputFile(workbook, excelFilePath);
+        JOptionPane.showMessageDialog(null,"Successully !\nDirectory: " + excelFilePath);
+    }
+    
+    
     private static void writeProductHeader(Sheet sheet, int rowIndex) {
         // create CellStyle
         CellStyle cellStyle = createStyleForHeader(sheet);
@@ -103,6 +140,53 @@ public class ExcelWriter {
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Release Year");
     }
+    
+     private static void writeStaffHeader(Sheet sheet, int rowIndex) {
+        // create CellStyle
+        CellStyle cellStyle = createStyleForHeader(sheet);
+         
+        // Create row
+        Row row = sheet.createRow(rowIndex);
+         
+        // Create cells
+        Cell cell = row.createCell(0);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("ID");
+ 
+        cell = row.createCell(1);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("First Name");
+ 
+        cell = row.createCell(2);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Last Name");
+ 
+        cell = row.createCell(3);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Email");
+        
+        cell = row.createCell(4);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Password");
+        
+        cell = row.createCell(5);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Address");
+        
+        cell = row.createCell(6);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Phone number");
+ 
+        cell = row.createCell(7);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Role");
+        
+        cell = row.createCell(8);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Sex");
+    }
+     
+     
      private static CellStyle createStyleForHeader(Sheet sheet) {
         // Create font
         Font font = sheet.getWorkbook().createFont();
@@ -151,6 +235,37 @@ public class ExcelWriter {
         
         cell = row.createCell(7);
         cell.setCellValue(product.getReleaseDate());
+
+    }
+    
+    private static void writeStaff(DTO_Staff staff, Row row) {
+         
+        Cell cell = row.createCell(0);
+        cell.setCellValue(staff.getId());
+ 
+        cell = row.createCell(1);
+        cell.setCellValue(staff.getFirstname());
+ 
+        cell = row.createCell(2);
+        cell.setCellValue(staff.getLastname());
+ 
+        cell = row.createCell(3);
+        cell.setCellValue(staff.getEmail());
+        
+        cell = row.createCell(4);
+        cell.setCellValue(staff.getPassword());
+        
+        cell = row.createCell(5);
+        cell.setCellValue(staff.getAddress());
+        
+        cell = row.createCell(6);
+        cell.setCellValue(staff.getPhonenumber());
+        
+        cell = row.createCell(7);
+        cell.setCellValue(staff.getRole());
+        
+        cell = row.createCell(8);
+        cell.setCellValue(staff.getSex());
 
     }
     // Auto resize column width

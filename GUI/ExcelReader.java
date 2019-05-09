@@ -7,6 +7,7 @@
 package GUI;
 
 import DTO.DTO_Product;
+import DTO.DTO_Staff;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -63,8 +64,16 @@ public class ExcelReader {
                 int columnIndex = cell.getColumnIndex();
                 switch (columnIndex) {
                 case 0:               
-                    product.setId(cell.getStringCellValue());
-                    break;
+                    if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    product.setId(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int id = (int) cell.getNumericCellValue();
+                                    product.setId(String.valueOf(id));
+                                }
+                    break;  
                 case 1:
                     product.setName(cell.getStringCellValue());
                     break;
@@ -75,13 +84,29 @@ public class ExcelReader {
                      product.setQuantity((int) cell.getNumericCellValue());
                     break;
                 case 4:                
-                    product.setPublisherID(cell.getStringCellValue());
-                    break;
+                   if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    product.setPublisherID(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int id = (int) cell.getNumericCellValue();
+                                    product.setPublisherID(String.valueOf(id));
+                                }
+                    break;  
                case 5:
                     product.setPlatform(cell.getStringCellValue());
                     break;
                case 6:
-                    product.setGenreID(cell.getStringCellValue());
+                      if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    product.setGenreID(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int id = (int) cell.getNumericCellValue();
+                                    product.setGenreID(String.valueOf(id));
+                                }
                     break;  
                case 7:
                     product.setReleaseDate(cell.getStringCellValue());
@@ -92,6 +117,96 @@ public class ExcelReader {
  
             }
             array.add(product);
+        }
+ 
+        inputStream.close();
+ 
+        return array;
+    }
+    
+    public ArrayList<DTO_Staff> readExcelForStaff(String excelFilePath) throws IOException {
+        ArrayList<DTO_Staff> array = new ArrayList<DTO_Staff>();
+ 
+        // Get file
+        InputStream inputStream = new FileInputStream(new File(excelFilePath));
+ 
+        // Get workproduct
+        Workbook workbook = getWorkbook(inputStream, excelFilePath);
+ 
+        // Get sheet
+        Sheet sheet = workbook.getSheetAt(0);
+ 
+        // Get all rows
+        Iterator<Row> iterator = sheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            if (nextRow.getRowNum() == 0) {
+                // Ignore header
+                continue;
+            }
+ 
+            // Get all cells
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+ 
+            // Read cells and set value for product object
+            DTO_Staff staff = new DTO_Staff();
+            while (cellIterator.hasNext()) {
+                //Read cell
+                Cell cell = cellIterator.next();
+                Object cellValue = getCellValue(cell);
+                // Set value for product object
+                int columnIndex = cell.getColumnIndex();
+                switch (columnIndex) {
+                case 0:       
+                        if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    staff.setId(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int id = (int) cell.getNumericCellValue();
+                                    staff.setId(String.valueOf(id));
+                                }
+                    
+                    break;
+                case 1:
+                    staff.setFirstname(cell.getStringCellValue());
+                    break;
+                case 2:
+                    staff.setLastname(cell.getStringCellValue());
+                    break;    
+                case 3:
+                     staff.setEmail(cell.getStringCellValue());
+                    break;
+                case 4:                
+                    staff.setPassword(cell.getStringCellValue());
+                    break;
+               case 5:
+                    staff.setAddress(cell.getStringCellValue());
+                    break;
+               case 6:
+                    if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    staff.setPhonenumber(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int phoneNum = (int) cell.getNumericCellValue();
+                                    staff.setPhonenumber(String.valueOf(phoneNum));
+                                }
+                    break;  
+               case 7:
+                    staff.setRole(cell.getStringCellValue());
+                    break;
+               case 8:
+                    staff.setSex(cell.getStringCellValue());
+                    break;    
+                default:
+                    break;
+                }
+ 
+            }
+            array.add(staff);
         }
  
         inputStream.close();
@@ -125,6 +240,7 @@ public class ExcelReader {
             break;
         case NUMERIC:
             cellValue = cell.getNumericCellValue();
+            
             break;
         case STRING:
             cellValue = cell.getStringCellValue();
