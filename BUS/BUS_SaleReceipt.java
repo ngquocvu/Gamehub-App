@@ -63,5 +63,35 @@ public class BUS_SaleReceipt {
          ArrayList<DTO_SaleReceipt> array = receiptDAO.sortBy(content, isSelected);
          return array;     
      }
+
+    public ArrayList<DTO_SaleReceipt> adSearch(String content) throws SQLException, ClassNotFoundException {
+                 DAO_SaleReceipt receiptDAO = new DAO_SaleReceipt();
+         ArrayList<DTO_SaleReceipt> array = receiptDAO.adSearch(content);
+         return array;  
+    }
+
+    public ArrayList<DTO_SaleReceipt> userIdSearch(String content) throws SQLException, ClassNotFoundException {
+                 DAO_SaleReceipt receiptDAO = new DAO_SaleReceipt();
+         ArrayList<DTO_SaleReceipt> array = receiptDAO.userIdSearch(content);
+         return array;  
+    }
+
+    public ArrayList<DTO_SaleReceipt> staffIdSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_SaleReceipt receiptDAO = new DAO_SaleReceipt();
+         ArrayList<DTO_SaleReceipt> array = receiptDAO.staffIdSearch(content);
+         return array;  
+    }
+
+    public ArrayList<DTO_SaleReceipt> stateSearch(String content) throws SQLException, ClassNotFoundException {
+                DAO_SaleReceipt receiptDAO = new DAO_SaleReceipt();
+         ArrayList<DTO_SaleReceipt> array = receiptDAO.stateSearch(content);
+         return array;  
+    }
+
+    public ArrayList<DTO_SaleReceipt> idSearch(String content) throws SQLException, ClassNotFoundException {
+                 DAO_SaleReceipt receiptDAO = new DAO_SaleReceipt();
+         ArrayList<DTO_SaleReceipt> array = receiptDAO.idSearch(content);
+         return array;  
+    }
 }
 
