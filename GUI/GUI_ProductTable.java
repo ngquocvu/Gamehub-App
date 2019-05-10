@@ -25,7 +25,9 @@ public class GUI_ProductTable extends javax.swing.JFrame {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
-    public GUI_ProductTable() throws SQLException, ClassNotFoundException {
+private int key;
+    public GUI_ProductTable(int key) throws SQLException, ClassNotFoundException {
+        this.key = key;
         loadProduct();
         initComponents();
        
@@ -108,50 +110,18 @@ private DefaultTableModel  model;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsellectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsellectActionPerformed
-        int i = tblGenre.getSelectedRow();
-    GUI_OrderItem.txtProID.setText(tblGenre.getModel().getValueAt(i, 0).toString());
+    setSelectOption();
+    
     this.dispose();
     }//GEN-LAST:event_btnsellectActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_ProductTable.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new GUI_ProductTable().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(GUI_ProductTable.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUI_ProductTable.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
+    public void setSelectOption()
+    {   
+        int i = tblGenre.getSelectedRow();
+        if(key == 1)
+        GUI_OrderItem.txtProID.setText(tblGenre.getModel().getValueAt(i, 0).toString());
+        else if(key == 2)
+        GUI_SaleItem.txtProID.setText(tblGenre.getModel().getValueAt(i, 0).toString());
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

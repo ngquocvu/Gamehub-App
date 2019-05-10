@@ -121,7 +121,6 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
         Connection conn = MySQLConnUtils.getMySQLConnection();
         String sql = "SELECT * FROM orders WHERE id LIKE " + "'" + content + "%'"
                     +" OR staffID LIKE" + "'" + content + "%'" 
-                    +" OR userID LIKE " + "'" + content + "%'" 
                     +" OR state LIKE " + "'" + content + "%'" ;
         ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
         Statement stmt = conn.createStatement();
@@ -157,6 +156,85 @@ public class DAO_ImportReceipt implements DAO_Interface<DTO_ImportReceipt> {
             String state = result.getString(5);
             DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);           
             receipts.add(receipt);         
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+    public ArrayList<DTO_ImportReceipt> adSearch(String content) throws SQLException, ClassNotFoundException {
+               Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM orders WHERE id LIKE " + "'" + content + "%'"
+                    +" OR staffID LIKE" + "'" + content + "%'" 
+                    +" OR state LIKE " + "'" + content + "%'" ;
+        ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+            String id = result.getString(1);
+            String staffID = result.getString(2);
+            Timestamp createDate = result.getTimestamp(3);
+            String state = result.getString(5);
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);            
+            receipts.add(receipt);             
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+    public ArrayList<DTO_ImportReceipt> idSearch(String content) throws SQLException, ClassNotFoundException {
+               Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM orders WHERE id = '"+content+"'";
+        ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+            String id = result.getString(1);
+            String staffID = result.getString(2);
+            Timestamp createDate = result.getTimestamp(3);
+            String state = result.getString(5);
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);            
+            receipts.add(receipt);             
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+
+    public ArrayList<DTO_ImportReceipt> stateSearch(String content) throws SQLException, ClassNotFoundException {
+                Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM orders WHERE state = '"+content+"'";
+        ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+            String id = result.getString(1);
+            String staffID = result.getString(2);
+            Timestamp createDate = result.getTimestamp(3);
+            String state = result.getString(5);
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);            
+            receipts.add(receipt);             
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+    public ArrayList<DTO_ImportReceipt> StaffIdSearch(String content) throws SQLException, ClassNotFoundException {
+                Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM orders WHERE staffID = '"+content+"'";
+        ArrayList<DTO_ImportReceipt> receipts = new  ArrayList<DTO_ImportReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+            String id = result.getString(1);
+            String staffID = result.getString(2);
+            Timestamp createDate = result.getTimestamp(3);
+            String state = result.getString(5);
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt(id, staffID,createDate,state);            
+            receipts.add(receipt);             
         }
         
          conn.close();

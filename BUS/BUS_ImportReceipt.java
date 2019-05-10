@@ -63,5 +63,31 @@ public class BUS_ImportReceipt {
          ArrayList<DTO_ImportReceipt> array = receiptDAO.sortBy(content, isSelected);
          return array;     
      }
+
+    public ArrayList<DTO_ImportReceipt> adSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_ImportReceipt receiptDAO = new DAO_ImportReceipt();
+         ArrayList<DTO_ImportReceipt> array = receiptDAO.adSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_ImportReceipt> idSearch(String content) throws SQLException, ClassNotFoundException {
+                 DAO_ImportReceipt receiptDAO = new DAO_ImportReceipt();
+         ArrayList<DTO_ImportReceipt> array = receiptDAO.idSearch(content);
+         return array;
+    }
+    
+    public ArrayList<DTO_ImportReceipt> stateSearch(String content) throws SQLException, ClassNotFoundException {
+                 DAO_ImportReceipt receiptDAO = new DAO_ImportReceipt();
+         ArrayList<DTO_ImportReceipt> array = receiptDAO.stateSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_ImportReceipt> staffIdSearch(String content) throws SQLException, ClassNotFoundException {
+                DAO_ImportReceipt receiptDAO = new DAO_ImportReceipt();
+         ArrayList<DTO_ImportReceipt> array = receiptDAO.StaffIdSearch(content);
+         return array;
+    }
+
+
 }
 

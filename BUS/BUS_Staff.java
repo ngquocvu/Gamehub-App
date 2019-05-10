@@ -5,7 +5,9 @@
  */
 package BUS;
 
+import DAO.DAO_Product;
 import DAO.DAO_Staff;
+import DTO.DTO_Product;
 import DTO.DTO_Staff;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +27,18 @@ public class BUS_Staff {
          DAO_Staff staffs = new DAO_Staff();
          staffs.delete(id);
     } 
+     public void deleteAll() throws SQLException, ClassNotFoundException { 
+         DAO_Staff staffs = new DAO_Staff();
+         staffs.deleteAll();
+    } 
      
+     public DTO_Staff getByEmail(String email) throws SQLException, ClassNotFoundException
+     {
+         DTO_Staff staff = new DTO_Staff();
+         DAO_Staff staffDAO = new DAO_Staff();
+         staff = staffDAO.getByEmail(email);
+         return staff;
+     }
      public DTO_Staff findItem(String id)
      {
          for(DTO_Staff staff : array)
@@ -60,5 +73,60 @@ public class BUS_Staff {
         return array;
          
      }
-         
+    
+    public ArrayList<DTO_Staff> sexSearch(String content) throws ClassNotFoundException, SQLException
+    {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.sexSearch(content);
+         return array;     
+    }
+    
+        public ArrayList<DTO_Staff> roleSearch(String content) throws ClassNotFoundException, SQLException
+    {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.roleSearch(content);
+         return array;     
+    }
+
+    public ArrayList<DTO_Staff> adSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.adSearch(content);
+         return array; 
+    }
+
+    public ArrayList<DTO_Staff> idSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.idSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.firstnameSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.lastnameSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> emailSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.emailSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> addressSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.addressSearch(content);
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> phonenumberSearch(String content) throws SQLException, ClassNotFoundException {
+         DAO_Staff staffDAO = new DAO_Staff();
+         ArrayList<DTO_Staff> array = staffDAO.phonenumberSearch(content);
+         return array;
+    }
 }

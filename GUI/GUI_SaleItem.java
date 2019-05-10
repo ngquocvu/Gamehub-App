@@ -6,8 +6,21 @@
 
 package GUI;
 
+import BUS.BUS_Product;
 import BUS.BUS_SaleItem;
 import DTO.DTO_OrderItem;
+import DTO.DTO_Product;
+import com.itextpdf.text.Anchor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -179,56 +192,50 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
         lbOrderIDLayout.setHorizontalGroup(
             lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbOrderIDLayout.createSequentialGroup()
-                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(lbOrderIDLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(lbOrderIDLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(lbQuantity)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                        .addComponent(lbProID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
+                .addContainerGap()
+                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbProID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbQuantity))
+                .addGap(26, 26, 26)
                 .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(lbOrderIDLayout.createSequentialGroup()
-                        .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(33, 33, 33))
-                    .addGroup(lbOrderIDLayout.createSequentialGroup()
                         .addComponent(txtProID, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
         lbOrderIDLayout.setVerticalGroup(
             lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(lbOrderIDLayout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbProID)
+                    .addComponent(btnGenre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbQuantity)
+                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(84, 84, 84))
+            .addGroup(lbOrderIDLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(lbOrderIDLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtProID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbProID)
-                            .addComponent(btnGenre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(40, 40, 40))
-                    .addGroup(lbOrderIDLayout.createSequentialGroup()
-                        .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbQuantity)
-                            .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(178, 178, 178))
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(lbOrderIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tblSaleItem.setRowHeight(32);
@@ -257,8 +264,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(lbOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(lbOrderID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lbOrderID.getAccessibleContext().setAccessibleName("Order's Information");
@@ -382,18 +388,35 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         try {
-            DTO_OrderItem orderItem = new DTO_OrderItem();
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
-            orderItem.setOrderID(orderID);
-            orderItem.setProductID(txtProID.getText()); 
-            orderItem.setQuantity(Integer.parseInt(txtQuantity.getText()));
-            Vector header = new Vector();
-            Vector row=new Vector();
-                model.addRow(row);
-                tblSaleItem.setModel(model);
-                orderItemBUS.add(orderItem);
-                loadSaleItem();
-                tblSaleItem.setModel(this.model);
+            BUS_Product productBUS = new BUS_Product();
+            DTO_Product product = productBUS.findItem(txtProID.getText());
+            if(product == null)
+                JOptionPane.showMessageDialog(null,"Product Not Found ! Recheck your Product ID !! ");
+            else
+            {
+                if(product.getQuantity()<Integer.parseInt(txtQuantity.getText()))
+                {
+                    JOptionPane.showMessageDialog(null,"Do not have enough product to sale ! Remain: " + product.getQuantity() + " products");
+                    return;
+                }
+                else
+                {
+                    DTO_OrderItem saleitem = new DTO_OrderItem();
+                    BUS_SaleItem saleitemBUS = new BUS_SaleItem();
+                    saleitem.setOrderID(orderID);
+                    saleitem.setProductID(txtProID.getText());
+                    saleitem.setQuantity(Integer.parseInt(txtQuantity.getText()));
+                    Vector header = new Vector();
+                    Vector row=new Vector();
+                    model.addRow(row);
+                    tblSaleItem.setModel(model);
+                    saleitemBUS.add(saleitem);
+                    loadSaleItem();
+                    tblSaleItem.setModel(this.model);
+                }
+                
+                
+            }    
         } catch (SQLException ex) {
             Logger.getLogger(GUI_SaleItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -403,19 +426,37 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         try {
-            DTO_OrderItem orderItem = new DTO_OrderItem();
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
-            orderItem.setOrderID(orderID);
-            orderItem.setProductID(txtProID.getText());
-            orderItem.setQuantity(Integer.parseInt(txtQuantity.getText()));
-            orderItemBUS.update(orderItem);
-            loadSaleItem();
-            tblSaleItem.setModel(this.model);
+            BUS_Product productBUS = new BUS_Product();
+            BUS_SaleItem saleBUS = new BUS_SaleItem();
+            DTO_OrderItem receipt = new DTO_OrderItem();
+            DTO_Product product = productBUS.findItem(txtProID.getText());
+            if(product == null)
+                JOptionPane.showMessageDialog(null,"Product Not Found ! Recheck your Product ID !! ");
+            else
+            {
+                if((product.getQuantity())<Integer.parseInt(txtQuantity.getText()))
+                {
+                    JOptionPane.showMessageDialog(null,"Do not have enough product to sale ! Remain: " + product.getQuantity() + " products");
+                    return;
+                }
+                else
+                {
+                    DTO_OrderItem saleitem = new DTO_OrderItem();
+                    BUS_SaleItem saleitemBUS = new BUS_SaleItem();
+                    saleitem.setOrderID(orderID);
+                    saleitem.setProductID(txtProID.getText());
+                    saleitem.setQuantity(Integer.parseInt(txtQuantity.getText()));
+                    saleitemBUS.update(saleitem);
+                    loadSaleItem();
+                    tblSaleItem.setModel(this.model);
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(GUI_SaleItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_SaleItem.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -451,7 +492,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
     private void tblSaleItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSaleItemMouseClicked
         try {
             int i = tblSaleItem.getSelectedRow();
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
+            BUS_SaleItem saleitemBUS = new BUS_SaleItem();
             txtProID.setText(tblSaleItem.getModel().getValueAt(i, 0).toString());
             txtQuantity.setText(tblSaleItem.getModel().getValueAt(i, 3).toString());
         } catch (SQLException ex) {
@@ -506,7 +547,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void cbsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbsortActionPerformed
         try {
-            BUS_SaleItem orderItemBUS = new BUS_SaleItem();
+            BUS_SaleItem saleitemBUS = new BUS_SaleItem();
             String content = "";
             if(cbsort.getSelectedIndex()==0)
             return;
@@ -517,7 +558,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
                 case 3: content = "price"; break;  
                 case 4: content = "quantity"; break;      
             }
-            ArrayList<DTO_OrderItem> items = orderItemBUS.sortBy(content,tgSort.isSelected(),orderID);
+            ArrayList<DTO_OrderItem> items = saleitemBUS.sortBy(content,tgSort.isSelected(),orderID);
 
        Header = new Vector();
        Header.add("Product ID");
@@ -560,7 +601,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
 
     private void btnGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenreActionPerformed
         try {
-            GUI_ProductTable productTabGUI = new GUI_ProductTable();     
+            GUI_ProductTable productTabGUI = new GUI_ProductTable(2);     
             productTabGUI.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
@@ -572,43 +613,7 @@ public void loadSaleItem() throws SQLException, ClassNotFoundException
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_SaleItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_SaleItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_SaleItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_SaleItem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new GUI_SaleItem("1").setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(GUI_SaleItem.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUI_SaleItem.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;

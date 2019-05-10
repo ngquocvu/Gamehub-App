@@ -181,8 +181,8 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
             jpnStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnStaffLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addComponent(jlbStaff, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpnStaffLayout.setVerticalGroup(
             jpnStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +302,7 @@ public class GUI_MainJFrame extends javax.swing.JFrame {
         jlbPublisher.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         jlbPublisher.setForeground(new java.awt.Color(255, 255, 255));
         jlbPublisher.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlbPublisher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_conference_26px_1.png"))); // NOI18N
+        jlbPublisher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/outline_supervisor_account_white_18dp.png"))); // NOI18N
         jlbPublisher.setText("PUBLISHER");
         jlbPublisher.setPreferredSize(new java.awt.Dimension(138, 48));
 

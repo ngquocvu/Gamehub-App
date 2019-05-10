@@ -153,5 +153,149 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
          conn.close();
          return array;
     }
+
+    public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "DELETE FROM users";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        conn.close();
+    }
+
+    public ArrayList<DTO_Customer> adSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM users WHERE firstname LIKE " + "'" + content + "%'" 
+                    +" OR lastname LIKE " + "'" + content + "%'" 
+                    +" OR email LIKE " + "'" + content + "%'" 
+                    +" OR phonenumber LIKE " + "'" + content + "%'" 
+                    ;      
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);    
+            array.add(user);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Customer> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM users WHERE firstname = '"+content+"'"; 
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);    
+            array.add(user);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Customer> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
+                Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM users WHERE lastname = '"+content+"'"; 
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);    
+            array.add(user);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Customer> emailSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM users WHERE email = '"+content+"'"; 
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);    
+            array.add(user);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Customer> phonenumberSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM users WHERE phonenumber = '"+content+"'"; 
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);    
+            array.add(user);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Customer> idSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM users WHERE id = ' "+content+" '"; 
+        ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String phonenumber = result.getString(6);
+            DTO_Customer user = new DTO_Customer(id, firstname, lastname, email, 
+            password, phonenumber);    
+            array.add(user);
+        }
+        
+         conn.close();
+         return array;
+    }
     
 }

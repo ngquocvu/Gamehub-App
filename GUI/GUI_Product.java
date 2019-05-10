@@ -10,11 +10,14 @@ import DTO.DTO_Product;
 import BUS.BUS_Product;
 import java.awt.Color;
 import java.awt.Font;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -26,9 +29,12 @@ public class GUI_Product extends javax.swing.JPanel {
 private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
+private String directory = "";
     public GUI_Product() throws SQLException, ClassNotFoundException {
        loadProduct();
        initComponents();
+       txtGenre.setEditable(false);
+       txtPublisher.setEditable(false);
        
         
     }
@@ -112,15 +118,23 @@ private DefaultTableModel  model;
         btnGenre = new javax.swing.JButton();
         btnPublisher = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        btnAdSearch = new javax.swing.JButton();
-        txtAdSearch = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
+        btnYearSearch = new javax.swing.JButton();
+        txtPriceSearch1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtPriceSearch2 = new javax.swing.JTextField();
+        btnPriceSearch = new javax.swing.JButton();
+        txtDateSearch1 = new javax.swing.JTextField();
+        txtDateSearch2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        btnQuantitySearch = new javax.swing.JButton();
+        txtQuantitySearch2 = new javax.swing.JTextField();
+        txtQuantitySearch1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        btnExport = new javax.swing.JButton();
+        btnImport = new javax.swing.JButton();
+        btnExport1 = new javax.swing.JButton();
+        txtDir = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProduct = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
@@ -301,7 +315,7 @@ private DefaultTableModel  model;
         lbGenre.setText("Genre");
         lbGenre.setFocusTraversalPolicyProvider(true);
 
-        cbPlatform.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Steam", "PC", "Xbox" }));
+        cbPlatform.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Steam", "PC", "Wii", "Xbox", "Playstation" }));
 
         txtReDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,7 +324,7 @@ private DefaultTableModel  model;
         });
 
         lbReDate.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        lbReDate.setText("Release Date");
+        lbReDate.setText("Release Year");
 
         txtGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,208 +350,305 @@ private DefaultTableModel  model;
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbID)
+                    .addComponent(lbPlatform))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbGenre)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(103, 103, 103))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbPlatform)
+                        .addGap(9, 9, 9)
+                        .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(lbGenre)
+                    .addComponent(lbReDate)
+                    .addComponent(lbPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbPublisher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbReDate))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtReDate, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtReDate, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtGenre)
+                                .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(117, 117, 117))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addGap(87, 87, 87)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbID)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbName))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(60, 60, 60)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbName)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtReDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbReDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbPlatform)
-                            .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbReDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbPrice)
-                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbPublisher)
-                            .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbID))))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(lbGenre)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnGenre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(txtGenre, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbPlatform, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPlatform, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbGenre)))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPublisher))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Advanced Features", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
 
-        btnAdSearch.setBackground(new java.awt.Color(99, 19, 132));
-        btnAdSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnAdSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdSearch.setText("Search");
-        btnAdSearch.addActionListener(new java.awt.event.ActionListener() {
+        btnYearSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnYearSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnYearSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnYearSearch.setText("Release Year Search");
+        btnYearSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdSearchActionPerformed(evt);
+                btnYearSearchActionPerformed(evt);
             }
         });
 
-        txtAdSearch.setMaximumSize(null);
-        txtAdSearch.setMinimumSize(null);
-        txtAdSearch.addActionListener(new java.awt.event.ActionListener() {
+        txtPriceSearch1.setMaximumSize(null);
+        txtPriceSearch1.setMinimumSize(null);
+        txtPriceSearch1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAdSearchActionPerformed(evt);
+                txtPriceSearch1ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton1.setText("ID");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel1.setText("TO");
+
+        txtPriceSearch2.setMaximumSize(null);
+        txtPriceSearch2.setMinimumSize(null);
+        txtPriceSearch2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                txtPriceSearch2ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton2.setText("Name");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPriceSearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnPriceSearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnPriceSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnPriceSearch.setText("Price Search");
+        btnPriceSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                btnPriceSearchActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton3.setText("Platform");
-
-        buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton4.setText("Price");
-
-        buttonGroup1.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton5.setText("Publisher");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+        txtDateSearch1.setMaximumSize(null);
+        txtDateSearch1.setMinimumSize(null);
+        txtDateSearch1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
+                txtDateSearch1ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton6.setText("Genre");
-        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+        txtDateSearch2.setMaximumSize(null);
+        txtDateSearch2.setMinimumSize(null);
+        txtDateSearch2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton6ActionPerformed(evt);
+                txtDateSearch2ActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton7);
-        jRadioButton7.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jRadioButton7.setText("Quantity");
-        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel3.setText("TO");
+
+        btnQuantitySearch.setBackground(new java.awt.Color(99, 19, 132));
+        btnQuantitySearch.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnQuantitySearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnQuantitySearch.setText("Quantity Search ");
+        btnQuantitySearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton7ActionPerformed(evt);
+                btnQuantitySearchActionPerformed(evt);
             }
         });
+
+        txtQuantitySearch2.setMaximumSize(null);
+        txtQuantitySearch2.setMinimumSize(null);
+        txtQuantitySearch2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantitySearch2ActionPerformed(evt);
+            }
+        });
+
+        txtQuantitySearch1.setMaximumSize(null);
+        txtQuantitySearch1.setMinimumSize(null);
+        txtQuantitySearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantitySearch1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel4.setText("TO");
+
+        btnExport.setBackground(new java.awt.Color(99, 19, 132));
+        btnExport.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnExport.setForeground(new java.awt.Color(255, 255, 255));
+        btnExport.setText("EXPORT");
+        btnExport.setFocusTraversalPolicyProvider(true);
+        btnExport.setMaximumSize(new java.awt.Dimension(79, 25));
+        btnExport.setMinimumSize(new java.awt.Dimension(79, 25));
+        btnExport.setPreferredSize(new java.awt.Dimension(79, 25));
+        btnExport.setVerifyInputWhenFocusTarget(false);
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+
+        btnImport.setBackground(new java.awt.Color(99, 19, 132));
+        btnImport.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnImport.setForeground(new java.awt.Color(255, 255, 255));
+        btnImport.setText("IMPORT");
+        btnImport.setFocusTraversalPolicyProvider(true);
+        btnImport.setMaximumSize(new java.awt.Dimension(79, 25));
+        btnImport.setMinimumSize(new java.awt.Dimension(79, 25));
+        btnImport.setPreferredSize(new java.awt.Dimension(79, 25));
+        btnImport.setVerifyInputWhenFocusTarget(false);
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+
+        btnExport1.setBackground(new java.awt.Color(99, 19, 132));
+        btnExport1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnExport1.setForeground(new java.awt.Color(255, 255, 255));
+        btnExport1.setText("Browser");
+        btnExport1.setFocusTraversalPolicyProvider(true);
+        btnExport1.setMaximumSize(new java.awt.Dimension(79, 25));
+        btnExport1.setMinimumSize(new java.awt.Dimension(79, 25));
+        btnExport1.setPreferredSize(new java.awt.Dimension(79, 25));
+        btnExport1.setVerifyInputWhenFocusTarget(false);
+        btnExport1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExport1ActionPerformed(evt);
+            }
+        });
+
+        txtDir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDirActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel5.setText("File Directory");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnQuantitySearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnYearSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPriceSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPriceSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                    .addComponent(txtQuantitySearch1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                    .addComponent(txtDateSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDateSearch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtPriceSearch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtQuantitySearch2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(btnAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(368, Short.MAX_VALUE)
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(7, 7, 7))
+                        .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton6)
-                        .addGap(22, 22, 22)
-                        .addComponent(jRadioButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap()
+                        .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDir)))
+                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdSearch))
+                    .addComponent(btnYearSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDateSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDateSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPriceSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPriceSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPriceSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnQuantitySearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtQuantitySearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtQuantitySearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtDir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         tblProduct.setRowHeight(32);
@@ -565,12 +676,13 @@ private DefaultTableModel  model;
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(187, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("Customer Infomation");
@@ -652,14 +764,13 @@ private DefaultTableModel  model;
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRestart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cbsort, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tgSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -671,15 +782,15 @@ private DefaultTableModel  model;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1504, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1494, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 964, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -768,33 +879,49 @@ private DefaultTableModel  model;
         
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdSearchActionPerformed
+    private void btnYearSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearSearchActionPerformed
 
-    private void txtAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAdSearchActionPerformed
+    try {
+        BUS_Product ProductBus = new BUS_Product();
+        ArrayList<DTO_Product> array = ProductBus.dateSearch(txtDateSearch1.getText(),txtDateSearch2.getText());
+        Header = new Vector();
+        Header.add("ID");
+        Header.add("Name");
+        Header.add("Price");
+        Header.add("Quantity");
+        Header.add("Publisher");
+        Header.add("Platform");
+        Header.add("Genre");
+        Header.add("Release Date");
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        for(int i=0;i<array.size();i++)
+        {
+            DTO_Product tempProduct = new DTO_Product(); 
+            tempProduct = array.get(i);
+            Vector Object = new Vector();
+            Object.add(tempProduct.getId());
+            Object.add(tempProduct.getName());
+            Object.add(tempProduct.getPrice());
+            Object.add(tempProduct.getQuantity());
+            Object.add(tempProduct.getPublisherID());
+            Object.add(tempProduct.getPlatform());
+            Object.add(tempProduct.getGenreID());
+            Object.add(tempProduct.getReleaseDate());
+            model.addRow(Object);
+        }
+        this.model = model;
+        tblProduct.setModel(model);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+    }//GEN-LAST:event_btnYearSearchActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void txtPriceSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceSearch1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton6ActionPerformed
-
-    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton7ActionPerformed
-
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
+    }//GEN-LAST:event_txtPriceSearch1ActionPerformed
 
     private void tblProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductMouseClicked
     try {
@@ -823,31 +950,52 @@ private DefaultTableModel  model;
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     try {
-        DTO_Product product = new DTO_Product();
-        BUS_Product productBUS = new BUS_Product();
-        product.setId(txtID.getText());
-        product.setName(txtName.getText());
-        product.setPrice(Double.parseDouble(txtPrice.getText()));
-        product.setQuantity(0);
-        product.setPublisherID(txtPublisher.getText());
-        product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
-        product.setGenreID(String.valueOf(txtGenre.getText()));
-        product.setReleaseDate(txtReDate.getText());      
-        Vector header = new Vector();
-        Vector row=new Vector();  
-        if(findItem(product.getId())==null && product.getId().matches("[0-9]+") && product.getId().length() >= 1)
-        {
-            model.addRow(row);
-            tblProduct.setModel(model);
-            productBUS.add(product);
-        }
-        else if (findItem(product.getId())!=null)
+        
+        if (findItem(txtID.getText())!=null)
         {
             JOptionPane.showMessageDialog(null,"This ID is already used !");
         }
-         else if (!product.getId().matches("[0-9]+"))
+         else if (!txtID.getText().matches("[0-9]+"))
         {
             JOptionPane.showMessageDialog(null,"ID must contain digit numbers from 0 to 9 !");
+        }
+        else if (txtName.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input name ! ");
+        }
+         else if (txtPublisher.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Publisher ! ");
+        }
+         else if (txtGenre.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Genre ! ");
+        }
+         else if (txtPrice.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Price ! ");
+        }
+          else if (txtReDate.getText().equals("") || (Integer.parseInt(txtReDate.getText())>Calendar.getInstance().get(Calendar.YEAR)) || (Integer.parseInt(txtReDate.getText()))<1970)
+        {
+            JOptionPane.showMessageDialog(null,"Please input Year from 1970 - present ! ");
+        }
+        else
+          {
+           DTO_Product product = new DTO_Product();
+            BUS_Product productBUS = new BUS_Product();
+            product.setId(txtID.getText());
+            product.setName(txtName.getText());
+            product.setPrice(Double.parseDouble(txtPrice.getText()));
+            product.setQuantity(0);
+            product.setPublisherID(txtPublisher.getText());
+            product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
+            product.setGenreID(String.valueOf(txtGenre.getText()));
+            product.setReleaseDate(txtReDate.getText());      
+            Vector header = new Vector();
+            Vector row=new Vector();     
+            model.addRow(row);
+            tblProduct.setModel(model);
+            productBUS.add(product);
         }
         
             loadProduct();
@@ -870,24 +1018,54 @@ private DefaultTableModel  model;
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-           try {   
-                DTO_Product product = new DTO_Product();
-                BUS_Product productBUS = new BUS_Product();
-                product.setId(txtID.getText());
-                product.setName(txtName.getText());
-                product.setPrice(Double.parseDouble(txtPrice.getText()));
-                product.setPublisherID(txtPublisher.getText());
-                product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
-                product.setGenreID(String.valueOf(txtGenre.getText()));      
-                product.setReleaseDate(txtReDate.getText());
-                productBUS.update(product);
-                loadProduct();
-                tblProduct.setModel(this.model);
-            } catch (SQLException ex) {
-                Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
-            }                     
+             try {
+        
+
+        if (txtName.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input name ! ");
+        }
+         else if (txtPublisher.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Publisher ! ");
+        }
+         else if (txtGenre.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Genre ! ");
+        }
+         else if (txtPrice.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input Price ! ");
+        }
+          else if (txtReDate.getText().equals("") || (Integer.parseInt(txtReDate.getText())>Calendar.getInstance().get(Calendar.YEAR)) || (Integer.parseInt(txtReDate.getText()))<1970)
+        {
+            JOptionPane.showMessageDialog(null,"Please input Year from 1970 - present ! ");
+        }
+        else
+          {
+           DTO_Product product = new DTO_Product();
+            BUS_Product productBUS = new BUS_Product();
+            product.setId(txtID.getText());
+            product.setName(txtName.getText());
+            product.setPrice(Double.parseDouble(txtPrice.getText()));
+            product.setQuantity(0);
+            product.setPublisherID(txtPublisher.getText());
+            product.setPlatform(String.valueOf(cbPlatform.getSelectedItem()));
+            product.setGenreID(String.valueOf(txtGenre.getText()));
+            product.setReleaseDate(txtReDate.getText());      
+            Vector header = new Vector();
+            Vector row=new Vector();     
+            model.addRow(row);
+            productBUS.update(product);
+        }
+        
+            loadProduct();
+            tblProduct.setModel(this.model);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }        
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
@@ -989,22 +1167,211 @@ private DefaultTableModel  model;
     }
     }//GEN-LAST:event_btnPublisherActionPerformed
 
+    private void txtPriceSearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceSearch2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPriceSearch2ActionPerformed
+
+    private void btnPriceSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPriceSearchActionPerformed
+       try {
+        BUS_Product ProductBus = new BUS_Product();
+        ArrayList<DTO_Product> array = ProductBus.priceSearch(txtPriceSearch1.getText(),txtPriceSearch2.getText());
+        Header = new Vector();
+        Header.add("ID");
+        Header.add("Name");
+        Header.add("Price");
+        Header.add("Quantity");
+        Header.add("Publisher");
+        Header.add("Platform");
+        Header.add("Genre");
+        Header.add("Release Date");
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        for(int i=0;i<array.size();i++)
+        {
+            DTO_Product tempProduct = new DTO_Product(); 
+            tempProduct = array.get(i);
+            Vector Object = new Vector();
+            Object.add(tempProduct.getId());
+            Object.add(tempProduct.getName());
+            Object.add(tempProduct.getPrice());
+            Object.add(tempProduct.getQuantity());
+            Object.add(tempProduct.getPublisherID());
+            Object.add(tempProduct.getPlatform());
+            Object.add(tempProduct.getGenreID());
+            Object.add(tempProduct.getReleaseDate());
+            model.addRow(Object);
+        }
+        this.model = model;
+        tblProduct.setModel(model);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+    }//GEN-LAST:event_btnPriceSearchActionPerformed
+
+    private void txtDateSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateSearch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateSearch1ActionPerformed
+
+    private void txtDateSearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateSearch2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateSearch2ActionPerformed
+
+    private void btnQuantitySearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuantitySearchActionPerformed
+       try {
+        BUS_Product ProductBus = new BUS_Product();
+        ArrayList<DTO_Product> array = ProductBus.quantitySearch(txtQuantitySearch1.getText(),txtQuantitySearch2.getText());
+        Header = new Vector();
+        Header.add("ID");
+        Header.add("Name");
+        Header.add("Price");
+        Header.add("Quantity");
+        Header.add("Publisher");
+        Header.add("Platform");
+        Header.add("Genre");
+        Header.add("Release Date");
+        DefaultTableModel model = new DefaultTableModel(Header,0);
+        for(int i=0;i<array.size();i++)
+        {
+            DTO_Product tempProduct = new DTO_Product(); 
+            tempProduct = array.get(i);
+            Vector Object = new Vector();
+            Object.add(tempProduct.getId());
+            Object.add(tempProduct.getName());
+            Object.add(tempProduct.getPrice());
+            Object.add(tempProduct.getQuantity());
+            Object.add(tempProduct.getPublisherID());
+            Object.add(tempProduct.getPlatform());
+            Object.add(tempProduct.getGenreID());
+            Object.add(tempProduct.getReleaseDate());
+            model.addRow(Object);
+        }
+        this.model = model;
+        tblProduct.setModel(model);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+    }//GEN-LAST:event_btnQuantitySearchActionPerformed
+
+    private void txtQuantitySearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantitySearch2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantitySearch2ActionPerformed
+
+    private void txtQuantitySearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantitySearch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantitySearch1ActionPerformed
+
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+    try {
+        if(directory.equals(""))
+            JOptionPane.showMessageDialog(null, "Please choose xls file to import");
+        else
+        {
+        Object[] options = {"Add new","Update"};
+        int choice = JOptionPane.showOptionDialog(null, //Component parentComponent
+                               "Add new or Update?", //Object message,
+                               "Choose an option", //String title
+                               JOptionPane.YES_NO_OPTION, //int optionType
+                               JOptionPane.INFORMATION_MESSAGE, //int messageType
+                               null, //Icon icon,
+                               options, "Import");
+        ExcelReader exreader = new ExcelReader();
+        BUS_Product productBUS = new BUS_Product();
+            ArrayList<DTO_Product> array = exreader.readExcelForProduct(directory);
+            if(choice==0)     
+                {  for(int i=0;i<array.size();i++)
+                        {
+                            productBUS.add(array.get(i));
+                        }
+                    btnRestartActionPerformed(evt);   
+                }
+            else 
+            {
+                productBUS.deleteAll();
+                {  for(int i=0;i<array.size();i++)
+                        {
+                            productBUS.add(array.get(i));
+                        }
+                    btnRestartActionPerformed(evt);   
+                }
+                 btnRestartActionPerformed(evt); 
+            }
+        }
+        
+       
+        
+    } catch (IOException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_btnImportActionPerformed
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+    try {   
+        BUS_Product productBUS = new BUS_Product();
+        ExcelWriter excel = new ExcelWriter();
+        if(directory.equals(""))
+        JOptionPane.showMessageDialog(null," Choose a file directory");
+        else
+        excel.writeExcelForProduct(BUS_Product.array,directory);
+    } catch (SQLException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_btnExportActionPerformed
+
+    private void btnExport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExport1ActionPerformed
+             JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new java.io.File("."));
+            chooser.setDialogTitle("Browse the folder to process");
+            chooser.setAcceptAllFileFilterUsed(false);
+             if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                directory = chooser.getSelectedFile().toString();
+                txtDir.setText(directory);
+            } else {
+                txtDir.setText("");
+            }
+    }//GEN-LAST:event_btnExport1ActionPerformed
+
+    private void txtDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdSearch;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnExport;
+    private javax.swing.JButton btnExport1;
     private javax.swing.JButton btnGenre;
+    private javax.swing.JButton btnImport;
+    private javax.swing.JButton btnPriceSearch;
     private javax.swing.JButton btnPublisher;
+    private javax.swing.JButton btnQuantitySearch;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnRestart;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnYearSearch;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cbPlatform;
     private javax.swing.JComboBox cbsort;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1012,13 +1379,6 @@ private DefaultTableModel  model;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
@@ -1032,12 +1392,18 @@ private DefaultTableModel  model;
     private javax.swing.JLabel lbReDate;
     private javax.swing.JTable tblProduct;
     private javax.swing.JToggleButton tgSort;
-    private javax.swing.JTextField txtAdSearch;
+    private javax.swing.JTextField txtDateSearch1;
+    private javax.swing.JTextField txtDateSearch2;
+    private javax.swing.JTextField txtDir;
     public static javax.swing.JTextField txtGenre;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField txtPriceSearch1;
+    private javax.swing.JTextField txtPriceSearch2;
     public static javax.swing.JTextField txtPublisher;
+    private javax.swing.JTextField txtQuantitySearch1;
+    private javax.swing.JTextField txtQuantitySearch2;
     private javax.swing.JTextField txtReDate;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

@@ -31,7 +31,12 @@ public class BUS_Customer {
         DAO_Customer users = new DAO_Customer();
         users.delete(id);
     }
-
+    
+         public void deleteAll() throws SQLException, ClassNotFoundException { 
+         DAO_Customer customers = new DAO_Customer();
+         customers.deleteAll();
+    } 
+    
     public void update(DTO_Customer user) throws SQLException, ClassNotFoundException {
         DAO_Customer customerDAO = new DAO_Customer();
         customerDAO.update(user);
@@ -58,4 +63,40 @@ public class BUS_Customer {
          }
          return null;
      }
+
+    public ArrayList<DTO_Customer> adSearch(String content) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.adSearch(content);
+        return array; 
+    }
+
+    public ArrayList<DTO_Customer> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.firstnameSearch(content);
+        return array; 
+    }
+
+    public ArrayList<DTO_Customer> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.lastnameSearch(content);
+        return array; 
+    }
+
+    public ArrayList<DTO_Customer> emailSearch(String content) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.emailSearch(content);
+        return array; 
+    }
+
+    public ArrayList<DTO_Customer> phonenumberSearch(String content) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.phonenumberSearch(content);
+        return array; 
+    }
+
+    public ArrayList<DTO_Customer> idSearch(String content) throws SQLException, ClassNotFoundException {
+        DAO_Customer customerDAO = new DAO_Customer();
+        ArrayList<DTO_Customer> array = customerDAO.idSearch(content);
+        return array; 
+    }
 }

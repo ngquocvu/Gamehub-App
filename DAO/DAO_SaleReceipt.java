@@ -130,7 +130,7 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
        while (result.next()) {
-             String id = result.getString(1);
+            String id = result.getString(1);
             String staffID = result.getString(2);
             String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
@@ -161,6 +161,105 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
             String state = result.getString(6);
             DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
             receipts.add(receipt);         
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+    public ArrayList<DTO_SaleReceipt> userIdSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM saleorders WHERE userID = ' "+content+" '";
+        ArrayList<DTO_SaleReceipt> receipts = new  ArrayList<DTO_SaleReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+             String id = result.getString(1);
+            String staffID = result.getString(2);
+            String userID = result.getString(3);
+            Timestamp createDate = result.getTimestamp(4);
+            String state = result.getString(6);
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+    public ArrayList<DTO_SaleReceipt> adSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM saleorders WHERE id LIKE " + "'" + content + "%'"
+                    +" OR staffID LIKE" + "'" + content + "%'" 
+                    +" OR userID LIKE " + "'" + content + "%'" 
+                    +" OR state LIKE " + "'" + content + "%'" ;
+        ArrayList<DTO_SaleReceipt> receipts = new  ArrayList<DTO_SaleReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+             String id = result.getString(1);
+            String staffID = result.getString(2);
+            String userID = result.getString(3);
+            Timestamp createDate = result.getTimestamp(4);
+            String state = result.getString(6);
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+    public ArrayList<DTO_SaleReceipt> stateSearch(String content) throws SQLException, ClassNotFoundException {
+                Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM saleorders WHERE state = ' "+content+" '";
+        ArrayList<DTO_SaleReceipt> receipts = new  ArrayList<DTO_SaleReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+             String id = result.getString(1);
+            String staffID = result.getString(2);
+            String userID = result.getString(3);
+            Timestamp createDate = result.getTimestamp(4);
+            String state = result.getString(6);
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+
+    public ArrayList<DTO_SaleReceipt> idSearch(String content) throws SQLException, ClassNotFoundException {
+                Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM saleorders WHERE id = ' "+content+" '";
+        ArrayList<DTO_SaleReceipt> receipts = new  ArrayList<DTO_SaleReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+             String id = result.getString(1);
+            String staffID = result.getString(2);
+            String userID = result.getString(3);
+            Timestamp createDate = result.getTimestamp(4);
+            String state = result.getString(6);
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+        }
+        
+         conn.close();
+         return receipts;
+    }
+
+    public ArrayList<DTO_SaleReceipt> staffIdSearch(String content) throws SQLException, ClassNotFoundException {
+                Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM saleorders WHERE staffID = ' "+content+" '";
+        ArrayList<DTO_SaleReceipt> receipts = new  ArrayList<DTO_SaleReceipt>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+       while (result.next()) {
+             String id = result.getString(1);
+            String staffID = result.getString(2);
+            String userID = result.getString(3);
+            Timestamp createDate = result.getTimestamp(4);
+            String state = result.getString(6);
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
         }
         
          conn.close();
