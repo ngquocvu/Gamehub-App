@@ -56,6 +56,15 @@ public class DAO_Publisher {
         stmt.executeUpdate(sql);
         conn.close();
     }
+        public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "DELETE FROM publisher";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        conn.close();
+    }
+        
+        
         public void update(DTO_Publisher object) throws SQLException, ClassNotFoundException {
             Connection conn = MySQLConnUtils.getMySQLConnection();
             String sql = "UPDATE publisher SET ";            

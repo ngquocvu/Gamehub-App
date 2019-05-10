@@ -26,7 +26,13 @@ public class BUS_Genre {
           public void delete(String id) throws SQLException, ClassNotFoundException { 
          DAO_Genre genre = new DAO_Genre();
          genre.delete(id);
+        } 
+          
+           public void deleteAll() throws SQLException, ClassNotFoundException { 
+         DAO_Genre genre = new DAO_Genre();
+         genre.deleteAll();
     } 
+          
            public void update(DTO_Genre genre) throws SQLException, ClassNotFoundException
      {
              DAO_Genre genreDAO = new DAO_Genre();

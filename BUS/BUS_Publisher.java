@@ -27,6 +27,11 @@ public class BUS_Publisher {
          DAO_Publisher publisher = new DAO_Publisher();
          publisher.delete(id);
     } 
+          public void deleteAll() throws SQLException, ClassNotFoundException
+          {
+             DAO_Publisher publisher = new DAO_Publisher();
+             publisher.deleteAll();
+          }
            public void update(DTO_Publisher publisher) throws SQLException, ClassNotFoundException
      {
              DAO_Publisher publisherDAO = new DAO_Publisher();

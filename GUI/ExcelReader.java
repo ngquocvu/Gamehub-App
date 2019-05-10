@@ -7,7 +7,9 @@
 package GUI;
 
 import DTO.DTO_Customer;
+import DTO.DTO_Genre;
 import DTO.DTO_Product;
+import DTO.DTO_Publisher;
 import DTO.DTO_Staff;
 import java.io.File;
 import java.io.FileInputStream;
@@ -208,6 +210,128 @@ public class ExcelReader {
  
             }
             array.add(staff);
+        }
+ 
+        inputStream.close();
+ 
+        return array;
+    }
+    
+    public ArrayList<DTO_Genre> readExcelForGenre(String excelFilePath) throws IOException {
+        ArrayList<DTO_Genre> array = new ArrayList<DTO_Genre>();
+ 
+        // Get file
+        InputStream inputStream = new FileInputStream(new File(excelFilePath));
+ 
+        // Get workproduct
+        Workbook workbook = getWorkbook(inputStream, excelFilePath);
+ 
+        // Get sheet
+        Sheet sheet = workbook.getSheetAt(0);
+ 
+        // Get all rows
+        Iterator<Row> iterator = sheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            if (nextRow.getRowNum() == 0) {
+                // Ignore header
+                continue;
+            }
+ 
+            // Get all cells
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+ 
+            // Read cells and set value for product object
+            DTO_Genre genre = new DTO_Genre();
+            while (cellIterator.hasNext()) {
+                //Read cell
+                Cell cell = cellIterator.next();
+                Object cellValue = getCellValue(cell);
+                // Set value for product object
+                int columnIndex = cell.getColumnIndex();
+                switch (columnIndex) {
+                case 0:       
+                        if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    genre.setId(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int id = (int) cell.getNumericCellValue();
+                                    genre.setId(String.valueOf(id));
+                                }
+                    
+                    break;
+                 case 1:
+                    genre.setName(cell.getStringCellValue());
+                    break;  
+                default:
+                    break;
+                }
+ 
+            }
+            array.add(genre);
+        }
+ 
+        inputStream.close();
+ 
+        return array;
+    }
+    
+       public ArrayList<DTO_Publisher> readExcelForPublisher(String excelFilePath) throws IOException {
+        ArrayList<DTO_Publisher> array = new ArrayList<DTO_Publisher>();
+ 
+        // Get file
+        InputStream inputStream = new FileInputStream(new File(excelFilePath));
+ 
+        // Get workproduct
+        Workbook workbook = getWorkbook(inputStream, excelFilePath);
+ 
+        // Get sheet
+        Sheet sheet = workbook.getSheetAt(0);
+ 
+        // Get all rows
+        Iterator<Row> iterator = sheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            if (nextRow.getRowNum() == 0) {
+                // Ignore header
+                continue;
+            }
+ 
+            // Get all cells
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+ 
+            // Read cells and set value for product object
+            DTO_Publisher publisher = new DTO_Publisher();
+            while (cellIterator.hasNext()) {
+                //Read cell
+                Cell cell = cellIterator.next();
+                Object cellValue = getCellValue(cell);
+                // Set value for product object
+                int columnIndex = cell.getColumnIndex();
+                switch (columnIndex) {
+                case 0:       
+                        if(cell.getCellType().toString().equals("STRING"))
+                                {
+                                    publisher.setId(cell.getStringCellValue());
+                                }
+                        else
+                            {
+                                int id = (int) cell.getNumericCellValue();
+                                    publisher.setId(String.valueOf(id));
+                                }
+                    
+                    break;
+                 case 1:
+                    publisher.setName(cell.getStringCellValue());
+                    break;  
+                default:
+                    break;
+                }
+ 
+            }
+            array.add(publisher);
         }
  
         inputStream.close();

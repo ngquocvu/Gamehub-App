@@ -56,6 +56,15 @@ public class DAO_Genre {
         stmt.executeUpdate(sql);
         conn.close();
     }
+        
+        public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "DELETE FROM genre";
+        Statement stmt = conn.createStatement();
+        stmt.executeUpdate(sql);
+        conn.close();
+    }
+        
         public void update(DTO_Genre object) throws SQLException, ClassNotFoundException {
             Connection conn = MySQLConnUtils.getMySQLConnection();
             String sql = "UPDATE genre SET ";            

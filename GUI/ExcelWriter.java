@@ -7,7 +7,9 @@
 package GUI;
 
 import DTO.DTO_Customer;
+import DTO.DTO_Genre;
 import DTO.DTO_Product;
+import DTO.DTO_Publisher;
 import DTO.DTO_Staff;
 import java.io.*;
 import java.util.ArrayList;
@@ -137,6 +139,78 @@ public class ExcelWriter {
     }
     
     
+     public void writeExcelForGenre(ArrayList<DTO_Genre> genres, String excelFilePath) throws IOException  {
+        // Create Workbook
+        Workbook workbook = getWorkbook(excelFilePath);
+        if( workbook == null )
+        {
+         workbook = new HSSFWorkbook();  
+        }
+        // Create sheet
+        Sheet sheet = workbook.createSheet("Customers"); // Create sheet with sheet name
+ 
+        int rowIndex = 0;
+         
+        // Write header
+        writeGenreHeader(sheet, rowIndex);
+ 
+        // Write data
+        rowIndex++;
+        for (DTO_Genre genre : genres) {
+            // Create row
+            Row row = sheet.createRow(rowIndex);
+            // Write data on row
+            writeGenre(genre, row);
+            rowIndex++;
+        }
+         
+ 
+        // Auto resize column witdth
+        int numberOfColumn = sheet.getRow(0).getPhysicalNumberOfCells();
+        autosizeColumn(sheet, numberOfColumn);
+ 
+        // Create file excel
+        createOutputFile(workbook, excelFilePath);
+        JOptionPane.showMessageDialog(null,"Successully !\nDirectory: " + excelFilePath);
+    }
+     
+     
+      public void writeExcelForPublisher(ArrayList<DTO_Publisher> publishers, String excelFilePath) throws IOException  {
+        // Create Workbook
+        Workbook workbook = getWorkbook(excelFilePath);
+        if( workbook == null )
+        {
+         workbook = new HSSFWorkbook();  
+        }
+        // Create sheet
+        Sheet sheet = workbook.createSheet("Customers"); // Create sheet with sheet name
+ 
+        int rowIndex = 0;
+         
+        // Write header
+        writeGenreHeader(sheet, rowIndex);
+ 
+        // Write data
+        rowIndex++;
+        for (DTO_Publisher publisher : publishers) {
+            // Create row
+            Row row = sheet.createRow(rowIndex);
+            // Write data on row
+            writePublisher(publisher, row);
+            rowIndex++;
+        }
+         
+ 
+        // Auto resize column witdth
+        int numberOfColumn = sheet.getRow(0).getPhysicalNumberOfCells();
+        autosizeColumn(sheet, numberOfColumn);
+ 
+        // Create file excel
+        createOutputFile(workbook, excelFilePath);
+        JOptionPane.showMessageDialog(null,"Successully !\nDirectory: " + excelFilePath);
+    }
+     
+    
     private static void writeProductHeader(Sheet sheet, int rowIndex) {
         // create CellStyle
         CellStyle cellStyle = createStyleForHeader(sheet);
@@ -257,6 +331,24 @@ public class ExcelWriter {
  
     }
      
+    private static void writeGenreHeader(Sheet sheet, int rowIndex) {
+        // create CellStyle
+        CellStyle cellStyle = createStyleForHeader(sheet);
+         
+        // Create row
+        Row row = sheet.createRow(rowIndex);
+         
+        // Create cells
+        Cell cell = row.createCell(0);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("ID");
+ 
+        cell = row.createCell(1);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Name");
+ 
+    }
+    
       
      
      
@@ -342,6 +434,8 @@ public class ExcelWriter {
 
     }
     
+   
+    
     
         
     private static void writeCustomer(DTO_Customer customer, Row row) {
@@ -367,6 +461,26 @@ public class ExcelWriter {
 
     }
     
+      private static void writeGenre(DTO_Genre genre, Row row) {
+         
+        Cell cell = row.createCell(0);
+        cell.setCellValue(genre.getId());
+ 
+        cell = row.createCell(1);
+        cell.setCellValue(genre.getName());
+
+    }
+    
+        private static void writePublisher(DTO_Publisher publisher, Row row) {
+         
+        Cell cell = row.createCell(0);
+        cell.setCellValue(publisher.getId());
+ 
+        cell = row.createCell(1);
+        cell.setCellValue(publisher.getName());
+
+    }  
+      
     // Auto resize column width
     private static void autosizeColumn(Sheet sheet, int lastColumn) {
         for (int columnIndex = 0; columnIndex < lastColumn; columnIndex++) {
