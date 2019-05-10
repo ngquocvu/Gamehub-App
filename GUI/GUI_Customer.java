@@ -922,39 +922,71 @@ private String directory = new String("") ;
     }//GEN-LAST:event_tblCustomerMouseClicked
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        try {
-        DTO_Customer user = new DTO_Customer();
-        BUS_Customer customerBUS = new BUS_Customer();
-        user.setId(txtID.getText());
-        user.setFirstname(txtFirstname.getText());
-        user.setLastname(txtLastname.getText()); 
-        user.setEmail(txtEmail.getText());
-        user.setPassword(txtPassword.getText());
-        user.setPhonenumber(txtPhone.getText());
-        
-        Vector header = new Vector();
-        Vector row=new Vector();
-        if(findItem(user.getId())==null)
-        {
-            row.add(user.getId());
-            row.add(user.getFirstname());
-            row.add(user.getLastname());
-            row.add(user.getEmail());
-            row.add(user.getPassword());
-            row.add(user.getPhonenumber());
-            model.addRow(row);
-            tblCustomer.setModel(model);
-            customerBUS.add(user);
-        }
-        else
+
+          if (findItem(txtID.getText())!=null)
         {
             JOptionPane.showMessageDialog(null,"This ID is already used !");
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
-    }
+         else if (!txtID.getText().matches("[0-9]+"))
+        {
+            JOptionPane.showMessageDialog(null,"ID must contain digit numbers from 0 to 9 !");
+        }
+        else if (txtFirstname.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input first name ! ");
+        }
+          else if (txtLastname.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input last name ! ");
+        }
+         else if (txtEmail.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input email ! ");
+        }
+         else if (txtPassword.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input password ! ");
+        }
+          else if (txtPhone.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input phone ! ");
+        }
+        else{
+              try {
+                  DTO_Customer user = new DTO_Customer();
+                  BUS_Customer customerBUS = new BUS_Customer();
+                  user.setId(txtID.getText());
+                  user.setFirstname(txtFirstname.getText());
+                  user.setLastname(txtLastname.getText());
+                  user.setEmail(txtEmail.getText());
+                  user.setPassword(txtPassword.getText());
+                  user.setPhonenumber(txtPhone.getText());
+                  
+                  Vector header = new Vector();
+                  Vector row=new Vector();
+                  if(findItem(user.getId())==null)
+                  {
+                      row.add(user.getId());
+                      row.add(user.getFirstname());
+                      row.add(user.getLastname());
+                      row.add(user.getEmail());
+                      row.add(user.getPassword());
+                      row.add(user.getPhonenumber());
+                      model.addRow(row);
+                      tblCustomer.setModel(model);
+                      customerBUS.add(user);
+                  }
+                  else
+                  {
+                      JOptionPane.showMessageDialog(null,"This ID is already used !");
+                  }     } catch (SQLException ex) {
+                  Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+              } catch (ClassNotFoundException ex) {
+                  Logger.getLogger(GUI_Customer.class.getName()).log(Level.SEVERE, null, ex);
+              }
+          }
+          
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed

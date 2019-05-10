@@ -946,7 +946,40 @@ private String directory = new String("") ;
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        try {
+        if (findItem(txtID.getText())!=null)
+        {
+            JOptionPane.showMessageDialog(null,"This ID is already used !");
+        }
+         else if (!txtID.getText().matches("[0-9]+"))
+        {
+            JOptionPane.showMessageDialog(null,"ID must contain digit numbers from 0 to 9 !");
+        }
+        else if (txtFirstname.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input first name ! ");
+        }
+          else if (txtLastname.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input last name ! ");
+        }
+         else if (txtEmail.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input email ! ");
+        }
+         else if (txtPassword.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input password ! ");
+        }
+        else if (txtAddress.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input address ! ");
+        } 
+          else if (txtPhonenumber.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please input phone ! ");
+        }
+        else{
+            try {
             DTO_Staff staff = new DTO_Staff();
             BUS_Staff staffBUS = new BUS_Staff();
             staff.setId(txtID.getText());
@@ -986,7 +1019,7 @@ private String directory = new String("") ;
             Logger.getLogger(GUI_Staff.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAddActionPerformed
-
+    }
     private void cbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRoleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbRoleActionPerformed

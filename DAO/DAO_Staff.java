@@ -303,7 +303,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
 
     public ArrayList<DTO_Staff> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM staffs WHERE LIKE '%"+content+"%'"; 
+        String sql = "SELECT * FROM staffs WHERE firstname LIKE  '%"+content+"%'"; 
         ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -329,7 +329,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
 
     public ArrayList<DTO_Staff> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM staffs WHERE LIKE '%"+content+"%'";    
+        String sql = "SELECT * FROM staffs WHERE lastname LIKE '%"+content+"%'";    
         ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);

@@ -828,10 +828,6 @@ private String directory = "";
                             Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
                         }  
                       }   
-                  else 
-                  {
-                      JOptionPane.showMessageDialog(null,"Please select a row to delete !");
-                  }
            
     }//GEN-LAST:event_btnRemoveActionPerformed
 

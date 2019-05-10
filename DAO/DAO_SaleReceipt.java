@@ -122,7 +122,7 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
     }
       public ArrayList<DTO_SaleReceipt> search(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM saleorders WHERE id LIKE " + "'" + content + "%'"
+        String sql = "SELECT * FROM saleorders WHERE id LIKE " + "'%" + content + "%'"
                     +" OR staffID LIKE" + "'" + content + "%'" 
                     +" OR userID LIKE " + "'" + content + "%'" 
                     +" OR state LIKE " + "'" + content + "%'" ;
@@ -135,7 +135,8 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
             String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);
+            receipts.add(receipt);
         }
         
          conn.close();
@@ -179,7 +180,8 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
             String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);  
+            receipts.add(receipt);
         }
         
          conn.close();
@@ -201,7 +203,8 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
             String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);     
+            receipts.add(receipt);
         }
         
          conn.close();
@@ -220,7 +223,8 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
             String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);    
+            receipts.add(receipt);
         }
         
          conn.close();
@@ -240,7 +244,8 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
             String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);    
+            receipts.add(receipt);
         }
         
          conn.close();
@@ -259,7 +264,8 @@ public class DAO_SaleReceipt implements DAO_Interface<DTO_SaleReceipt> {
             String userID = result.getString(3);
             Timestamp createDate = result.getTimestamp(4);
             String state = result.getString(6);
-            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);           
+            DTO_SaleReceipt receipt = new DTO_SaleReceipt(id, staffID,userID,createDate,state);        
+            receipts.add(receipt);
         }
         
          conn.close();
