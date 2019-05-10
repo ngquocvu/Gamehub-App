@@ -242,6 +242,195 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
          return array;
     }
 
+    public ArrayList<DTO_Staff> adSearch(String content) throws SQLException, ClassNotFoundException {
+                Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE firstname LIKE " + "'" + content + "%'" 
+                    +" OR lastname LIKE " + "'" + content + "%'" 
+                    +" OR email LIKE " + "'" + content + "%'" 
+                    +" OR address LIKE " + "'" + content + "%'" 
+                    +" OR phonenumber LIKE " + "'" + content + "%'" 
+                    +" OR role LIKE " + "'" + content + "%'" 
+                    +" OR sex LIKE " + "'" + content + "%'" 
+                    ;      
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> idSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE id = '"+content+"'";   
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE firstname = '"+content+"'";   
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE lastname = '"+content+"'";   
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> emailSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE email = '"+content+"'";   
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> addressSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE address = '"+content+"'";   
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
+    }
+
+    public ArrayList<DTO_Staff> phonenumberSearch(String content) throws SQLException, ClassNotFoundException {
+        Connection conn = MySQLConnUtils.getMySQLConnection();
+        String sql = "SELECT * FROM staffs WHERE phonenumber = '"+content+"'";   
+        ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
+        Statement stmt = conn.createStatement();
+        ResultSet result = stmt.executeQuery(sql);
+        while (result.next()) {
+            String id = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String email = result.getString(4);
+            String password = result.getString(5);
+            String address = result.getString(6);
+            String phonenumber = result.getString(7);
+            String role = result.getString(8);
+            String sex = result.getString(9);
+            
+            DTO_Staff staff = new DTO_Staff(id, firstname, lastname, email, 
+            password, address, phonenumber, role, sex);    
+            array.add(staff);
+        }
+        
+         conn.close();
+         return array;
+    }
+
    
    
 }
