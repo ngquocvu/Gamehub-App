@@ -488,6 +488,7 @@ private DefaultTableModel  orderModel;
             }
         });
 
+        buttonGroup1.add(rbID);
         rbID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         rbID.setText("ID");
         rbID.addActionListener(new java.awt.event.ActionListener() {
@@ -496,6 +497,7 @@ private DefaultTableModel  orderModel;
             }
         });
 
+        buttonGroup1.add(rbStaffID);
         rbStaffID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         rbStaffID.setText("StaffID");
         rbStaffID.addActionListener(new java.awt.event.ActionListener() {
@@ -504,6 +506,7 @@ private DefaultTableModel  orderModel;
             }
         });
 
+        buttonGroup1.add(rbState);
         rbState.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         rbState.setText("State");
         rbState.addActionListener(new java.awt.event.ActionListener() {
@@ -512,6 +515,7 @@ private DefaultTableModel  orderModel;
             }
         });
 
+        buttonGroup1.add(rbUserID);
         rbUserID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         rbUserID.setText("UserID");
         rbUserID.addActionListener(new java.awt.event.ActionListener() {
@@ -526,6 +530,8 @@ private DefaultTableModel  orderModel;
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(btnAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(rbID)
@@ -537,19 +543,17 @@ private DefaultTableModel  orderModel;
                         .addComponent(rbState)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(btnAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
                         .addGap(7, 7, 7))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdSearch))
-                .addGap(18, 18, 18)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbID)
                     .addComponent(rbState)
@@ -615,7 +619,7 @@ private DefaultTableModel  orderModel;
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("Customer Infomation");
@@ -709,9 +713,6 @@ private DefaultTableModel  orderModel;
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -719,7 +720,8 @@ private DefaultTableModel  orderModel;
                             .addComponent(cbsort)
                             .addComponent(btnRestart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
@@ -876,8 +878,7 @@ private DefaultTableModel  orderModel;
     }//GEN-LAST:event_txtAdSearchActionPerformed
 
     private void btnAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdSearchActionPerformed
-         try {
-            DefaultTableModel model = new DefaultTableModel(Header,0);
+         try {    
             BUS_SaleReceipt SaleReceiptBus = new BUS_SaleReceipt();
             ArrayList<DTO_SaleReceipt> array = SaleReceiptBus.adSearch(txtAdSearch.getText());
             Header = new Vector();
@@ -886,6 +887,7 @@ private DefaultTableModel  orderModel;
             Header.add("User ID");     
             Header.add("Create at");
             Header.add("State");
+            DefaultTableModel model = new DefaultTableModel(Header,0);
             if (rbID.isSelected()) 
                 array = SaleReceiptBus.idSearch(txtAdSearch.getText());
             else if(rbStaffID.isSelected())

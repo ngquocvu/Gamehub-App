@@ -303,7 +303,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
 
     public ArrayList<DTO_Staff> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM staffs WHERE firstname = '"+content+"'";   
+        String sql = "SELECT * FROM staffs WHERE LIKE '%"+content+"%'"; 
         ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -329,7 +329,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
 
     public ArrayList<DTO_Staff> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM staffs WHERE lastname = '"+content+"'";   
+        String sql = "SELECT * FROM staffs WHERE LIKE '%"+content+"%'";    
         ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -355,7 +355,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
 
     public ArrayList<DTO_Staff> emailSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM staffs WHERE email = '"+content+"'";   
+        String sql = "SELECT * FROM staffs WHERE email LIKE '%"+content+"%'"; 
         ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -381,7 +381,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
 
     public ArrayList<DTO_Staff> addressSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM staffs WHERE address = '"+content+"'";   
+        String sql = "SELECT * FROM staffs WHERE address LIKE '%"+content+"%'"; 
         ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -407,7 +407,7 @@ public class DAO_Staff  implements DAO_Interface<DTO_Staff>{
 
     public ArrayList<DTO_Staff> phonenumberSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM staffs WHERE phonenumber = '"+content+"'";   
+        String sql = "SELECT * FROM staffs WHERE phonenumber LIKE '%"+content+"%'";   
         ArrayList<DTO_Staff> array = new  ArrayList<DTO_Staff>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);

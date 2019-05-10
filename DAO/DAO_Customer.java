@@ -164,7 +164,7 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
 
     public ArrayList<DTO_Customer> adSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM users WHERE firstname LIKE " + "'" + content + "%'" 
+        String sql = "SELECT * FROM users WHERE firstname LIKE " + "'%" + content + "%'" 
                     +" OR lastname LIKE " + "'" + content + "%'" 
                     +" OR email LIKE " + "'" + content + "%'" 
                     +" OR phonenumber LIKE " + "'" + content + "%'" 
@@ -190,7 +190,7 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
 
     public ArrayList<DTO_Customer> firstnameSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM users WHERE firstname = '"+content+"'"; 
+        String sql = "SELECT * FROM users WHERE firstname LIKE '%"+content+"%'"; 
         ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -212,7 +212,7 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
 
     public ArrayList<DTO_Customer> lastnameSearch(String content) throws SQLException, ClassNotFoundException {
                 Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM users WHERE lastname = '"+content+"'"; 
+        String sql = "SELECT * FROM users WHERE lastname LIKE '%"+content+"%'"; 
         ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -234,7 +234,7 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
 
     public ArrayList<DTO_Customer> emailSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM users WHERE email = '"+content+"'"; 
+        String sql = "SELECT * FROM users WHERE email LIKE '%"+content+"%'"; 
         ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -256,7 +256,7 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
 
     public ArrayList<DTO_Customer> phonenumberSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM users WHERE phonenumber = '"+content+"'"; 
+        String sql = "SELECT * FROM users WHERE phonenumber LIKE '%"+content+"%'"; 
         ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);
@@ -278,7 +278,7 @@ public class DAO_Customer implements DAO_Interface<DTO.DTO_Customer>{
 
     public ArrayList<DTO_Customer> idSearch(String content) throws SQLException, ClassNotFoundException {
         Connection conn = MySQLConnUtils.getMySQLConnection();
-        String sql = "SELECT * FROM users WHERE id = ' "+content+" '"; 
+        String sql = "SELECT * FROM users WHERE id = '"+content+"'"; 
         ArrayList<DTO_Customer> array = new  ArrayList<DTO_Customer>();
         Statement stmt = conn.createStatement();
         ResultSet result = stmt.executeQuery(sql);

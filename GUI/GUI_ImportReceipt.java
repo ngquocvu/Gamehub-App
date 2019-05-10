@@ -52,8 +52,8 @@ private Vector Object;
 private Vector Header;
 private DefaultTableModel  model;
 private DefaultTableModel  orderModel;
-    private Object rbEmail;
-    private Object rbGerne;
+private Object rbEmail;
+private Object rbGerne;
     public GUI_ImportReceipt() throws SQLException, ClassNotFoundException {
        
        loadReceipt();
@@ -238,7 +238,7 @@ private DefaultTableModel  orderModel;
             }
         });
 
-        jPanel5.setPreferredSize(new java.awt.Dimension(1427, 1034));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1227, 1034));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Receipt Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 24))); // NOI18N
         jPanel1.setToolTipText("");
@@ -255,6 +255,12 @@ private DefaultTableModel  orderModel;
 
         lbStaffID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lbStaffID.setText("Staff ID");
+
+        txtStaffID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStaffIDActionPerformed(evt);
+            }
+        });
 
         btnReset.setBackground(new java.awt.Color(99, 19, 132));
         btnReset.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -424,7 +430,7 @@ private DefaultTableModel  orderModel;
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbID)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -496,33 +502,33 @@ private DefaultTableModel  orderModel;
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(btnAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(btnAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(7, 7, 7))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(rbID)
                         .addGap(18, 18, 18)
                         .addComponent(rbStaffID)
                         .addGap(18, 18, 18)
                         .addComponent(rbState)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                        .addGap(7, 7, 7))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdSearch))
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(txtAdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbID)
                     .addComponent(rbStaffID)
                     .addComponent(rbState))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(162, 162, 162))
         );
 
         tblReceipt.setRowHeight(32);
@@ -573,17 +579,17 @@ private DefaultTableModel  orderModel;
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(526, 526, 526)
-                                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(110, Short.MAX_VALUE))
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(23, 23, 23))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("Customer Infomation");
@@ -676,6 +682,7 @@ private DefaultTableModel  orderModel;
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -685,12 +692,10 @@ private DefaultTableModel  orderModel;
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(tgSort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbsort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                                    .addComponent(cbsort, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(5, 5, 5)))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -707,7 +712,8 @@ private DefaultTableModel  orderModel;
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -814,6 +820,10 @@ private DefaultTableModel  orderModel;
         cbsortActionPerformed(evt);
     }//GEN-LAST:event_tgSortActionPerformed
 
+    private void tblImportDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblImportDetailMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblImportDetailMouseClicked
+
     private void tblReceiptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblReceiptMouseClicked
         try {
             int i = tblReceipt.getSelectedRow();
@@ -825,13 +835,17 @@ private DefaultTableModel  orderModel;
             if(tblReceipt.getModel().getValueAt(i, 3).toString().equals("Processing"))
             tgProcess.setSelected(false);
             else
-             tgProcess.setSelected(true);    
+            tgProcess.setSelected(true);
         } catch (SQLException ex) {
             Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tblReceiptMouseClicked
+
+    private void rbStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbStateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbStateActionPerformed
 
     private void rbStaffIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbStaffIDActionPerformed
         // TODO add your handling code here:
@@ -847,7 +861,6 @@ private DefaultTableModel  orderModel;
 
     private void btnAdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdSearchActionPerformed
         try {
-            DefaultTableModel model = new DefaultTableModel(Header,0);
             BUS_ImportReceipt ImportReceiptBus = new BUS_ImportReceipt();
             ArrayList<DTO_ImportReceipt> array = ImportReceiptBus.adSearch(txtAdSearch.getText());
             Header = new Vector();
@@ -855,17 +868,16 @@ private DefaultTableModel  orderModel;
             Header.add("Staff ID");
             Header.add("Create at");
             Header.add("State");
-            
-
-            if (rbID.isSelected()) 
-                array = ImportReceiptBus.idSearch(txtAdSearch.getText());
+            DefaultTableModel model = new DefaultTableModel(Header,0);
+            if (rbID.isSelected())
+            array = ImportReceiptBus.idSearch(txtAdSearch.getText());
             else if(rbStaffID.isSelected())
-                array = ImportReceiptBus.staffIdSearch(txtAdSearch.getText());  
+            array = ImportReceiptBus.staffIdSearch(txtAdSearch.getText());
             else if(rbState.isSelected())
-                array = ImportReceiptBus.stateSearch(txtAdSearch.getText()); 
+            array = ImportReceiptBus.stateSearch(txtAdSearch.getText());
             for(int i=0;i<array.size();i++)
             {
-                DTO_ImportReceipt tempReceipt = new DTO_ImportReceipt(); 
+                DTO_ImportReceipt tempReceipt = new DTO_ImportReceipt();
                 tempReceipt = array.get(i);
                 Vector Object = new Vector();
                 Object.add(tempReceipt.getId());
@@ -876,63 +888,13 @@ private DefaultTableModel  orderModel;
             }
             this.model = model;
             tblReceipt.setModel(model);
-                  
+
         } catch (SQLException ex) {
             Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnAdSearchActionPerformed
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        try {
-            DTO_ImportReceipt receipt = new DTO_ImportReceipt();
-            BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
-            receipt.setId(txtID.getText());
-            receipt.setStaffID(txtStaffID.getText());
-            receiptBUS.update(receipt);
-            loadReceipt();
-            tblReceipt.setModel(this.model);
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnEditActionPerformed
-
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-
-        String id = txtID.getText();
-        if(findItem(id)== null)
-        {
-            JOptionPane.showMessageDialog(null,"Can not delete ! Receipt's ID not found !");
-            return;
-        }
-        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(dialogResult == JOptionPane.YES_OPTION)
-        {
-            try {
-                BUS_ImportReceipt ReceiptBus = new BUS_ImportReceipt();
-                ReceiptBus.delete(id);
-                loadReceipt();
-                tblReceipt.setModel(this.model);
-            } catch (SQLException ex) {
-                Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Please select a row to delete !");
-        }
-    }//GEN-LAST:event_btnRemoveActionPerformed
-
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        txtID.setText("");
-        txtStaffID.setText("");
-    }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         try {
@@ -971,49 +933,6 @@ private DefaultTableModel  orderModel;
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
-
-    private void tblImportDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblImportDetailMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblImportDetailMouseClicked
-
-    private void btnAddProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProActionPerformed
-    try {
-        GUI_OrderItem orderItemGUI = new GUI_OrderItem(txtID.getText());
-        orderItemGUI.setVisible(true);
-    } catch (SQLException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }//GEN-LAST:event_btnAddProActionPerformed
-
-    private void tgProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgProcessActionPerformed
-    try {
-        DTO_ImportReceipt receipt = new DTO_ImportReceipt();
-        BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
-        receipt.setId(txtID.getText());
-        if(tgProcess.isSelected())
-        {
-            
-            receipt.setState("Processed");
-        }
-        else
-        {
-            receipt.setState("Processing");
-        }
-        receiptBUS.updateState(receipt);
-        loadReceipt();
-        tblReceipt.setModel(this.model);
-    } catch (SQLException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    }//GEN-LAST:event_tgProcessActionPerformed
-
     private void btnGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenreActionPerformed
         try {
             GUI_StaffTable staffGUI = new GUI_StaffTable(1);
@@ -1024,6 +943,17 @@ private DefaultTableModel  orderModel;
             Logger.getLogger(GUI_Product.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnGenreActionPerformed
+
+    private void btnAddProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProActionPerformed
+        try {
+            GUI_OrderItem orderItemGUI = new GUI_OrderItem(txtID.getText());
+            orderItemGUI.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAddProActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
@@ -1095,9 +1025,87 @@ private DefaultTableModel  orderModel;
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
-    private void rbStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbStateActionPerformed
+    private void tgProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tgProcessActionPerformed
+        try {
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt();
+            BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
+            receipt.setId(txtID.getText());
+            if(tgProcess.isSelected())
+            {
+
+                receipt.setState("Processed");
+            }
+            else
+            {
+                receipt.setState("Processing");
+            }
+            receiptBUS.updateState(receipt);
+            loadReceipt();
+            tblReceipt.setModel(this.model);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tgProcessActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+
+        String id = txtID.getText();
+        if(findItem(id)== null)
+        {
+            JOptionPane.showMessageDialog(null,"Can not delete ! Receipt's ID not found !");
+            return;
+        }
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Do you want to continue?", "Confirm",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(dialogResult == JOptionPane.YES_OPTION)
+        {
+            try {
+                BUS_ImportReceipt ReceiptBus = new BUS_ImportReceipt();
+                ReceiptBus.delete(id);
+                loadReceipt();
+                tblReceipt.setModel(this.model);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Please select a row to delete !");
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        try {
+            DTO_ImportReceipt receipt = new DTO_ImportReceipt();
+            BUS_ImportReceipt receiptBUS = new BUS_ImportReceipt();
+            receipt.setId(txtID.getText());
+            receipt.setStaffID(txtStaffID.getText());
+            receiptBUS.update(receipt);
+            loadReceipt();
+            tblReceipt.setModel(this.model);
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_ImportReceipt.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        txtID.setText("");
+        txtStaffID.setText("");
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbStateActionPerformed
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtStaffIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStaffIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStaffIDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
