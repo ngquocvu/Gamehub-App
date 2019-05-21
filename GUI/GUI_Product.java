@@ -984,7 +984,7 @@ private String directory = "";
         }
         else
           {
-           DTO_Product product = new DTO_Product();
+            DTO_Product product = new DTO_Product();
             BUS_Product productBUS = new BUS_Product();
             product.setId(txtID.getText());
             product.setName(txtName.getText());
